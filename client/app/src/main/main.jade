@@ -1,0 +1,84 @@
+md-toolbar.md-whiteframe-z2
+  .md-toolbar-tools
+    span 
+      md-icon(
+        md-font-library="material-icons"
+      ) keyboard
+      | TYPR
+      
+    md-button.btn(
+      ui-sref="main.snippits"
+      ng-class="{'md-accent': selected === 'snippits'}"
+      ng-click="selected = 'snippits'"
+    )
+      md-icon(
+        md-font-library="material-icons"
+      ) search
+      | Browse
+      
+    //- md-button.btn(
+    //-   ui-sref="main.recent"
+    //- )
+    //-   md-icon(
+    //-     md-font-library="material-icons"
+    //-   ) playlist_play
+    //-   | Recent
+    //-   
+    md-button.btn(
+      ui-sref="main.favorites"
+      ng-class="{'md-accent': selected === 'favorites'}"
+      ng-click="selected = 'favorites'"
+    ) 
+      md-icon(
+        md-font-library="material-icons"
+      ) favorite
+      | Favorites
+
+    md-button.btn(
+      ui-sref="main.profile"
+      ng-class="{'md-accent': selected === 'profile'}"
+      ng-click="selected = 'profile'"
+    )
+      md-icon(
+        md-font-library="material-icons"
+      ) account_circle
+      | Profile
+
+    md-button.btn(
+      ng-class="{'md-accent': selected === 'analyze'}"
+      ng-click="selected = 'analyze'"  
+    )
+      md-icon(
+        md-font-library="material-icons"
+      ) assessment
+      | Analyze
+      
+    md-button.btn(
+      ng-class="{'md-accent': selected === 'about'}"
+      ng-click="selected = 'about'"  
+    ) 
+      md-icon(
+        md-font-library="material-icons"
+      ) live_help
+      | About
+      
+    span(flex)
+    
+    md-button
+      md-icon(
+        md-font-library="material-icons"
+      ) settings
+      | Settings
+      
+    md-button
+      md-icon(
+        md-font-library="material-icons"
+      ) exit_to_app
+      | Logout
+      
+
+div.md-padding(
+  layout="row"
+  ui-view="page"
+)
+    
