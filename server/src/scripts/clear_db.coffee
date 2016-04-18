@@ -6,8 +6,7 @@ mongoose = require 'mongoose'
 promises = []
 setTimeout ->
   promises.push mongoose.connection.collections['users'].drop()
-  promises.push mongoose.connection.collections['snippits'].drop()
-  promises.push mongoose.connection.collections['reports'].drop()
+  promises.push mongoose.connection.collections['obituaries'].drop()
 , 2000
 
 setTimeout ->
