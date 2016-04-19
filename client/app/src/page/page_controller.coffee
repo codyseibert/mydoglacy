@@ -1,12 +1,30 @@
 module.exports = [
   '$scope'
   'lodash'
+  'PageService'
   (
     $scope
     _
+    PageService
   ) ->
 
+    $scope.page = PageService
+    $scope.currentSection = 0
+
+    $scope.$on 'closeEditModal', ->
+      console.log 'should have closed edit modal'
+      $scope.showEditModal = false
+
+    $scope.$watch ->
+      PageService
+    , ->
+      $scope.page = PageService
+
     $scope.showEditModal = true
+
+    $scope.edit = ->
+      $scope.currentSection = 0
+      $scope.showEditModal = true
 
     $scope.slides = [
       id: 0

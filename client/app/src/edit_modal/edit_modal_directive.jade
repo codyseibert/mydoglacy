@@ -6,7 +6,7 @@
       )   
         .bubble(
           ng-class="{'filled': section.completed, 'current': $index === current}"
-          ui-sref="{{section.state}}"
+          ng-click="bubbleClicked(section)"
         )
         .title {{section.title}}
         
@@ -15,14 +15,15 @@
     )
 
     .bottom
-      button.btn(
+      button.back.btn(
         ng-if="current > 0"
         ng-click="save(); back()"
       ) 
         i.fa.fa-arrow-left
         | Back
         
-      button.btn.btn-primary(
+      button.next.btn.btn-primary(
+        ng-if="current < sections.length - 1"
         ng-click="save(); next()"
       ) 
         i.fa.fa-arrow-right

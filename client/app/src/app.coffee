@@ -5,12 +5,16 @@ require 'angular-local-storage'
 require 'angular-animate'
 require 'ng-lodash'
 require '../../node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls'
+require '../../node_modules/textangular/dist/textAngular-rangy.min'
+require '../../node_modules/textangular/dist/textAngular-sanitize.min'
+require '../../node_modules/textangular/dist/textAngular.min'
+
 
 app = require('angular').module('mydoglacy', [
   require 'angular-ui-router'
-  require 'angular-sanitize'
   require 'angular-resource'
   'ngAnimate'
+  'textAngular'
   'duScroll'
   'angular.filter'
   'LocalStorageModule'

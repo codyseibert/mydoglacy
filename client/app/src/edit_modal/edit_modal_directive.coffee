@@ -11,7 +11,7 @@ module.exports = [
     templateUrl: 'edit_modal/edit_modal_directive.html'
 
     scope:
-      show: '='
+      current: '='
 
     link: (scope, elem, attr) ->
 
@@ -26,15 +26,15 @@ module.exports = [
         completed: false
         state: 'page.details'
       ,
-        title: 'Memories'
-        completed: false
-        state: 'page.memories'
-      ,
-        title: 'Banner Images'
+        title: 'Banner'
         completed: false
         state: 'page.banner'
       ,
-        title: 'Carousel Images'
+        title: 'Biography'
+        completed: false
+        state: 'page.biography'
+      ,
+        title: 'Carousel'
         completed: false
         state: 'page.carousel'
       ,
@@ -43,7 +43,12 @@ module.exports = [
         state: 'page.review'
       ]
 
+      scope.bubbleClicked = (section) ->
+        $state.go section.state
+        scope.current = scope.sections.indexOf section
+
       scope.save = ->
+        scope.$broadcast "save #{scope.sections[scope.current].state}"
 
       scope.next = ->
         if scope.current is scope.sections.length
@@ -52,9 +57,9 @@ module.exports = [
           scope.sections[scope.current].completed = true
           scope.current++
           $state.go scope.sections[scope.current].state
-          console.log scope.current
 
       scope.back = ->
         scope.current = Math.max 0, scope.current - 1
+        $state.go scope.sections[scope.current].state
 
 ]

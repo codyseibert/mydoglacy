@@ -1,7 +1,28 @@
-.col-md-12
+h2 Tell us about {{name}}
 
-  h2 Some extra details
-  
-  input(
-    placeholder="Details"
-  )
+.col-md-2
+  label Gender
+    select(
+      ng-model="gender"
+      ng-options="obj.value as obj.name for obj in genders"
+    )
+
+  label Breed
+    select(
+      ng-model="breed"
+      ng-options="obj.value as obj.name for obj in breeds"
+    )
+    
+.col-md-5
+  label Date of Birth
+    uib-datepicker.well.well-sm(
+      ng-model="date_of_birth" 
+    )
+
+.col-md-5(
+  style="padding-left: 60px;"
+)
+  label Date of Rest
+    uib-datepicker.well.well-sm(
+      ng-model="date_of_rest" 
+    )

@@ -7,10 +7,12 @@ module.exports = [
     _
     PageService
   ) ->
+
     $scope.name = PageService.pet.name
 
-    $scope.$on 'save page.info', ->
-      PageService.pet.name = $scope.name
+    $scope.closeEditModal = ->
+      console.log 'emit'
+      $scope.$emit 'closeEditModal'
 
     return this
 
