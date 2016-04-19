@@ -1,3 +1,3 @@
-app = require('angular').module 'typr'
+app = require('angular').module 'mydoglacy'
 
 app.controller 'MainCtrl', require './main_controller'

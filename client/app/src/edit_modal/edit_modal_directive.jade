@@ -1,0 +1,29 @@
+.wrapper
+  .content
+    .bread-crum-wrapper
+      .bread-crum(
+        ng-repeat="section in sections"
+      )   
+        .bubble(
+          ng-class="{'filled': section.completed, 'current': $index === current}"
+          ui-sref="{{section.state}}"
+        )
+        .title {{section.title}}
+        
+    .body(
+      ui-view="section"
+    )
+
+    .bottom
+      button.btn(
+        ng-if="current > 0"
+        ng-click="save(); back()"
+      ) 
+        i.fa.fa-arrow-left
+        | Back
+        
+      button.btn.btn-primary(
+        ng-click="save(); next()"
+      ) 
+        i.fa.fa-arrow-right
+        | Save & Continue
