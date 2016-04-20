@@ -8,7 +8,7 @@ require '../../node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls'
 require '../../node_modules/textangular/dist/textAngular-rangy.min'
 require '../../node_modules/textangular/dist/textAngular-sanitize.min'
 require '../../node_modules/textangular/dist/textAngular.min'
-
+require 'ng-file-upload'
 
 app = require('angular').module('mydoglacy', [
   require 'angular-ui-router'
@@ -17,6 +17,7 @@ app = require('angular').module('mydoglacy', [
   'textAngular'
   'duScroll'
   'angular.filter'
+  'ngFileUpload'
   'LocalStorageModule'
   'ngLodash'
   'ui.bootstrap'

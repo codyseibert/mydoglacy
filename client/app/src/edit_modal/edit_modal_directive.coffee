@@ -22,10 +22,6 @@ module.exports = [
         completed: false
         state: 'page.info'
       ,
-        title: 'Details'
-        completed: false
-        state: 'page.details'
-      ,
         title: 'Banner'
         completed: false
         state: 'page.banner'
@@ -37,6 +33,10 @@ module.exports = [
         title: 'Carousel'
         completed: false
         state: 'page.carousel'
+      ,
+        title: 'Details'
+        completed: false
+        state: 'page.details'
       ,
         title: 'Review'
         completed: false

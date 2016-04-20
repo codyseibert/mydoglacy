@@ -12,13 +12,13 @@ module.exports = [
     $scope.currentSection = 0
 
     $scope.$on 'closeEditModal', ->
-      console.log 'should have closed edit modal'
       $scope.showEditModal = false
 
     $scope.$watch ->
       PageService
     , ->
       $scope.page = PageService
+    , true
 
     $scope.showEditModal = true
 

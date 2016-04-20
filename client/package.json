@@ -28,6 +28,7 @@
     "jquery": "^2.2.0",
     "js-base64": "^2.1.9",
     "lodash": "^3.10.0",
+    "ng-file-upload": "^12.0.4",
     "ng-lodash": "^0.2.3",
     "textangular": "^1.5.0"
   },

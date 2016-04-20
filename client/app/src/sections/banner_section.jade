@@ -1,1 +1,16 @@
 h2 {{name}} deserves a beautiful banner image
+  
+  div(
+    ng-if="uploading"
+  ) We are uploading your banner image now!
+  
+  div(
+    ng-if="uploading"
+  ) {{percent}}%
+
+  button.btn.btn-primary(
+    ngf-select="upload($file)"
+    ng-if="!uploading"
+  ) 
+    i.fa.fa-upload
+    | Upload Banner Image
