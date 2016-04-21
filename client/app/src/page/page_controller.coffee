@@ -38,17 +38,14 @@ module.exports = [
         amount: 999
       )
 
-    $scope.slides = [
-      id: 0
-      image: 'assets/images/grayhound.jpg'
-      title: 'Grayhound'
-      description: 'This was some random stock photo =P'
-    ,
-      id: 1
-      image: 'assets/images/bg.jpg'
-      title: 'Horse'
-      description: 'This was some random stock photo =P'
-    ]
+    $scope.slides = []
+    for image, i in PageService.carousel
+      $scope.slides.push
+        id: i
+        image: image
+        title: 'Testing'
+        description: 'testing'
+
 
     return this
 

@@ -21,4 +21,4 @@ gem install sass
 
 # npm rebuild node-sass
 service mongod start
-coffee /vagrant/server/src/scripts/build_db.coffee
+# coffee /vagrant/server/src/scripts/build_db.coffee
