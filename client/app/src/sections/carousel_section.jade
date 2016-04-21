@@ -1,1 +1,33 @@
 h2 Let's upload more images of {{name}}
+
+div(
+  ng-if="uploading"
+) We are uploading your picture now!
+
+div(
+  ng-if="uploading"
+) {{percent}}%
+
+button.btn.btn-primary(
+  ngf-select="upload($file)"
+  ng-if="!uploading"
+) 
+  i.fa.fa-upload
+  | Upload an Image
+
+div(
+  style="overflow-y: scroll; height: 200px;"
+)
+  div(
+    style="display: inline-block; position: relative;"
+    ng-repeat="image in carousel"
+  )
+    img(
+      ng-src="{{image}}"
+      style="width: 200px;"
+    )
+    i.fa.fa-trash(
+      style="cursor: pointer; color: red; background-color: white; font-size: 20px; padding: 3px; border-radius: 5px; position: absolute; top: 10px; left: 10px;"
+      ng-click="delete(image)"
+      confirm="Are you sure you'd like to delete this image?"
+    )

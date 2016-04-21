@@ -1,10 +1,14 @@
 module.exports = [
   'lodash'
+  'localStorageService'
   (
     _
+    localStorageService
   ) ->
 
-    page =
+    page = localStorageService.get 'page'
+
+    page ?=
       pet:
         name: null
         gender: null

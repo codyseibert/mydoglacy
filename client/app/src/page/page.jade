@@ -49,8 +49,15 @@
     ng-src="{{page.banner}}"
   )
   
+  button.publish.btn.btn-primary(
+    ng-if="!showEditModal && !showPublishModal"
+    ng-click="publish()"
+  )
+    i.fa.fa-star
+    | Publish {{page.pet.name}}'s Page
+    
   button.edit.btn.btn-warning(
-    ng-if="!showEditModal"
+    ng-if="!showEditModal && !showPublishModal"
     ui-sref="page.info"
     ng-click="edit()"
   )
@@ -60,4 +67,8 @@
 edit-modal(
   ng-show="showEditModal"
   current="currentSection"
+)
+
+publish-modal(
+  ng-show="showPublishModal"
 )

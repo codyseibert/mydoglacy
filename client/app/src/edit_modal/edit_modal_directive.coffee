@@ -43,6 +43,8 @@ module.exports = [
         state: 'page.review'
       ]
 
+      scope.current = _.findIndex scope.sections, state: $state.current.name
+
       scope.bubbleClicked = (section) ->
         $state.go section.state
         scope.current = scope.sections.indexOf section

@@ -11,9 +11,11 @@
   "dependencies": {
     "angular": "~1.5.0",
     "angular-animate": "^1.5.3",
+    "angular-bootstrap-confirm": "^1.0.1",
     "angular-chart.js": "^0.8.8",
+    "angular-confirm": "^1.2.3",
     "angular-filter": "^0.5.8",
-    "angular-local-storage": "^0.2.2",
+    "angular-local-storage": "^0.2.7",
     "angular-material": "^1.0.7",
     "angular-moment": "^0.10.3",
     "angular-resource": "^1.4.9",

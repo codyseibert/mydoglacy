@@ -23,6 +23,7 @@
     "mysql": "^2.10.2",
     "node-uuid": "^1.4.7",
     "sequelize": "^3.18.0",
+    "stripe": "^4.5.0",
     "underscore": "^1.8.3"
   },
   "devDependencies": {

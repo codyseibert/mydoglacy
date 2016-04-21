@@ -2,6 +2,7 @@ app = require './app'
 UsersCtrl = require './controllers/users_controller'
 ObituariesCtrl = require './controllers/obituaries_controller'
 ImagesCtrl = require './controllers/images_controller'
+ChargeCtrl = require './controllers/charge_controller'
 
 userIsLoggedIn = require './helpers/user_is_logged_in'
 userOwnsObituary = require './helpers/user_owns_obituary'
@@ -19,3 +20,5 @@ module.exports = do ->
   app.put '/obituaries/:id', userOwnsObituary, ObituariesCtrl.put
 
   app.post '/images', upload.single('file'), ImagesCtrl.post
+
+  app.post '/charge', ChargeCtrl.post

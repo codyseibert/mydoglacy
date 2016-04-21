@@ -8,6 +8,7 @@ html
     link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Abel|Karla|Monda', type='text/css')
     link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,300|Shadows+Into+Light|Coming+Soon|Shadows+Into+Light+Two|Crafty+Girls|Alegreya+Sans+SC:400,300', type='text/css')
     link(rel='stylesheet', href='app.css')
+    script(src="https://checkout.stripe.com/checkout.js")
     script(src='app.js')
     script(src='templates.js')
     
@@ -17,11 +18,27 @@ html
     #fb-root
     div(ui-view="main")
     
-    script.
-      (function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=960453240736059";
-      fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
+  script.
+    (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=960453240736059";
+    fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+  script.
+    window.STRIPE = StripeCheckout.configure({
+      key: 'pk_test_VSOl2a32ywHvrzNjzQfxTFBD',
+      locale: 'auto',
+      token: function(token) {
+        console.log(token);
+        // You can access the token ID with `token.id`.
+        // Get the token ID to your server-side code for use.
+      }
+    });
+
+    // Close Checkout on page navigation:
+    //- $(window).on('popstate', function() {
+    //-   window.STRIPE.close();
+    //- });
