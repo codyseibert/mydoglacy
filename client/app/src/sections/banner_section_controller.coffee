@@ -13,6 +13,7 @@ module.exports = [
     $scope.name = PageService.pet.name
     $scope.uploading = false
     $scope.percent = 0
+    $scope.done = false
 
     $scope.$on 'save page.banner', ->
       # do something...
@@ -26,6 +27,7 @@ module.exports = [
       )
         .then (resp) ->
           $scope.uploading = false
+          $scope.done = true
           PageService.banner = resp.data
         , (resp) ->
           console.log 'Error', resp

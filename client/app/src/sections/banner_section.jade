@@ -1,16 +1,29 @@
-h2 {{name}} deserves a beautiful banner image
+.center
+  h1(
+    ng-if="!done"
+  ) Now, let's upload {{name}}'s banner photo
   
-  div(
-    ng-if="uploading"
-  ) We are uploading your banner image now!
-  
-  div(
-    ng-if="uploading"
-  ) {{percent}}%
+  div.uploading(
+    ng-if="uploading && !done"
+  ) 
+    | We are uploading your banner image now!
+    br
+    | {{percent}}%
+    
+  div.uploading(
+    ng-if="done"
+  )
+    | Your image has been uploaded!
+    br
+    br
+    | Don't worry, you can change it later
 
-  button.btn.btn-primary(
+  button.btn.btn-primary.btn-circle(
     ngf-select="upload($file)"
-    ng-if="!uploading"
+    ng-if="!uploading && !done"
   ) 
     i.fa.fa-upload
-    | Upload Banner Image
+    br
+    | {{name}}'s 
+    br
+    | Banner Photo

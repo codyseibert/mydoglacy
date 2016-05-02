@@ -8,23 +8,29 @@
           ng-class="{'filled': section.completed, 'current': $index === current}"
           ng-click="bubbleClicked(section)"
         )
+          .text {{$index + 1}}
+        .line(
+          ng-class="{'completed': section.completed}"
+          ng-if="$index < sections.length - 1"
+        )
         .title {{section.title}}
         
-    .body(
+    div(
       ui-view="section"
     )
-
-    .bottom
+    
+    .center
       button.back.btn(
         ng-if="current > 0"
         ng-click="save(); back()"
       ) 
-        i.fa.fa-arrow-left
-        | Back
-        
+        i.fa.fa-chevron-circle-left
+        | Go Back
+         
       button.next.btn.btn-primary(
         ng-if="current < sections.length - 1"
         ng-click="save(); next()"
       ) 
-        i.fa.fa-arrow-right
-        | Save & Continue
+        i.fa.fa-chevron-circle-right
+        | Next Section 
+      
