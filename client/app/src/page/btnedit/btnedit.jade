@@ -1,0 +1,14 @@
+.btnedit
+  .btn-circle(
+    ng-if="!editing"
+    uib-tooltip='edit'
+    ng-click="edit()"
+  ) 
+    i.fa.fa-edit
+    
+  .btn-circle.ok(
+    ng-if="editing"
+    uib-tooltip='save'
+    ng-click="preSave()"
+  ) 
+    i.glyphicon.glyphicon-ok
