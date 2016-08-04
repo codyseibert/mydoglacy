@@ -10,6 +10,7 @@ require '../../node_modules/textangular/dist/textAngular-sanitize.min'
 require '../../node_modules/textangular/dist/textAngular.min'
 require 'ng-file-upload'
 require 'angular-confirm'
+require 'angular-deckgrid'
 
 app = require('angular').module('mydoglacy', [
   require 'angular-ui-router'
@@ -23,6 +24,7 @@ app = require('angular').module('mydoglacy', [
   'ngLodash'
   'ui.bootstrap'
   'angular-confirm'
+  'akoenig.deckgrid'
   require 'angular-moment'
 ])
 app.config require './routes'

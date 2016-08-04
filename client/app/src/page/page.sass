@@ -129,6 +129,22 @@
     font-size: 70px
     cursor: pointer
 
+  .deckgrid[deckgrid]::before
+    content: '3 .column.column-1-3'
+    font-size: 0
+    visibility: hidden
+
+  .deckgrid
+    img
+      width: 100%
+      padding: 5px
+
+    .column
+      float: left
+
+    .column-1-3
+      width: 33%
+
 #page.blur
   -webkit-filter: blur(1.5px)
   -webkit-filter: blur(1.5px)

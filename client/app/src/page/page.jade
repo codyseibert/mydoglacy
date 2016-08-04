@@ -2,7 +2,10 @@
   ng-class="{'blur': showEditModal}"
 )  
   .container.first
-    .row
+    
+    .row(
+      ng-if="page.layouts.main === 0"
+    )
       .col-md-6
         .image
           btnupload.hero(
@@ -25,7 +28,7 @@
         .date 
           span(
             ng-show="!editing.date"
-          ) {{page.pet.date_of_birth | date:'MMM d, yyyy'}} - {{page.pet.date_of_rest | date:'MMM d, yyyy'}}
+          ) {{page.pet.date_of_birth | date:'MMM d, yyyy'}}
           input(
             ng-show="editing.date"
             ng-model="page.pet.date_of_birth"
@@ -52,6 +55,160 @@
           
       .col-md-6
       
+      
+    
+    .row(
+      ng-if="page.layouts.main === 1"
+    )
+      div(
+        style="text-align: center;"
+      )
+        .name(
+          style="color: black;"
+        ) {{page.pet.name}}
+        
+        div(
+          style="border-radius: 50%; width: 400px; height: 400px; display: inline-block; background-position: -250px 0px; background-repeat: no-repeat; background-size: cover; background-image: url('{{page.banner}}')"
+        )
+        
+        .date(
+          style="color: black;"
+        ) {{page.pet.date_of_birth | date:'MMM d, yyyy'}}
+        
+    .row(
+      ng-if="page.layouts.main === 2"
+    )
+      .col-md-6
+        div(
+          style="border-radius: 50%; width: 400px; height: 400px; display: inline-block; background-position: -250px 0px; background-repeat: no-repeat; background-size: cover; background-image: url('{{page.banner}}')"
+        )
+        
+      .col-md-6
+        .name(
+          style="color: black;"
+        ) {{page.pet.name}}
+        
+        .date(
+          style="color: black;"
+        ) {{page.pet.date_of_birth | date:'MMM d, yyyy'}}
+      
+        p(
+          ng-show="!editing.biography"
+          ng-bind-html="page.biography"
+        )
+        
+    .row(
+      ng-if="page.layouts.main === 3"
+    )
+      .col-md-6
+        .name(
+          style="color: black;"
+        ) {{page.pet.name}}
+        
+        .date(
+          style="color: black;"
+        ) {{page.pet.date_of_birth | date:'MMM d, yyyy'}}
+      
+        p(
+          ng-show="!editing.biography"
+          ng-bind-html="page.biography"
+        )
+        
+      .col-md-6
+        div(
+          style="border-radius: 50%; width: 400px; height: 400px; display: inline-block; background-position: -250px 0px; background-repeat: no-repeat; background-size: cover; background-image: url('{{page.banner}}')"
+        )
+        
+    .row(
+      ng-if="page.layouts.main === 4"
+    )
+      .col-md-6
+        div(
+          style="padding-top: 50px;"
+        )
+          img(
+            width="100%"
+            height="auto"
+            ng-src="{{page.banner}}"
+          )
+          
+      .col-md-6
+        .name(
+          style="color: black;"
+        ) {{page.pet.name}}
+        
+        .date(
+          style="color: black;"
+        ) {{page.pet.date_of_birth | date:'MMM d, yyyy'}}
+      
+        p(
+          ng-show="!editing.biography"
+          ng-bind-html="page.biography"
+        )
+        
+        
+    .row(
+      ng-if="page.layouts.main === 5"
+    )
+      .col-md-6
+        .name(
+          style="color: black;"
+        ) {{page.pet.name}}
+        
+        .date(
+          style="color: black;"
+        ) {{page.pet.date_of_birth | date:'MMM d, yyyy'}}
+      
+        p(
+          ng-show="!editing.biography"
+          ng-bind-html="page.biography"
+        )
+        
+      .col-md-6
+        div(
+          style="padding-top: 50px;"
+        )
+          img(
+            width="100%"
+            height="auto"
+            ng-src="{{page.banner}}"
+          )
+          
+        
+    .layouts(
+      style="position: absolute; bottom: 20px; left: 20px; background-color: white;"
+    )
+      button(
+        style="border: 1px solid black;"
+        ng-click="page.layouts.main = 0"
+      ) Layout A
+      
+      button(
+        style="border: 1px solid black;"
+        ng-click="page.layouts.main = 1"
+      ) Layout B
+      
+      button(
+        style="border: 1px solid black;"
+        ng-click="page.layouts.main = 2"
+      ) Layout C
+      
+      button(
+        style="border: 1px solid black;"
+        ng-click="page.layouts.main = 3"
+      ) Layout D
+      
+      button(
+        style="border: 1px solid black;"
+        ng-click="page.layouts.main = 4"
+      ) Layout E
+      
+      button(
+        style="border: 1px solid black;"
+        ng-click="page.layouts.main = 5"
+      ) Layout F
+        
+        
   section(
     style="background-color: teal; border-top: 1px solid white; border-bottom: 1px solid white;"
   )
@@ -100,6 +257,18 @@
                 editing="editing.memory"
               )
             
+  section(
+    
+  )
+    .container
+      .row
+        .col-md-12
+          div.deckgrid(
+            deckgrid
+            source="page.carousel" 
+            cardTemplateString='<div class="a-card"><img src="" data-ng-src="{{card.image}}"></div>'
+          )
+          
   section(
     style="background-color: orange"
   )
@@ -157,6 +326,7 @@
     
   img.portrait(
     ng-src="{{page.banner}}"
+    ng-if="page.layouts.main === 0"
   )
   
   button.publish.btn.btn-primary(

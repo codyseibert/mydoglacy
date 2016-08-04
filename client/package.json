@@ -14,8 +14,10 @@
     "angular-bootstrap-confirm": "^1.0.1",
     "angular-chart.js": "^0.8.8",
     "angular-confirm": "^1.2.3",
+    "angular-deckgrid": "git+https://git@github.com/akoenig/angular-deckgrid.git",
     "angular-filter": "^0.5.8",
     "angular-local-storage": "^0.2.7",
+    "angular-masonry": "^0.16.0",
     "angular-material": "^1.0.7",
     "angular-moment": "^0.10.3",
     "angular-resource": "^1.4.9",
@@ -32,6 +34,7 @@
     "lodash": "^3.10.0",
     "ng-file-upload": "^12.0.4",
     "ng-lodash": "^0.2.3",
+    "shuffle-array": "^1.0.0",
     "textangular": "^1.5.0"
   },
   "devDependencies": {
