@@ -12,4 +12,4 @@ ENV MONGO_HOST 52.10.65.58
 
 EXPOSE 8081
 
-CMD ["node", "start", "/app/server.js"]
+CMD ["node", "/app/server.js"]
