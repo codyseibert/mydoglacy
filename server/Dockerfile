@@ -3,7 +3,7 @@ FROM centos:latest
 RUN yum update -y
 RUN yum install -y curl
 RUN curl --silent --location https://rpm.nodesource.com/setup_4.x | bash -
-RUN yum install -y nodejs pm2
+RUN yum install -y nodejs forever
 
 COPY dist /app
 COPY node_modules /app/node_modules
@@ -12,4 +12,4 @@ ENV MONGO_HOST 52.10.65.58
 
 EXPOSE 8081
 
-CMD ["pm2", "start", "/app/server.js"]
+CMD ["forever", "start", "/app/server.js"]
