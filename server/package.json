@@ -4,7 +4,12 @@
   "description": "testing",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run docker-build && npm run docker-stop && npm run docker-rm && npm run docker-run",
+    "serve": "npm install && gulp",
+    "docker-stop": "docker stop mydoglacy-api || true",
+    "docker-rm": "docker rm mydoglacy-api || true",
+    "docker-build": "docker build -t mydoglacy-api -f Dockerfile.dev .",
+    "docker-run": "docker run --name mydoglacy-api --rm -i -v $(pwd):/src -p 8081:8081 mydoglacy-api"
   },
   "author": "",
   "license": "MIT",

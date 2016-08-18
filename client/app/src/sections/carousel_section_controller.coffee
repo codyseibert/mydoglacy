@@ -4,12 +4,14 @@ module.exports = [
   'lodash'
   'PageService'
   'Upload'
+  'API_PATH'
   (
     $scope
     $window
     _
     PageService
     Upload
+    API_PATH
   ) ->
 
     $scope.name = PageService.pet.name
@@ -27,7 +29,7 @@ module.exports = [
     $scope.upload = (file) ->
       $scope.uploading = true
       Upload.upload(
-        url: 'http://localhost:8081/images'
+        url: "#{API_PATH}/images"
         data:
           file: file
       )

@@ -43,14 +43,18 @@ require './page'
 require './edit_modal'
 require './sections'
 
+app.constant 'API_PATH', 'http://192.168.1.2:8081'
+
 app.run [
   '$rootScope'
   '$http'
   'PageService'
+  'API_PATH'
   (
     $rootScope
     $http
     PageService
+    API_PATH
   ) ->
 
     $rootScope.STRIPE = StripeCheckout.configure(
@@ -58,13 +62,10 @@ app.run [
       locale: 'auto'
       token: (token) ->
         console.log 'token', token
-        $http.post 'http://localhost:8081/charge', {stripeToken: token, page: PageService}
+        $http.post "#{API_PATH}/charge", {stripeToken: token, page: PageService}
           .then (res) ->
             console.log 'res', res
           .catch (err) ->
             console.log 'err', err
     )
-
-
-
 ]

@@ -5,6 +5,8 @@ module.exports = [
     $scope
     _
   ) ->
-    
+
+    $scope.scrollPosition = 0
+
     return this
 ]

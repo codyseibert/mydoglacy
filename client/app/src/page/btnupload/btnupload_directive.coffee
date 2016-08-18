@@ -1,9 +1,11 @@
 module.exports = [
   '$rootScope'
   'Upload'
+  'API_PATH'
   (
     $rootScope
     Upload
+    API_PATH
   ) ->
 
     restrict: 'E'
@@ -15,12 +17,12 @@ module.exports = [
 
     link: (scope, elem, attr) ->
       scope.image ?= ''
-      
+
       scope.upload = (file) ->
         scope.uploading = true
         scope.image = 'assets/images/uploading.gif'
         Upload.upload(
-          url: 'http://localhost:8081/images'
+          url: "#{API_PATH}/images"
           data:
             file: file
         )

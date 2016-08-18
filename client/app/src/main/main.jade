@@ -1,20 +1,47 @@
-.logo
-  img(
-    src='assets/images/logo.png'
-  )
+.header(
+  scroll-position="scrollPosition"
+  ng-class="{'white': scrollPosition > 80}"
+)
+  
+  .navigation
+    ul
+      li 
+        a Features
+      li 
+        a Pricing
+      li 
+        a Support
+      li 
+        a Contact Us
+      li 
+        a About
+      
+  .logo LOGO
+      
+    
+  //- img(
+  //-   src='assets/images/logo.png'
+  //- )
 
 .banner
   img(
-    src='assets/images/grayhound.jpg'
+    src='assets/images/MAIN.jpg'
   )
   
   p.memo
-    span.big Loss is hard
+    span.big Loss is Hard
     br
-    | Let us help you create a unique
+    | Let us help you create a unique website
     br 
-    | website in remembrance of your best friend
+    | in remembrance of your 
+    span.best best friend.
   
-  button.accent(
-    ui-sref='page.info'
-  ) Create Your Page
+  .signup
+    input(
+      placeholder="Enter your pet's name"
+    )
+    button(
+      ui-sref='page.info'
+    ) Create Your Page
+    
+.section
