@@ -42,7 +42,8 @@ module.exports = [
         item.order = (item.order + 1) % $scope.carousel.length
 
     $scope.getLeft = (item) ->
-      item.order * 210 - 4 * 210 + 100
+      dist = item.order - $scope.carousel.length / 2 + 1
+      dist * 210 - 170
 
     $scope.getOpacity = (item) ->
       dist = Math.abs(item.order - $scope.carousel.length / 2 + 1)
@@ -55,6 +56,10 @@ module.exports = [
       dist = Math.abs(item.order - $scope.carousel.length / 2 + 1)
       scale = 1 - dist * .2
       "scale(#{scale}, #{scale})"
+
+    $scope.getZIndex = (item) ->
+      dist = Math.abs(item.order - $scope.carousel.length / 2 + 1)
+      10 - dist
 
     $scope.orderItems = (item) ->
 
