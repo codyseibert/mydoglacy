@@ -45,3 +45,19 @@
     ) Create Your Page
     
 .section
+  .carousel
+    .wrapper
+      .item(
+        ng-repeat="item in carousel"
+        ng-style="{left: getLeft(item) + 'px', opacity: getOpacity(item), '-ms-transform': getScale(item), '-webkit-transform': getScale(item), 'transform': getScale(item)}"
+      )
+        img(
+          ng-src="{{item.src}}"
+        )
+    br
+    button(
+      ng-click="moveCarouselRight()"
+    ) <
+    button(
+      ng-click="moveCarouselLeft()"
+    ) >
