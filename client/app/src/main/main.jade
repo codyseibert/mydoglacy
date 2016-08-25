@@ -44,7 +44,15 @@
       ui-sref='page.info'
     ) Create Your Page
     
-.section
+.section-preview
+  .tophalf
+  
+  .z2
+    h2 Admire some of our many page styles
+    p Each page is easily customizable to match 
+      br
+      | the personality of your pet
+  
   .carousel
     .wrapper
       .item(
@@ -54,10 +62,15 @@
         img(
           ng-src="{{item.src}}"
         )
-    br
-    button(
-      ng-click="moveCarouselRight()"
-    ) <
-    button(
-      ng-click="moveCarouselLeft()"
-    ) >
+    .controls
+      button(
+        ng-click="moveCarouselRight()"
+      ) 
+        i.fa.fa-chevron-left 
+      button(
+        ng-click="moveCarouselLeft()"
+      ) 
+        i.fa.fa-chevron-right
+        
+.section-other
+  

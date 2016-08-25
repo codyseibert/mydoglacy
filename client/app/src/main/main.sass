@@ -1,6 +1,9 @@
 a
   cursor: pointer
 
+button:focus
+  outline: 0
+
 .header.white
   background-color: rgba(255, 255, 255, 0.95)
   -webkit-transition: background 0.5s linear
@@ -22,7 +25,7 @@ a
 .header
   position: fixed
   top: 0px
-  z-index: 10
+  z-index: 100
   height: 70px
   width: 100%
   padding-top: 15px
@@ -58,8 +61,8 @@ a
   img
     width: 150px
 
-.banner
-  position: relative
+// .banner
+//   position: relative
 
 .banner
   img
@@ -133,35 +136,89 @@ a
   button:hover
     background-color: #5ea73c
 
-.section
-  border-top: 1px solid #999
-  height: 500px
+.section-preview
+  border-top: 1px solid #a9b1a2
   background-color: white
-
-.carousel
   text-align: center
-  font-size: 50px
+  color: white
 
-  .wrapper
-    width: 1px
-    display: inline-block
+  .tophalf
+    width: 100%
+    height: 340px
+    position: absolute
+    z-index: 1
+    background-color: #529689
+
+  .z2
+    padding-top: 20px
+    z-index: 2
     position: relative
-    height: 580px
-    padding-top: 100px
 
-    .item
-      border: 1px solid #999
-      border-radius: 10px
-      overflow: hidden
+  p
+    display: inline-block
+    font-size: 20px
+    width: 400px
+    z-index: 2
+
+  .carousel
+    text-align: center
+    font-size: 50px
+    z-index: 2
+    overflow: hidden
+
+    button
+      border: 2px solid #AAA
+      text-align: center
+      color: #AAA
+      border-radius: 50%
+      width: 50px
+      height: 50px
+      font-family: 'Shadows Into Light Two', cursive
+      font-family: 'Crafty Girls', cursive
+      font-family: 'Josefin Sans', sans-serif
+      font-family: 'Roboto', sans-serif
+      font-weight: 100
+
+      i
+        font-size: 34px
+        padding-top: 2px
+
+      i.fa-chevron-right
+        padding-left: 10px
+
+    button:hover
+      color: #999
+
+    .wrapper
+      width: 1px
       display: inline-block
-      position: absolute
-      left: 0
-      width: 340px
-      -webkit-transition: all 1s ease
-      -moz-transition: all 1s ease
-      -o-transition: all 1s ease
-      -ms-transition: all 1s ease
-      transition: all 1s ease
+      position: relative
+      height: 420px
+      padding-top: 20px
 
-      img
-        width: 100%
+      .item
+        border: 1px solid #CCC
+        border-radius: 10px
+        overflow: hidden
+        display: inline-block
+        position: absolute
+        left: 0
+        width: 340px
+        height: 400px
+        background-color: white
+        -webkit-transition: all 0.8s ease
+        -moz-transition: all 0.8s ease
+        -o-transition: all 0.8s ease
+        -ms-transition: all 0.8s ease
+        transition: all 0.8s ease
+
+        img
+          width: 100%
+
+    .controls
+      padding-top: 20px
+
+.section-other
+  margin-top: 60px
+  height: 400px
+  background-color: #d3d5bc

@@ -13,19 +13,19 @@ module.exports = [
     $scope.carousel = [
       src: 'assets/images/yoga.png'
     ,
-      src: 'assets/images/yoga.png'
+      src: 'assets/images/cat.png'
     ,
       src: 'assets/images/yoga.png'
     ,
-      src: 'assets/images/yoga.png'
+      src: 'assets/images/cat.png'
     ,
       src: 'assets/images/yoga.png'
     ,
-      src: 'assets/images/yoga.png'
+      src: 'assets/images/cat.png'
     ,
       src: 'assets/images/yoga.png'
     ,
-      src: 'assets/images/yoga.png'
+      src: 'assets/images/cat.png'
     ]
 
     _.each $scope.carousel, (item, index) ->
