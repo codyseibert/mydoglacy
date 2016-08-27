@@ -1,8 +1,34 @@
+@font-face
+  font-family: Montserrat
+  src: url("assets/fonts/Montserrat-Regular.otf") format("opentype")
+
+@font-face
+  font-family: Montserrat
+  font-weight: bold
+  src: url("assets/fonts/Montserrat-Bold.otf") format("opentype")
+
+h1, h2, h3, h4, h5, h6
+  font-family: 'Montserrat', sans-serif
+
+h1
+  font-size: 60px
+  font-weight: bold
+
 a
+  font-family: 'Montserrat', sans-serif
   cursor: pointer
+
+li
+  font-family: 'Montserrat', sans-serif
 
 button:focus
   outline: 0
+
+.accent
+  color: #e94f43
+
+.highlight
+  background-color: #ea5044
 
 .header.white
   background-color: rgba(255, 255, 255, 0.95)
@@ -77,13 +103,7 @@ button:focus
     font-size: 30px
     font-weight: 100
     line-height: 40px
-
-    // font-family: 'Shadows Into Light', cursive
-    // font-family: 'Coming Soon', cursive
-    font-family: 'Shadows Into Light Two', cursive
-    font-family: 'Crafty Girls', cursive
-    font-family: 'Josefin Sans', sans-serif
-    font-family: 'Roboto', sans-serif
+    font-family: 'Montserrat', sans-serif
 
     .best
       font-weight: 300
@@ -94,10 +114,7 @@ button:focus
       font-weight: 400
       font-size: 60px
       font-size: 4vw
-      font-family: 'Alegreya Sans SC', sans-serif
-      // font-family: 'Crafty Girls', cursive
-      font-family: 'Shadows Into Light Two', cursive
-      font-family: 'Roboto', sans-serif
+      font-family: 'Montserrat', sans-serif
 
   .signup
     position: absolute
@@ -129,7 +146,8 @@ button:focus
     border-radius: 5px
     border-top-left-radius: 0px
     border-bottom-left-radius: 0px
-    font-family: 'Roboto', sans-serif
+    font-family: 'Montserrat', sans-serif
+
     font-weight: 300
     border: 1px solid white
 
@@ -143,6 +161,7 @@ button:focus
   color: white
 
   .tophalf
+    background-image: url('assets/images/Rectangle-1.png')
     width: 100%
     height: 340px
     position: absolute
@@ -173,10 +192,7 @@ button:focus
       border-radius: 50%
       width: 50px
       height: 50px
-      font-family: 'Shadows Into Light Two', cursive
-      font-family: 'Crafty Girls', cursive
-      font-family: 'Josefin Sans', sans-serif
-      font-family: 'Roboto', sans-serif
+      font-family: 'Montserrat', sans-serif
       font-weight: 100
 
       i
@@ -217,8 +233,99 @@ button:focus
 
     .controls
       padding-top: 20px
+      padding-bottom: 40px
+
+.section-features
+  text-align: center
+  padding-top: 60px
+  background-color: #f8f8f8
+  padding-bottom: 50px
+
+  h3
+    color: #8c8c8c
+    line-height: 34px
+    font-size: 22px
+
+  img
+    width: 180px
+
+  .features
+    h3
+      line-height: 0px
+      position: relative
+      top: -14px
+
+    h5
+      line-height: 20px
+      color: #adadad
 
 .section-other
-  margin-top: 60px
-  height: 400px
-  background-color: #d3d5bc
+  background-color: white
+  text-align: center
+  padding-top: 60px
+  padding-bottom: 50px
+
+  img
+    width: 100%
+
+  .left
+    text-align: left
+    padding-top: 50px
+
+  h1
+    margin: 0
+    padding: 0
+    font-size: 50px
+    line-height: 46px
+    margin-bottom: 50px
+
+  h3
+    color: #adadad
+    font-size: 20px
+    line-height: 30px
+
+.section-faq
+  text-align: left
+  padding-top: 60px
+  background-color: #f8f8f8
+  padding-bottom: 50px
+
+  h1
+    font-size: 40px
+    margin-bottom: 40px
+
+  li
+    font-size: 16px
+    color: #8c8c8c
+    margin-bottom: 30px
+
+.section-capture
+  text-align: center
+  padding-top: 60px
+  background-color: #ea5044
+  padding-bottom: 50px
+
+  h1, h3
+    color: white
+
+  h1
+    font-size: 40px
+
+  h3
+    font-size: 20px
+    line-height: 30px
+
+  button
+    margin-top: 20px
+    border-radius: 30px
+    background-color: #35c9cb
+    color: white
+    font-size: 14px
+    text-shadow: 1px 1px 1px black
+    padding: 10px
+    padding-left: 20px
+    padding-right: 20px
+    font-family: 'Montserrat', sans-serif
+
+  button:hover
+    background-color: #25b9bb
