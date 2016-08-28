@@ -6,8 +6,8 @@ module.exports = [
     localStorageService
   ) ->
 
-    page = localStorageService.get 'page'
-    page ?=
+    # page = localStorageService.get 'page'
+    page =
       pet:
         name: 'Lacy'
         gender: 'Male'
