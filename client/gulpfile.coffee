@@ -83,6 +83,10 @@ gulp.task 'watch', ->
     'scripts'
   ]
 
+  gulp.watch 'app/assets/**/*', [
+    'copy'
+  ]
+
 gulp.task 'build', [
   'clean'
   'jade'

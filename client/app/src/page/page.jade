@@ -1,216 +1,210 @@
 #page(
   ng-class="{'blur': showEditModal}"
 )  
-  .container.first
-    
-    .row(
-      ng-if="page.layouts.main === 0"
+  section(
+    style="background-size: 400px 400px"
+    ng-style="{'background': '#fedc4f url(assets/images/pattern_1.png) 0px 0px/400px 400px repeat'}"
+  )
+    .container.first(
+      style="z-index: 2; position: relative"
     )
-      .col-md-6
-        .image
-          btnupload.hero(
-            save="save()"
-            image="page.banner"
-          )
-        .name
-          span(
-            ng-show="!editing.name"
-          ) {{page.pet.name}}
-          input(
-            ng-show="editing.name"
-            ng-model="page.pet.name"
-          )
-          btnedit(
-            save="save()"
-            editing="editing.name"
-          )
-          
-        .date 
-          span(
-            ng-show="!editing.date"
-          ) {{page.pet.date_of_birth | date:'MMM d, yyyy'}}
-          input(
-            ng-show="editing.date"
-            ng-model="page.pet.date_of_birth"
-          )
-          btnedit(
-            save="save()"
-            editing="editing.date"
-          )
-          
-        .biography
-          p(
-            ng-show="!editing.biography"
-            ng-bind-html="page.biography"
-          )
-          text-angular(
-            ng-show="editing.biography"
-            ng-model="page.biography"
-            ta-toolbar="[['bold', 'italics', 'underline', 'strikeThrough', 'ul', 'ol', 'redo', 'undo']]"
-          )
-          btnedit(
-            save="save()"
-            editing="editing.biography"
-          )
-          
-      .col-md-6
-      
-      
-    
-    .row(
-      ng-if="page.layouts.main === 1"
-    )
-      div(
-        style="text-align: center;"
+      .row(
+        ng-if="page.layouts.main === 0"
       )
-        .name(
-          style="color: black;"
-        ) {{page.pet.name}}
+        .col-md-6
+          .image
+            btnupload.hero(
+              save="save()"
+              image="page.banner"
+              ng-show="isEditMode"
+            )
+          .name
+            span(
+              ng-show="!editing.name"
+            ) {{page.pet.name}}
+            input(
+              ng-show="editing.name"
+              ng-model="page.pet.name"
+            )
+            btnedit(
+              save="save()"
+              editing="editing.name"
+              ng-show="isEditMode"
+            )
+            
+          .date 
+            span(
+              ng-show="!editing.date"
+            ) {{page.pet.date_of_birth | date:'MMM d, yyyy'}} - {{page.pet.date_of_rest | date:'MMM d, yyyy'}}
+            input(
+              ng-show="editing.date"
+              ng-model="page.pet.date_of_birth"
+            )
+            btnedit(
+              save="save()"
+              editing="editing.date"
+              ng-show="isEditMode"
+            )
+            
+          .biography
+            p(
+              ng-show="!editing.biography"
+              ng-bind-html="page.biography"
+            )
+            text-angular(
+              ng-show="editing.biography"
+              ng-model="page.biography"
+              ta-toolbar="[['bold', 'italics', 'underline', 'strikeThrough', 'ul', 'ol', 'redo', 'undo']]"
+            )
+            btnedit(
+              save="save()"
+              editing="editing.biography"
+              ng-show="isEditMode"
+            )
+            
+        .col-md-6
         
-        div(
-          style="border-radius: 50%; width: 400px; height: 400px; display: inline-block; background-position: -250px 0px; background-repeat: no-repeat; background-size: cover; background-image: url('{{page.banner}}')"
-        )
         
-        .date(
-          style="color: black;"
-        ) {{page.pet.date_of_birth | date:'MMM d, yyyy'}}
-        
-    .row(
-      ng-if="page.layouts.main === 2"
-    )
-      .col-md-6
-        div(
-          style="border-radius: 50%; width: 400px; height: 400px; display: inline-block; background-position: -250px 0px; background-repeat: no-repeat; background-size: cover; background-image: url('{{page.banner}}')"
-        )
-        
-      .col-md-6
-        .name(
-          style="color: black;"
-        ) {{page.pet.name}}
-        
-        .date(
-          style="color: black;"
-        ) {{page.pet.date_of_birth | date:'MMM d, yyyy'}}
       
-        p(
-          ng-show="!editing.biography"
-          ng-bind-html="page.biography"
-        )
-        
-    .row(
-      ng-if="page.layouts.main === 3"
-    )
-      .col-md-6
-        .name(
-          style="color: black;"
-        ) {{page.pet.name}}
-        
-        .date(
-          style="color: black;"
-        ) {{page.pet.date_of_birth | date:'MMM d, yyyy'}}
-      
-        p(
-          ng-show="!editing.biography"
-          ng-bind-html="page.biography"
-        )
-        
-      .col-md-6
+      .row(
+        ng-if="page.layouts.main === 1"
+      )
         div(
-          style="border-radius: 50%; width: 400px; height: 400px; display: inline-block; background-position: -250px 0px; background-repeat: no-repeat; background-size: cover; background-image: url('{{page.banner}}')"
+          style="text-align: center;"
         )
-        
-    .row(
-      ng-if="page.layouts.main === 4"
-    )
-      .col-md-6
-        div(
-          style="padding-top: 50px;"
-        )
-          img(
-            width="100%"
-            height="auto"
-            ng-src="{{page.banner}}"
-          )
+          .name(
+            style="color: black;"
+          ) {{page.pet.name}}
           
-      .col-md-6
-        .name(
-          style="color: black;"
-        ) {{page.pet.name}}
-        
-        .date(
-          style="color: black;"
-        ) {{page.pet.date_of_birth | date:'MMM d, yyyy'}}
-      
-        p(
-          ng-show="!editing.biography"
-          ng-bind-html="page.biography"
-        )
-        
-        
-    .row(
-      ng-if="page.layouts.main === 5"
-    )
-      .col-md-6
-        .name(
-          style="color: black;"
-        ) {{page.pet.name}}
-        
-        .date(
-          style="color: black;"
-        ) {{page.pet.date_of_birth | date:'MMM d, yyyy'}}
-      
-        p(
-          ng-show="!editing.biography"
-          ng-bind-html="page.biography"
-        )
-        
-      .col-md-6
-        div(
-          style="padding-top: 50px;"
-        )
-          img(
-            width="100%"
-            height="auto"
-            ng-src="{{page.banner}}"
+          div(
+            style="display: inline-block; width: 445px; height: 445px; background-image: url('assets/images/circle.png'); background-size: cover"
           )
+            .porthole(
+              style="left: 2px; top: 23px; position: relative;"
+              ng-style="{'background-image': 'url(' + page.banner + ')'}"
+            )
           
+          .date(
+            style="color: black;"
+          ) {{page.pet.date_of_birth | date:'MMM d, yyyy'}} - {{page.pet.date_of_rest | date:'MMM d, yyyy'}}
+      //-     
+      //- .row(
+      //-   ng-if="page.layouts.main === 2"
+      //- )
+      //-   .col-md-6
+      //-     .porthole(
+      //-       ng-style="{'background-image': 'url(' + page.banner + ')'}"
+      //-     )
+      //-     
+      //-   .col-md-6
+      //-     .name(
+      //-       style="color: black;"
+      //-     ) {{page.pet.name}}
+      //-     
+      //-     .date(
+      //-       style="color: black;"
+      //-     ) {{page.pet.date_of_birth | date:'MMM d, yyyy'}}
+      //-   
+      //-     p(
+      //-       ng-show="!editing.biography"
+      //-       ng-bind-html="page.biography"
+      //-     )
+      //-     
+      //- .row(
+      //-   ng-if="page.layouts.main === 3"
+      //- )
+      //-   .col-md-6
+      //-     .name(
+      //-       style="color: black;"
+      //-     ) {{page.pet.name}}
+      //-     
+      //-     .date(
+      //-       style="color: black;"
+      //-     ) {{page.pet.date_of_birth | date:'MMM d, yyyy'}}
+      //-   
+      //-     p(
+      //-       ng-show="!editing.biography"
+      //-       ng-bind-html="page.biography"
+      //-     )
+      //-     
+      //-   .col-md-6
+      //-     .porthole(
+      //-       ng-style="{'background-image': 'url(' + page.banner + ')'}"
+      //-     )
+      //-     
+      //- .row(
+      //-   ng-if="page.layouts.main === 4"
+      //- )
+      //-   .col-md-6
+      //-     div(
+      //-       style="padding-top: 50px;"
+      //-     )
+      //-       img(
+      //-         width="100%"
+      //-         height="auto"
+      //-         ng-src="{{page.banner}}"
+      //-       )
+      //-       
+      //-   .col-md-6
+      //-     .name(
+      //-       style="color: black;"
+      //-     ) {{page.pet.name}}
+      //-     
+      //-     .date(
+      //-       style="color: black;"
+      //-     ) {{page.pet.date_of_birth | date:'MMM d, yyyy'}}
+      //-   
+      //-     p(
+      //-       ng-show="!editing.biography"
+      //-       ng-bind-html="page.biography"
+      //-     )
+      //-     
+      //-     
+      //- .row(
+      //-   ng-if="page.layouts.main === 5"
+      //- )
+      //-   .col-md-6
+      //-     .name(
+      //-       style="color: black;"
+      //-     ) {{page.pet.name}}
+      //-     
+      //-     .date(
+      //-       style="color: black;"
+      //-     ) {{page.pet.date_of_birth | date:'MMM d, yyyy'}}
+      //-   
+      //-     p(
+      //-       ng-show="!editing.biography"
+      //-       ng-bind-html="page.biography"
+      //-     )
+      //-     
+      //-   .col-md-6
+      //-     div(
+      //-       style="padding-top: 50px;"
+      //-     )
+      //-       img(
+      //-         width="100%"
+      //-         height="auto"
+      //-         ng-src="{{page.banner}}"
+      //-       )
+            
+          
+      .layouts(
+        style="position: absolute; bottom: 20px; left: 20px; background-color: white;"
+        ng-show="isEditMode"
+      )
+        button(
+          style="border: 1px solid black;"
+          ng-click="page.layouts.main = 0"
+        ) Layout A
         
-    .layouts(
-      style="position: absolute; bottom: 20px; left: 20px; background-color: white;"
-    )
-      button(
-        style="border: 1px solid black;"
-        ng-click="page.layouts.main = 0"
-      ) Layout A
-      
-      button(
-        style="border: 1px solid black;"
-        ng-click="page.layouts.main = 1"
-      ) Layout B
-      
-      button(
-        style="border: 1px solid black;"
-        ng-click="page.layouts.main = 2"
-      ) Layout C
-      
-      button(
-        style="border: 1px solid black;"
-        ng-click="page.layouts.main = 3"
-      ) Layout D
-      
-      button(
-        style="border: 1px solid black;"
-        ng-click="page.layouts.main = 4"
-      ) Layout E
-      
-      button(
-        style="border: 1px solid black;"
-        ng-click="page.layouts.main = 5"
-      ) Layout F
-        
+        button(
+          style="border: 1px solid black;"
+          ng-click="page.layouts.main = 1"
+        ) Layout B
+          
         
   section(
-    style="background-color: teal; border-top: 1px solid white; border-bottom: 1px solid white;"
+    style="position: relative; z-index: 2; background-color: teal; border-top: 1px solid white; border-bottom: 1px solid white;"
   )
     .container.middle
       .row
@@ -222,6 +216,7 @@
             btnupload(
               save="save()"
               image="page.imageA"
+              ng-show="isEditMode"
             )
           .image
             img(
@@ -230,6 +225,7 @@
             btnupload(
               save="save()"
               image="page.imageB"
+              ng-show="isEditMode"
             )
           .image
             img(
@@ -238,6 +234,7 @@
             btnupload(
               save="save()"
               image="page.imageC"
+              ng-show="isEditMode"
             )
         .col-md-6
           .biography
@@ -255,6 +252,7 @@
               btnedit(
                 save="save()"
                 editing="editing.memory"
+                ng-show="isEditMode"
               )
             
   section(
@@ -283,6 +281,7 @@
             btnupload.hero(
               save="save()"
               on-upload="onSlideUpload"
+              ng-show="isEditMode"
             )
           .slides(
             style="text-align: center"
@@ -294,6 +293,7 @@
               style="position: relative; right: -20px;"
               uib-tooltip='delete this image'
               ng-click="delete(slide)"
+              ng-show="isEditMode"
             ) 
               i.fa.fa-trash
               
@@ -326,29 +326,27 @@
     
   img.portrait(
     ng-src="{{page.banner}}"
+    style="z-index: 1;"
     ng-if="page.layouts.main === 0"
   )
   
   button.publish.btn.btn-primary(
-    ng-if="!showEditModal && !showPublishModal"
+    ng-if="!showPublishModal"
+    style="z-index: 2;"
     ng-click="publish()"
   )
     i.fa.fa-star
     | Publish {{page.pet.name}}'s Page
     
   button.edit.btn.btn-warning(
-    ng-if="!showEditModal && !showPublishModal"
-    ui-sref="page.info"
+    style="z-index: 2;"
+    ui-sref="page"
     ng-click="edit()"
   )
     i.fa.fa-edit
-    | Edit
+    | {{isEditMode ? "View" : "Edit"}}
   
-edit-modal(
-  ng-show="showEditModal"
-  current="currentSection"
-)
-
 publish-modal(
+  style="z-index: 5;"
   ng-show="showPublishModal"
 )

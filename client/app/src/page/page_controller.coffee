@@ -23,9 +23,10 @@ module.exports = [
     $scope.currentSection = 0
     currentSlide = 0
     SLIDE_INTERVAL = 5000
+    $scope.isEditMode = true
 
     shuffle $scope.page.carousel
-    
+
     $scope.editing =
       name: false
 
@@ -44,7 +45,7 @@ module.exports = [
 
     $scope.edit = ->
       $scope.currentSection = 0
-      $scope.showEditModal = true
+      $scope.isEditMode = not $scope.isEditMode
 
     $scope.publish = ->
       $rootScope.STRIPE.open(

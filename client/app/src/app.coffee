@@ -40,8 +40,6 @@ app.config [
 
 require './main'
 require './page'
-require './edit_modal'
-require './sections'
 
 app.constant 'API_PATH', 'http://192.168.1.2:8081'
 
