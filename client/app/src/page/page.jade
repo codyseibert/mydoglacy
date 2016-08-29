@@ -10,6 +10,7 @@
     )
       .row(
         ng-if="page.layouts.main === 0"
+        style="padding-top: 60px; padding-bottom: 40px;"
       )
         .col-md-6
           .image
@@ -70,123 +71,79 @@
         ng-if="page.layouts.main === 1"
       )
         div(
-          style="text-align: center;"
+          style="text-align: center; padding-top: 10px; padding-bottom: 40px;"
         )
           .name(
             style="color: black;"
           ) {{page.pet.name}}
           
           div(
-            style="display: inline-block; width: 445px; height: 445px; background-image: url('assets/images/circle.png'); background-size: cover"
+            style="display: inline-block; width: 555px; height: 555px; background-image: url('assets/images/circle.png'); background-size: cover"
           )
             .porthole(
-              style="left: 2px; top: 23px; position: relative;"
+              style="left: 2px; top: 28px; position: relative;"
               ng-style="{'background-image': 'url(' + page.banner + ')'}"
             )
           
           .date(
             style="color: black;"
           ) {{page.pet.date_of_birth | date:'MMM d, yyyy'}} - {{page.pet.date_of_rest | date:'MMM d, yyyy'}}
-      //-     
-      //- .row(
-      //-   ng-if="page.layouts.main === 2"
-      //- )
-      //-   .col-md-6
-      //-     .porthole(
-      //-       ng-style="{'background-image': 'url(' + page.banner + ')'}"
-      //-     )
-      //-     
-      //-   .col-md-6
-      //-     .name(
-      //-       style="color: black;"
-      //-     ) {{page.pet.name}}
-      //-     
-      //-     .date(
-      //-       style="color: black;"
-      //-     ) {{page.pet.date_of_birth | date:'MMM d, yyyy'}}
-      //-   
-      //-     p(
-      //-       ng-show="!editing.biography"
-      //-       ng-bind-html="page.biography"
-      //-     )
-      //-     
-      //- .row(
-      //-   ng-if="page.layouts.main === 3"
-      //- )
-      //-   .col-md-6
-      //-     .name(
-      //-       style="color: black;"
-      //-     ) {{page.pet.name}}
-      //-     
-      //-     .date(
-      //-       style="color: black;"
-      //-     ) {{page.pet.date_of_birth | date:'MMM d, yyyy'}}
-      //-   
-      //-     p(
-      //-       ng-show="!editing.biography"
-      //-       ng-bind-html="page.biography"
-      //-     )
-      //-     
-      //-   .col-md-6
-      //-     .porthole(
-      //-       ng-style="{'background-image': 'url(' + page.banner + ')'}"
-      //-     )
-      //-     
-      //- .row(
-      //-   ng-if="page.layouts.main === 4"
-      //- )
-      //-   .col-md-6
-      //-     div(
-      //-       style="padding-top: 50px;"
-      //-     )
-      //-       img(
-      //-         width="100%"
-      //-         height="auto"
-      //-         ng-src="{{page.banner}}"
-      //-       )
-      //-       
-      //-   .col-md-6
-      //-     .name(
-      //-       style="color: black;"
-      //-     ) {{page.pet.name}}
-      //-     
-      //-     .date(
-      //-       style="color: black;"
-      //-     ) {{page.pet.date_of_birth | date:'MMM d, yyyy'}}
-      //-   
-      //-     p(
-      //-       ng-show="!editing.biography"
-      //-       ng-bind-html="page.biography"
-      //-     )
-      //-     
-      //-     
-      //- .row(
-      //-   ng-if="page.layouts.main === 5"
-      //- )
-      //-   .col-md-6
-      //-     .name(
-      //-       style="color: black;"
-      //-     ) {{page.pet.name}}
-      //-     
-      //-     .date(
-      //-       style="color: black;"
-      //-     ) {{page.pet.date_of_birth | date:'MMM d, yyyy'}}
-      //-   
-      //-     p(
-      //-       ng-show="!editing.biography"
-      //-       ng-bind-html="page.biography"
-      //-     )
-      //-     
-      //-   .col-md-6
-      //-     div(
-      //-       style="padding-top: 50px;"
-      //-     )
-      //-       img(
-      //-         width="100%"
-      //-         height="auto"
-      //-         ng-src="{{page.banner}}"
-      //-       )
+          
+      .row.c(
+        ng-if="page.layouts.main === 2"
+      )
+        .col-md-6.center
+          div(
+            style="display: inline-block; width: 555px; height: 555px; background-image: url('assets/images/circle.png'); background-size: cover"
+          )
+            .porthole(
+              style="left: 2px; top: 28px; position: relative;"
+              ng-style="{'background-image': 'url(' + page.banner + ')'}"
+            )
             
+        .col-md-6
+          .card
+            .name(
+              style="color: black;"
+            ) {{page.pet.name}}
+            
+            .date(
+              style="color: black;"
+            ) {{page.pet.date_of_birth | date:'MMM d, yyyy'}} - {{page.pet.date_of_rest | date:'MMM d, yyyy'}}
+          
+            p(
+              style="font-size: 20px;"
+              ng-show="!editing.biography"
+              ng-bind-html="page.biography"
+            )
+          
+      .row.d(
+        ng-if="page.layouts.main === 3"
+      )
+        .col-md-6
+          .card
+            .name(
+              style="color: black;"
+            ) {{page.pet.name}}
+            
+            .date(
+              style="color: black;"
+            ) {{page.pet.date_of_birth | date:'MMM d, yyyy'}} - {{page.pet.date_of_rest | date:'MMM d, yyyy'}}
+          
+            p(
+              style="font-size: 20px;"
+              ng-show="!editing.biography"
+              ng-bind-html="page.biography"
+            )
+            
+        .col-md-6.center
+          div(
+            style="display: inline-block; width: 555px; height: 555px; background-image: url('assets/images/circle.png'); background-size: cover"
+          )
+            .porthole(
+              style="left: 2px; top: 28px; position: relative;"
+              ng-style="{'background-image': 'url(' + page.banner + ')'}"
+            )
           
       .layouts(
         style="position: absolute; bottom: 20px; left: 20px; background-color: white;"
@@ -201,59 +158,111 @@
           style="border: 1px solid black;"
           ng-click="page.layouts.main = 1"
         ) Layout B
-          
         
+        button(
+          style="border: 1px solid black;"
+          ng-click="page.layouts.main = 2"
+        ) Layout C
+        
+        button(
+          style="border: 1px solid black;"
+          ng-click="page.layouts.main = 3"
+        ) Layout D
+          
+  //- First Left / Right Section
   section(
     style="position: relative; z-index: 2; background-color: teal; border-top: 1px solid white; border-bottom: 1px solid white;"
   )
-    .container.middle
+    .container-fluid.middle
       .row
-        .col-md-6
-          .image
-            img(
-              ng-src="{{page.imageA}}"
-            )
+        .col-md-7.no-pad
+          div(
+            style="background-size: cover; height: 400px;"
+            ng-style="{'background-image': 'url(' + page.imageA + ')'}"
+          )
             btnupload(
               save="save()"
               image="page.imageA"
               ng-show="isEditMode"
             )
-          .image
-            img(
-              ng-src="{{page.imageB}}"
-            )
-            btnupload(
-              save="save()"
-              image="page.imageB"
-              ng-show="isEditMode"
-            )
-          .image
-            img(
-              ng-src="{{page.imageC}}"
-            )
-            btnupload(
-              save="save()"
-              image="page.imageC"
-              ng-show="isEditMode"
-            )
-        .col-md-6
-          .biography
-            .memory 
-              p(
-                ng-show="!editing.memory"
-              ) {{page.memory}}
-              
-              text-angular(
-                ng-show="editing.memory"
-                ng-model="page.memory"
-                ta-toolbar="[['bold', 'italics', 'underline', 'strikeThrough', 'ul', 'ol', 'redo', 'undo']]"
+            
+        .col-md-5.no-pad
+          div(
+            style="height: 400px; padding: 20px; padding-top: 60px; color: #666666; background-color: #f3f1ef;"
+          )
+            .title 
+              img(
+                src="assets/images/diamond.png"
+                style="border-radius: 0px; height: 70px; box-shadow: none; border: none; position: relative; top: -10px; margin: 0"
               )
-              
-              btnedit(
-                save="save()"
-                editing="editing.memory"
-                ng-show="isEditMode"
+              | More About {{page.pet.name}}...
+            
+            .content(
+              ng-show="!editing.memory"
+            ) {{page.memory}}
+            
+            text-angular(
+              ng-show="editing.memory"
+              ng-model="page.memory"
+              ta-toolbar="[['bold', 'italics', 'underline', 'strikeThrough', 'ul', 'ol', 'redo', 'undo']]"
+            )
+  
+  section
+    .container-fluid
+      .row
+        .col-md-3.no-pad
+          div(
+            style="background-size: cover; height: 300px;"
+            ng-style="{'background-image': 'url(' + page.imageA + ')'}"
+          )
+          
+        .col-md-6.no-pad
+          div(
+            style="background-size: cover; height: 300px;"
+            ng-style="{'background-image': 'url(' + page.imageA + ')'}"
+          )
+        
+        .col-md-3.no-pad
+          div(
+            style="background-size: cover; height: 300px;"
+            ng-style="{'background-image': 'url(' + page.imageA + ')'}"
+          )
+          
+            
+            
+  //- Second Left / Right Section
+  section(
+    style="position: relative; z-index: 2; background-color: teal; border-top: 1px solid white; border-bottom: 1px solid white;"
+  )
+    .container-fluid.middle
+      .row
+        .col-md-5.no-pad
+          div(
+            style="height: 400px; padding: 20px; padding-top: 60px; color: #666666; background-color: #f3f1ef;"
+          )
+            .title 
+              img(
+                src="assets/images/diamond.png"
+                style="border-radius: 0px; height: 70px; box-shadow: none; border: none; position: relative; top: -10px; margin: 0"
               )
+              | More About {{page.pet.name}}...
+            
+            .content(
+              ng-show="!editing.memory"
+            ) {{page.memory}}
+            
+            text-angular(
+              ng-show="editing.memory"
+              ng-model="page.memory"
+              ta-toolbar="[['bold', 'italics', 'underline', 'strikeThrough', 'ul', 'ol', 'redo', 'undo']]"
+            )
+            
+        .col-md-7.no-pad
+          div(
+            style="background-size: cover; height: 400px;"
+            ng-style="{'background-image': 'url(' + page.imageA + ')'}"
+          )
+
             
   section(
     

@@ -15,7 +15,8 @@ module.exports = [
         date_of_birth: new Date()
         date_of_rest: new Date()
       banner: 'assets/images/dog-main.jpeg'
-      biography: 'Pellentesque habitant molibero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi.'
+      memory: 'Pellentesque habitant molibero sit amet quam egestas semper sit semper sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra.'
+      biography: 'Pellentesque habitant molibero sit amet quam egestas semper. Aenean ultricies mi vitae est. Aenean ultricies mi vitae est.'
       imageA: 'assets/images/dog-main.jpeg'
       imageB: 'assets/images/dog-main.jpeg'
       imageC: 'assets/images/dog-main.jpeg'
