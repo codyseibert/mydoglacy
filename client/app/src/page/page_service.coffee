@@ -17,9 +17,11 @@ module.exports = [
       banner: 'assets/images/dog-main.jpeg'
       memory: 'Pellentesque habitant molibero sit amet quam egestas semper sit semper sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra.'
       biography: 'Pellentesque habitant molibero sit amet quam egestas semper. Aenean ultricies mi vitae est. Aenean ultricies mi vitae est.'
-      imageA: 'assets/images/dog-main.jpeg'
-      imageB: 'assets/images/dog-main.jpeg'
-      imageC: 'assets/images/dog-main.jpeg'
+      imageA: 'assets/images/dog1.png'
+      imageB: 'assets/images/dog2.png'
+      imageC: 'assets/images/dog3.png'
+      imageD: 'assets/images/dog4.png'
+      imageE: 'assets/images/dog5.png'
       carousel: [
         image: 'assets/images/dog-main.jpeg'
       ,
