@@ -24,7 +24,7 @@ module.exports = [
     SLIDE_INTERVAL = 5000
     $scope.isEditMode = true
 
-    shuffle $scope.page.carousel
+    # shuffle $scope.page.carousel
 
     $scope.editing =
       name: false

@@ -25,13 +25,21 @@ module.exports = [
       carousel: [
         image: 'assets/images/dog-main.jpeg'
       ,
-        image: 'assets/images/dog-main.jpeg'
+        image: 'assets/images/dog5.png'
+      ,
+        image: 'assets/images/dog1.png'
+      ,
+        image: 'assets/images/dog2.png'
+      ,
+        image: 'assets/images/dog3.png'
       ,
         image: 'assets/images/dog-main.jpeg'
       ,
-        image: 'assets/images/dog-main.jpeg'
+        image: 'assets/images/dog4.png'
       ,
-        image: 'assets/images/dog-main.jpeg'
+        image: 'assets/images/dog5.png'
+      ,
+        image: 'assets/images/dog2.png'
       ]
       options:
         facebook:
