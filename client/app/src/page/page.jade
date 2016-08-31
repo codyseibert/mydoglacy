@@ -146,28 +146,31 @@
             )
           
       .layouts(
-        style="position: absolute; bottom: 20px; left: 20px; background-color: white;"
         ng-show="isEditMode"
       )
         button(
-          style="border: 1px solid black;"
+          style="background-image: url('assets/images/Layout1.png')"
           ng-click="page.layouts.main = 0"
-        ) Layout A
+          ng-class="{'selected': page.layouts.main === 0}"
+        )
         
         button(
-          style="border: 1px solid black;"
+          style="background-image: url('assets/images/Layout2.png')"
           ng-click="page.layouts.main = 1"
-        ) Layout B
+          ng-class="{'selected': page.layouts.main === 1}"
+        )
         
         button(
-          style="border: 1px solid black;"
+          style="background-image: url('assets/images/Layout3.png')"
           ng-click="page.layouts.main = 2"
-        ) Layout C
+          ng-class="{'selected': page.layouts.main === 2}"
+        )
         
         button(
-          style="border: 1px solid black;"
+          style="background-image: url('assets/images/Layout4.png')"
           ng-click="page.layouts.main = 3"
-        ) Layout D
+          ng-class="{'selected': page.layouts.main === 3}"
+        ) 
           
   //- First Left / Right Section
   section(

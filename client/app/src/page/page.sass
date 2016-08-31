@@ -2,6 +2,25 @@
   height: 100%
   font-family: 'Montserrat', sans-serif
 
+  .layouts
+    position: absolute
+    bottom: 20px
+    left: 20px
+    
+    button
+      border: none
+      background-image: url('assets/images/Layout1.png')
+      background-size: cover
+      width: 100px
+      height: 90px
+
+    button + button
+      margin-left: 10px
+
+    button.selected
+      border: 2px solid red
+      border-radius: 5px
+
   .title
     font-size: 40px
     font-family: 'Montserrat', sans-serif
