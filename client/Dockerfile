@@ -5,6 +5,8 @@ RUN yum install -y epel-release
 RUN yum install -y nginx
 
 RUN rm -v /etc/nginx/nginx.conf
+RUN echo -n 'lacy:mydog' >> /etc/nginx/.htpasswd
+
 COPY nginx.conf /etc/nginx/
 COPY dist /app
 
