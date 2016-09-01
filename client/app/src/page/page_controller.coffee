@@ -22,7 +22,7 @@ module.exports = [
     $scope.currentSection = 0
     currentSlide = 0
     SLIDE_INTERVAL = 5000
-    $scope.isEditMode = true
+    $scope.isEditMode = false
 
     # shuffle $scope.page.carousel
 

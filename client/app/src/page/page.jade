@@ -231,8 +231,50 @@
             ng-style="{'background-image': 'url(' + page.imageD + ')'}"
           )
           
+  section.section-story(
+    
+  )
+    .container
+      .row
+        .col-md-8.col-md-push-2
+          h1 Lacy's Story
+          p Pellentesque habitant molibero sit amet quam egestas semper sit semper sit amet quam egestas semper. Aenean ultricies mi vitae est. 
+            img.left(
+              ng-src="{{page.imageB}}"
+            )
+            | Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Pellentesque habitant molibero sit amet quam egestas semper sit semper sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra.
+          p Pellentesque habitant molibero sit amet quam egestas semper sit semper sit amet quam egestas semper. Aenean ultricies mi 
+            img.center(
+              ng-src="{{page.imageE}}"
+            )
+            |vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Pellentesque habitant molibero sit amet quam egestas semper sit semper sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra.
+          p Pellentesque habitant molibero sit amet quam egestas semper sit semper sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. 
+            img.right(
+              ng-src="{{page.imageC}}"
+            )
+            | Quisque sit amet est et sapien ullamcorper pharetra. Pellentesque habitant molibero sit amet quam egestas semper sit semper sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra.
             
-            
+  section
+    .container-fluid
+      .row
+        .col-md-3.no-pad
+          div(
+            style="background-size: cover; height: 300px;"
+            ng-style="{'background-image': 'url(' + page.imageB + ')'}"
+          )
+          
+        .col-md-6.no-pad
+          div(
+            style="background-size: cover; height: 300px;"
+            ng-style="{'background-image': 'url(' + page.imageC + ')'}"
+          )
+        
+        .col-md-3.no-pad
+          div(
+            style="background-size: cover; height: 300px;"
+            ng-style="{'background-image': 'url(' + page.imageD + ')'}"
+          )
+          
   //- Second Left / Right Section
   section(
     style="position: relative; z-index: 2; background-color: teal; border-top: 1px solid white; border-bottom: 1px solid white;"
@@ -279,43 +321,6 @@
             cardTemplateString='<div class="a-card"><img src="" data-ng-src="{{card.image}}"></div>'
           )
           
-  section(
-    style="background-color: orange"
-  )
-    .container
-      .row
-        .col-md-1.left
-          i.fa.fa-arrow-left(
-            ng-click="previous()"
-          )
-        .col-md-10
-          .image
-            btnupload.hero(
-              save="save()"
-              on-upload="onSlideUpload"
-              ng-show="isEditMode"
-            )
-          .slides(
-            style="text-align: center"
-          )
-            img(
-              ng-src='{{slide.image}}'
-            )
-            .btn-circle(
-              style="position: relative; right: -20px;"
-              uib-tooltip='delete this image'
-              ng-click="delete(slide)"
-              ng-show="isEditMode"
-            ) 
-              i.fa.fa-trash
-              
-            h4 {{slide.title}}
-            p {{slide.description}}
-        .col-md-1.right
-          i.fa.i.fa.fa-arrow-right(
-            ng-click="next()"
-          )
-                
   //- section(
   //- )
   //-   .container(
