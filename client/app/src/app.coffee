@@ -43,7 +43,7 @@ app.config [
 require './main'
 require './page'
 
-app.constant 'API_PATH', 'http://192.168.1.2:8081'
+app.constant 'API_PATH', 'http://localhost:8081'
 
 app.run [
   '$rootScope'

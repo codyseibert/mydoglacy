@@ -78,8 +78,10 @@
             style="display: inline-block; width: 555px; height: 555px; background-image: url('assets/images/circle.png'); background-size: cover"
           )
             .porthole(
+              ng-class="{'outline': isEditMode}"
               style="left: 2px; top: 28px; position: relative;"
               ng-style="{'background-image': 'url(' + page.banner + ')'}"
+              ngf-select="upload($file, page, 'banner')"
             )
           
           .date(
@@ -94,8 +96,10 @@
             style="display: inline-block; width: 555px; height: 555px; background-image: url('assets/images/circle.png'); background-size: cover"
           )
             .porthole(
+              ng-class="{'outline': isEditMode}"
               style="left: 2px; top: 28px; position: relative;"
               ng-style="{'background-image': 'url(' + page.banner + ')'}"
+              ngf-select="upload($file, page, 'banner')"
             )
             
         .col-md-6
@@ -138,8 +142,10 @@
             style="display: inline-block; width: 555px; height: 555px; background-image: url('assets/images/circle.png'); background-size: cover"
           )
             .porthole(
+              ng-class="{'outline': isEditMode}"
               style="left: 2px; top: 28px; position: relative;"
               ng-style="{'background-image': 'url(' + page.banner + ')'}"
+              ngf-select="upload($file, page, 'banner')"
             )
           
       .layouts(
@@ -181,6 +187,7 @@
             ng-class="{'outline': isEditMode}"
             style="background-size: cover; height: 400px;"
             ng-style="{'background-image': 'url(' + page.imageA + ')'}"
+            ngf-select="upload($file, page, 'imageA')"
           )
             
         .col-md-5.no-pad
@@ -229,6 +236,7 @@
             ng-class="{'outline': isEditMode}"
             style="background-size: cover; height: 300px;"
             ng-style="{'background-image': 'url(' + page.imageB + ')'}"
+            ngf-select="upload($file, page, 'imageB')"
           )
           
         .col-md-6.no-pad
@@ -236,6 +244,7 @@
             ng-class="{'outline': isEditMode}"
             style="background-size: cover; height: 300px;"
             ng-style="{'background-image': 'url(' + page.imageC + ')'}"
+            ngf-select="upload($file, page, 'imageC')"
           )
         
         .col-md-3.no-pad
@@ -243,6 +252,7 @@
             ng-class="{'outline': isEditMode}"
             style="background-size: cover; height: 300px;"
             ng-style="{'background-image': 'url(' + page.imageD + ')'}"
+            ngf-select="upload($file, page, 'imageD')"
           )
           
   section.section-story(
@@ -273,21 +283,25 @@
           div(
             ng-class="{'outline': isEditMode}"
             style="background-size: cover; height: 300px;"
-            ng-style="{'background-image': 'url(' + page.imageB + ')'}"
+            ng-style="{'background-image': 'url(' + page.imageE + ')'}"
+            ngf-select="upload($file, page, 'imageE')"
           )
           
         .col-md-6.no-pad
           div(
             ng-class="{'outline': isEditMode}"
             style="background-size: cover; height: 300px;"
-            ng-style="{'background-image': 'url(' + page.imageC + ')'}"
+            ng-style="{'background-image': 'url(' + page.imageF + ')'}"
+            ngf-select="upload($file, page, 'imageF')"
+            
           )
         
         .col-md-3.no-pad
           div(
             ng-class="{'outline': isEditMode}"
             style="background-size: cover; height: 300px;"
-            ng-style="{'background-image': 'url(' + page.imageD + ')'}"
+            ng-style="{'background-image': 'url(' + page.imageG + ')'}"
+            ngf-select="upload($file, page, 'imageG')"
           )
           
   //- Second Left / Right Section
@@ -338,7 +352,8 @@
           div(
             ng-class="{'outline': isEditMode}"
             style="background-size: cover; height: 400px;"
-            ng-style="{'background-image': 'url(' + page.imageE + ')'}"
+            ng-style="{'background-image': 'url(' + page.imageH + ')'}"
+            ngf-select="upload($file, page, 'imageH')"
           )
 
             
@@ -351,7 +366,7 @@
           div.deckgrid(
             deckgrid
             source="page.carousel" 
-            cardTemplateString='<div ng-click="mother.isEditMode && mother.cardClicked(card)" ng-class="{outline: mother.isEditMode}" class="a-card"><img src="" data-ng-src="{{card.image}}"></div>'
+            cardTemplateString='<div ngf-select="mother.upload($file, card, \'image\')" ng-class="{outline: mother.isEditMode}" class="a-card"><img src="" data-ng-src="{{card.image}}"></div>'
           )
           
   //- section(
@@ -379,6 +394,7 @@
     style="position: absolute; top: 0px; left: 0px; z-index: 1; width: 100%; height: 100%; background-size: cover;"
     ng-style="{'background-image': 'url(' + page.banner + ')'}"
     ng-if="page.layouts.main === 0"
+    ngf-select="upload($file, page, 'banner')"
   )
     //- img(
     //-   ng-src="{{page.banner}}"
