@@ -6,61 +6,58 @@
     ng-style="{'background': '#fedc4f url(assets/images/pattern_1.png) 0px 0px/400px 400px repeat'}"
   )
     .container.first(
-      style="z-index: 2; position: relative"
+      style="position: relative"
     )
       .row(
         ng-if="page.layouts.main === 0"
         style="padding-top: 60px; padding-bottom: 40px;"
       )
         .col-md-6
-          .image
-            btnupload.hero(
-              save="save()"
-              image="page.banner"
-              ng-show="isEditMode"
-            )
-          .name
+          .name(
+            style="z-index: 2; position: relative;"
+          )
             span(
+              ng-class="{'outline': isEditMode}"
               ng-show="!editing.name"
+              ng-click="editing.name = true"
             ) {{page.pet.name}}
             input(
+              id="name-input"
               ng-show="editing.name"
               ng-model="page.pet.name"
-            )
-            btnedit(
-              save="save()"
-              editing="editing.name"
-              ng-show="isEditMode"
+              click-outside="editing.name = false"
             )
             
-          .date 
+          .date(
+            style="z-index: 2"
+          )
             span(
+              ng-class="{'outline': isEditMode}"
               ng-show="!editing.date"
+              ng-click="editing.date = true"
             ) {{page.pet.date_of_birth | date:'MMM d, yyyy'}} - {{page.pet.date_of_rest | date:'MMM d, yyyy'}}
             input(
+              id="date-input"
               ng-show="editing.date"
               ng-model="page.pet.date_of_birth"
-            )
-            btnedit(
-              save="save()"
-              editing="editing.date"
-              ng-show="isEditMode"
+              click-outside="editing.date = false"
             )
             
-          .biography
+          .biography(
+            style="z-index: 2"
+          )
             p(
+              ng-class="{'outline': isEditMode}"
               ng-show="!editing.biography"
               ng-bind-html="page.biography"
+              ng-click="editing.biography = true"
             )
             text-angular(
+              id="biography-input"
               ng-show="editing.biography"
               ng-model="page.biography"
               ta-toolbar="[['bold', 'italics', 'underline', 'strikeThrough', 'ul', 'ol', 'redo', 'undo']]"
-            )
-            btnedit(
-              save="save()"
-              editing="editing.biography"
-              ng-show="isEditMode"
+              click-outside="editing.biography = false"
             )
             
         .col-md-6
@@ -146,27 +143,28 @@
             )
           
       .layouts(
+        style="z-index: 2;"
         ng-show="isEditMode"
       )
-        button(
+        button.outline(
           style="background-image: url('assets/images/Layout1.png')"
           ng-click="page.layouts.main = 0"
           ng-class="{'selected': page.layouts.main === 0}"
         )
         
-        button(
+        button.outline(
           style="background-image: url('assets/images/Layout2.png')"
           ng-click="page.layouts.main = 1"
           ng-class="{'selected': page.layouts.main === 1}"
         )
         
-        button(
+        button.outline(
           style="background-image: url('assets/images/Layout3.png')"
           ng-click="page.layouts.main = 2"
           ng-class="{'selected': page.layouts.main === 2}"
         )
         
-        button(
+        button.outline(
           style="background-image: url('assets/images/Layout4.png')"
           ng-click="page.layouts.main = 3"
           ng-class="{'selected': page.layouts.main === 3}"
@@ -180,33 +178,46 @@
       .row
         .col-md-7.no-pad
           div(
+            ng-class="{'outline': isEditMode}"
             style="background-size: cover; height: 400px;"
             ng-style="{'background-image': 'url(' + page.imageA + ')'}"
           )
-            btnupload(
-              save="save()"
-              image="page.imageA"
-              ng-show="isEditMode"
-            )
             
         .col-md-5.no-pad
           div(
             style="height: 400px; padding: 20px; padding-top: 60px; color: #666666; background-color: #f3f1ef;"
           )
-            .title 
+            .title(
+            )
               img(
                 src="assets/images/diamond.png"
                 style="border-radius: 0px; height: 70px; box-shadow: none; border: none; position: relative; top: -10px; margin: 0"
               )
-              | More About {{page.pet.name}}...
+              span(
+                ng-show="!editing.titleA"
+                ng-class="{'outline': isEditMode}"
+                ng-click="editing.titleA = true"
+              ) {{page.titleA}}
+              input(
+                id="titleA-input"
+                ng-show="editing.titleA"
+                ng-model="page.titleA"
+                click-outside="editing.titleA = false"
+                style="width: 80%;"
+              )
             
             .content(
-              ng-show="!editing.memory"
-            ) {{page.memory}}
+              ng-show="!editing.snippitA"
+              ng-class="{'outline': isEditMode}"
+              ng-click="editing.snippitA = true"
+              ng-bind-html="page.snippitA"
+            )
             
             text-angular(
-              ng-show="editing.memory"
-              ng-model="page.memory"
+              id="snippitA-input"
+              click-outside="editing.snippitA = false"
+              ng-show="editing.snippitA"
+              ng-model="page.snippitA"
               ta-toolbar="[['bold', 'italics', 'underline', 'strikeThrough', 'ul', 'ol', 'redo', 'undo']]"
             )
   
@@ -215,18 +226,21 @@
       .row
         .col-md-3.no-pad
           div(
+            ng-class="{'outline': isEditMode}"
             style="background-size: cover; height: 300px;"
             ng-style="{'background-image': 'url(' + page.imageB + ')'}"
           )
           
         .col-md-6.no-pad
           div(
+            ng-class="{'outline': isEditMode}"
             style="background-size: cover; height: 300px;"
             ng-style="{'background-image': 'url(' + page.imageC + ')'}"
           )
         
         .col-md-3.no-pad
           div(
+            ng-class="{'outline': isEditMode}"
             style="background-size: cover; height: 300px;"
             ng-style="{'background-image': 'url(' + page.imageD + ')'}"
           )
@@ -237,40 +251,41 @@
     .container
       .row
         .col-md-8.col-md-push-2
-          h1 Lacy's Story
-          p Pellentesque habitant molibero sit amet quam egestas semper sit semper sit amet quam egestas semper. Aenean ultricies mi vitae est. 
-            img.left(
-              ng-src="{{page.imageB}}"
-            )
-            | Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Pellentesque habitant molibero sit amet quam egestas semper sit semper sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra.
-          p Pellentesque habitant molibero sit amet quam egestas semper sit semper sit amet quam egestas semper. Aenean ultricies mi 
-            img.center(
-              ng-src="{{page.imageE}}"
-            )
-            |vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Pellentesque habitant molibero sit amet quam egestas semper sit semper sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra.
-          p Pellentesque habitant molibero sit amet quam egestas semper sit semper sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. 
-            img.right(
-              ng-src="{{page.imageC}}"
-            )
-            | Quisque sit amet est et sapien ullamcorper pharetra. Pellentesque habitant molibero sit amet quam egestas semper sit semper sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra.
-            
+          div(
+            ng-class="{'outline': isEditMode}"
+            ng-bind-html="page.story"
+            ng-show="!editing.story"
+            ng-click="editing.story = true"
+          )
+          
+          text-angular(
+            id="story-input"
+            click-outside="editing.story = false"
+            ng-show="editing.story"
+            ng-model="page.story"
+            ta-toolbar="[['bold', 'italics', 'underline', 'strikeThrough', 'ul', 'ol', 'redo', 'undo']]"
+          )
+          
   section
     .container-fluid
       .row
         .col-md-3.no-pad
           div(
+            ng-class="{'outline': isEditMode}"
             style="background-size: cover; height: 300px;"
             ng-style="{'background-image': 'url(' + page.imageB + ')'}"
           )
           
         .col-md-6.no-pad
           div(
+            ng-class="{'outline': isEditMode}"
             style="background-size: cover; height: 300px;"
             ng-style="{'background-image': 'url(' + page.imageC + ')'}"
           )
         
         .col-md-3.no-pad
           div(
+            ng-class="{'outline': isEditMode}"
             style="background-size: cover; height: 300px;"
             ng-style="{'background-image': 'url(' + page.imageD + ')'}"
           )
@@ -285,25 +300,43 @@
           div(
             style="height: 400px; padding: 20px; padding-top: 60px; color: #666666; background-color: #f3f1ef;"
           )
-            .title 
+            .title(
+            )
               img(
                 src="assets/images/diamond.png"
                 style="border-radius: 0px; height: 70px; box-shadow: none; border: none; position: relative; top: -10px; margin: 0"
               )
-              | More About {{page.pet.name}}...
-            
+              span(
+                ng-show="!editing.titleB"
+                ng-class="{'outline': isEditMode}"
+                ng-click="editing.titleB = true"
+              ) {{page.titleB}}
+              input(
+                id="titleB-input"
+                ng-show="editing.titleB"
+                ng-model="page.titleB"
+                click-outside="editing.titleB = false"
+                style="width: 80%;"
+              )
+          
             .content(
-              ng-show="!editing.memory"
-            ) {{page.memory}}
+              ng-show="!editing.snippitB"
+              ng-class="{'outline': isEditMode}"
+              ng-click="editing.snippitB = true"
+              ng-bind-html="page.snippitB"
+            )
             
             text-angular(
-              ng-show="editing.memory"
-              ng-model="page.memory"
+              id="snippitB-input"
+              click-outside="editing.snippitB = false"
+              ng-show="editing.snippitB"
+              ng-model="page.snippitB"
               ta-toolbar="[['bold', 'italics', 'underline', 'strikeThrough', 'ul', 'ol', 'redo', 'undo']]"
             )
             
         .col-md-7.no-pad
           div(
+            ng-class="{'outline': isEditMode}"
             style="background-size: cover; height: 400px;"
             ng-style="{'background-image': 'url(' + page.imageE + ')'}"
           )
@@ -318,7 +351,7 @@
           div.deckgrid(
             deckgrid
             source="page.carousel" 
-            cardTemplateString='<div class="a-card"><img src="" data-ng-src="{{card.image}}"></div>'
+            cardTemplateString='<div ng-click="mother.isEditMode && mother.cardClicked(card)" ng-class="{outline: mother.isEditMode}" class="a-card"><img src="" data-ng-src="{{card.image}}"></div>'
           )
           
   //- section(
@@ -340,15 +373,21 @@
   //-     .row
   //-       .col-md-12
   //-         span Footer
-    
-  img.portrait(
-    ng-src="{{page.banner}}"
-    style="z-index: 1;"
+  
+  div.portrait(
+    ng-class="{'outline': isEditMode}"
+    style="position: absolute; top: 0px; left: 0px; z-index: 1; width: 100%; height: 100%; background-size: cover;"
+    ng-style="{'background-image': 'url(' + page.banner + ')'}"
     ng-if="page.layouts.main === 0"
   )
+    //- img(
+    //-   ng-src="{{page.banner}}"
+    //-   style="z-index: 1;"
+    //-   ng-if="page.layouts.main === 0"
+    //- )
   
   button.publish.btn.btn-primary(
-    ng-if="!showPublishModal && false"
+    ng-if="!showPublishModal"
     style="z-index: 2;"
     ng-click="publish()"
   )
@@ -361,7 +400,7 @@
     ng-click="edit()"
   )
     i.fa.fa-edit
-    | {{isEditMode ? "View" : "Edit"}}
+    | {{isEditMode ? "Preview" : "Edit"}}
   
 publish-modal(
   style="z-index: 5;"

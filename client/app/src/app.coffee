@@ -11,10 +11,12 @@ require '../../node_modules/textangular/dist/textAngular.min'
 require 'ng-file-upload'
 require 'angular-confirm'
 require 'angular-deckgrid'
+require '@iamadamjowett/angular-click-outside'
 
 app = require('angular').module('mydoglacy', [
   require 'angular-ui-router'
   require 'angular-resource'
+  'angular-click-outside'
   'ngAnimate'
   'textAngular'
   'duScroll'

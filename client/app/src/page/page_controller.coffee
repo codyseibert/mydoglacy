@@ -22,7 +22,7 @@ module.exports = [
     $scope.currentSection = 0
     currentSlide = 0
     SLIDE_INTERVAL = 5000
-    $scope.isEditMode = false
+    $scope.isEditMode = true
 
     # shuffle $scope.page.carousel
 
@@ -51,6 +51,9 @@ module.exports = [
         description: "Pay to make #{$scope.page.pet.name}'s page live"
         amount: 999
       )
+
+    $scope.cardClicked = (card) ->
+      console.log card
 
     $scope.save = ->
       console.log 'saving'

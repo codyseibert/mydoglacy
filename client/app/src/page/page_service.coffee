@@ -14,16 +14,25 @@ module.exports = [
         breed: 'Golden Retriever'
         date_of_birth: new Date()
         date_of_rest: new Date()
-      banner: 'assets/images/dog-main.jpeg'
+      banner: 'assets/images/dog-main-min.png'
       memory: 'Pellentesque habitant molibero sit amet quam egestas semper sit semper sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra.'
       biography: 'Pellentesque habitant molibero sit amet quam egestas semper. Aenean ultricies mi vitae est. Aenean ultricies mi vitae est.'
+      titleA: "Lacy Look'n Legit"
+      snippitA: "Pellentesque habitant molibero sit amet quam egestas semper sit semper sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra"
+      story: """
+        <h1>Lacy's Story</h1>
+        <p>Pellentesque habitant molibero sit amet quam egestas semper sit semper sit amet quam egestas semper. Aenean ultricies mi vitae est. </p>
+        <p>Pellentesque habitant molibero sit amet quam egestas semper sit semper sit amet quam egestas semper. Aenean ultricies mi vitae est. </p>
+      """
+      titleB: "What a Babe"
+      snippitB: "Pellentesque habitant molibero sit amet quam egestas semper sit semper sit amet quam"
       imageA: 'assets/images/dog1.png'
       imageB: 'assets/images/dog2.png'
       imageC: 'assets/images/dog3.png'
       imageD: 'assets/images/dog4.png'
       imageE: 'assets/images/dog5.png'
       carousel: [
-        image: 'assets/images/dog-main.jpeg'
+        image: 'assets/images/dog-main-min.png'
       ,
         image: 'assets/images/dog5.png'
       ,
@@ -33,7 +42,7 @@ module.exports = [
       ,
         image: 'assets/images/dog3.png'
       ,
-        image: 'assets/images/dog-main.jpeg'
+        image: 'assets/images/dog-main-min.png'
       ,
         image: 'assets/images/dog4.png'
       ,

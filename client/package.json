@@ -14,6 +14,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@iamadamjowett/angular-click-outside": "^2.8.3",
     "angular": "~1.5.0",
     "angular-animate": "^1.5.3",
     "angular-bootstrap-confirm": "^1.0.1",
