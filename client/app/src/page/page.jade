@@ -19,7 +19,7 @@
             span(
               ng-class="{'outline': isEditMode}"
               ng-show="!editing.name"
-              ng-click="editing.name = true"
+              ng-click="isEditMode && editing.name = true"
             ) {{page.pet.name}}
             input(
               id="name-input"
@@ -34,7 +34,7 @@
             span(
               ng-class="{'outline': isEditMode}"
               ng-show="!editing.date"
-              ng-click="editing.date = true"
+              ng-click="isEditMode && editing.date = true"
             ) {{page.pet.date_of_birth | date:'MMM d, yyyy'}} - {{page.pet.date_of_rest | date:'MMM d, yyyy'}}
             input(
               id="date-input"
@@ -50,7 +50,7 @@
               ng-class="{'outline': isEditMode}"
               ng-show="!editing.biography"
               ng-bind-html="page.biography"
-              ng-click="editing.biography = true"
+              ng-click="isEditMode && editing.biography = true"
             )
             text-angular(
               id="biography-input"
@@ -81,6 +81,7 @@
               ng-class="{'outline': isEditMode}"
               style="left: 2px; top: 28px; position: relative;"
               ng-style="{'background-image': 'url(' + page.banner + ')'}"
+              ng-disabled="!isEditMode"
               ngf-select="upload($file, page, 'banner')"
             )
           
@@ -99,6 +100,7 @@
               ng-class="{'outline': isEditMode}"
               style="left: 2px; top: 28px; position: relative;"
               ng-style="{'background-image': 'url(' + page.banner + ')'}"
+              ng-disabled="!isEditMode"
               ngf-select="upload($file, page, 'banner')"
             )
             
@@ -145,6 +147,7 @@
               ng-class="{'outline': isEditMode}"
               style="left: 2px; top: 28px; position: relative;"
               ng-style="{'background-image': 'url(' + page.banner + ')'}"
+              ng-disabled="!isEditMode"
               ngf-select="upload($file, page, 'banner')"
             )
           
@@ -187,6 +190,7 @@
             ng-class="{'outline': isEditMode}"
             style="background-size: cover; height: 400px;"
             ng-style="{'background-image': 'url(' + page.imageA + ')'}"
+            ng-disabled="!isEditMode"
             ngf-select="upload($file, page, 'imageA')"
           )
             
@@ -203,7 +207,7 @@
               span(
                 ng-show="!editing.titleA"
                 ng-class="{'outline': isEditMode}"
-                ng-click="editing.titleA = true"
+                ng-click="isEditMode && editing.titleA = true"
               ) {{page.titleA}}
               input(
                 id="titleA-input"
@@ -216,7 +220,7 @@
             .content(
               ng-show="!editing.snippitA"
               ng-class="{'outline': isEditMode}"
-              ng-click="editing.snippitA = true"
+              ng-click="isEditMode && editing.snippitA = true"
               ng-bind-html="page.snippitA"
             )
             
@@ -236,6 +240,7 @@
             ng-class="{'outline': isEditMode}"
             style="background-size: cover; height: 300px;"
             ng-style="{'background-image': 'url(' + page.imageB + ')'}"
+            ng-disabled="!isEditMode"
             ngf-select="upload($file, page, 'imageB')"
           )
           
@@ -244,6 +249,7 @@
             ng-class="{'outline': isEditMode}"
             style="background-size: cover; height: 300px;"
             ng-style="{'background-image': 'url(' + page.imageC + ')'}"
+            ng-disabled="!isEditMode"
             ngf-select="upload($file, page, 'imageC')"
           )
         
@@ -252,6 +258,7 @@
             ng-class="{'outline': isEditMode}"
             style="background-size: cover; height: 300px;"
             ng-style="{'background-image': 'url(' + page.imageD + ')'}"
+            ng-disabled="!isEditMode"
             ngf-select="upload($file, page, 'imageD')"
           )
           
@@ -265,7 +272,7 @@
             ng-class="{'outline': isEditMode}"
             ng-bind-html="page.story"
             ng-show="!editing.story"
-            ng-click="editing.story = true"
+            ng-click="isEditMode && editing.story = true"
           )
           
           text-angular(
@@ -284,6 +291,7 @@
             ng-class="{'outline': isEditMode}"
             style="background-size: cover; height: 300px;"
             ng-style="{'background-image': 'url(' + page.imageE + ')'}"
+            ng-disabled="!isEditMode"
             ngf-select="upload($file, page, 'imageE')"
           )
           
@@ -292,6 +300,7 @@
             ng-class="{'outline': isEditMode}"
             style="background-size: cover; height: 300px;"
             ng-style="{'background-image': 'url(' + page.imageF + ')'}"
+            ng-disabled="!isEditMode"
             ngf-select="upload($file, page, 'imageF')"
             
           )
@@ -301,6 +310,7 @@
             ng-class="{'outline': isEditMode}"
             style="background-size: cover; height: 300px;"
             ng-style="{'background-image': 'url(' + page.imageG + ')'}"
+            ng-disabled="!isEditMode"
             ngf-select="upload($file, page, 'imageG')"
           )
           
@@ -323,7 +333,7 @@
               span(
                 ng-show="!editing.titleB"
                 ng-class="{'outline': isEditMode}"
-                ng-click="editing.titleB = true"
+                ng-click="isEditMode && editing.titleB = true"
               ) {{page.titleB}}
               input(
                 id="titleB-input"
@@ -336,7 +346,7 @@
             .content(
               ng-show="!editing.snippitB"
               ng-class="{'outline': isEditMode}"
-              ng-click="editing.snippitB = true"
+              ng-click="isEditMode && editing.snippitB = true"
               ng-bind-html="page.snippitB"
             )
             
@@ -353,6 +363,7 @@
             ng-class="{'outline': isEditMode}"
             style="background-size: cover; height: 400px;"
             ng-style="{'background-image': 'url(' + page.imageH + ')'}"
+            ng-disabled="!isEditMode"
             ngf-select="upload($file, page, 'imageH')"
           )
 
@@ -366,7 +377,7 @@
           div.deckgrid(
             deckgrid
             source="page.carousel" 
-            cardTemplateString='<div ngf-select="mother.upload($file, card, \'image\')" ng-class="{outline: mother.isEditMode}" class="a-card"><img src="" data-ng-src="{{card.image}}"></div>'
+            cardTemplateString='<div ng-disabled="!mother.isEditMode" ngf-select="mother.upload($file, card, \'image\')" ng-class="{outline: mother.isEditMode}" class="a-card"><img src="" data-ng-src="{{card.image}}"></div>'
           )
           
   //- section(
@@ -394,6 +405,7 @@
     style="position: absolute; top: 0px; left: 0px; z-index: 1; width: 100%; height: 100%; background-size: cover;"
     ng-style="{'background-image': 'url(' + page.banner + ')'}"
     ng-if="page.layouts.main === 0"
+    ng-disabled="!isEditMode"
     ngf-select="upload($file, page, 'banner')"
   )
     //- img(
@@ -404,41 +416,60 @@
   
   button.publish.btn.btn-primary(
     ng-if="!showPublishModal"
-    style="z-index: 2;"
     ng-click="publish()"
   )
     i.fa.fa-star
     | Publish {{page.pet.name}}'s Page
     
   button.edit.btn.btn-warning(
-    style="z-index: 2;"
     ui-sref="page"
     ng-click="edit()"
+    ng-class="{'tour-current': currentStep === 1, 'accent': isEditMode}"
   )
     i.fa.fa-edit
     | {{isEditMode ? "Preview" : "Edit"}}
-
-.damodal(
-  ng-show="showModal"
-  style="position: fixed; top: 0px; left: 0px; z-index: 20; height: 100%; width: 100%; background-color: rgba(0, 0, 0, 0.6);"
-)
-  .dacenter(
-    style="width: 50%; height: 64%; position: relative; top: 20%; background-color: white; margin: 0 auto;"
+    
+  .tour-panel(
+    ng-show="currentStep === 1"
   )
-    .top(
-      style="padding: 20px; border-bottom: 1px solid black; height: 200px; width: 100%; background-image: url('{{page.imageC}}'); background-size: 100% 100; background-position: 0px 0px;"
-    )
-    div(
-      style="padding: 20px;"
-    )
-      h2(
-        style="text-align: center;"
-      ) Welcome to {{page.pet.name}}'s Page!
+    i.fa.fa-caret-up
+    span Click Edit when you are ready to edit your generated page
+    br
+    .center 
+      button.btn-primary(
+        ng-click="currentStep = 2"
+      )
+        i.fa.fa-check
+        | OK
       
-      h3 We went ahead and built an example page for you. Now update it with images, videos, and a biography of {{page.pet.name}}.
+  .tourbg(
+    ng-show="currentStep > 0 && currentStep < 2"
+  )
+
+  .welcome-modal.fade-out(
+    ng-show="showModal"
+  )
+    .inner
+      .top(
+        ng-style="{'background-image': 'url(' + page.imageC + ')'}"
+      )
       
-    .bottom(
-      ng-click="showModal = false"
-      style="cursor: pointer; border-top: 1px solid black; height: 60px; text-align: center; line-height: 50px; font-size: 30px;"
-    )
-      span Customize my page!
+      .middle
+        h2 Welcome to {{page.pet.name}}'s Page!
+        
+        h3 We generated an example page for you. 
+          br
+          | Now, you should 
+          b update it 
+          | with a 
+          b biography
+          | , 
+          b images
+          | , and 
+          b videos
+          | .
+        
+      .bottom(
+        ng-click="hideModal()"
+      )
+        span customize my page!

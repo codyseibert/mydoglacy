@@ -1,4 +1,5 @@
 shuffle = require 'shuffle-array'
+$ = require 'jquery'
 
 module.exports = [
   '$scope'
@@ -24,14 +25,19 @@ module.exports = [
     $scope.page.layouts =
       main: 0
     $scope.currentSection = 0
-    $scope.isEditMode = true
+    $scope.isEditMode = false
     $scope.showModal = true
+    $scope.currentStep = 0
 
     $scope.editing =
       name: false
 
     $scope.$on 'closeEditModal', ->
       $scope.showEditModal = false
+
+    $scope.hideModal = ->
+      $scope.showModal = false
+      $scope.currentStep = 1
 
     $scope.$watch ->
       PageService
@@ -43,6 +49,7 @@ module.exports = [
     $scope.edit = ->
       $scope.currentSection = 0
       $scope.isEditMode = not $scope.isEditMode
+      $scope.currentStep = 2
 
     $scope.publish = ->
       $rootScope.STRIPE.open(
