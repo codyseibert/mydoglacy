@@ -427,7 +427,7 @@
     ng-class="{'tour-current': currentStep === 1, 'accent': isEditMode}"
   )
     i.fa(
-      ng-class="{'fa-edit': isEditMode, 'fa-eye': !isEditMode}"
+      ng-class="{'fa-edit': !isEditMode, 'fa-eye': isEditMode}"
     )
     | {{isEditMode ? "Preview" : "Edit"}}
     
