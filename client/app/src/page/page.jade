@@ -19,7 +19,7 @@
             span(
               ng-class="{'outline': isEditMode}"
               ng-show="!editing.name"
-              ng-click="isEditMode && editing.name = true"
+              ng-click="editItem('name')"
             ) {{page.pet.name}}
             input(
               id="name-input"
@@ -34,7 +34,7 @@
             span(
               ng-class="{'outline': isEditMode}"
               ng-show="!editing.date"
-              ng-click="isEditMode && editing.date = true"
+              ng-click="editItem('date')"
             ) {{page.pet.date_of_birth | date:'MMM d, yyyy'}} - {{page.pet.date_of_rest | date:'MMM d, yyyy'}}
             input(
               id="date-input"
@@ -50,7 +50,7 @@
               ng-class="{'outline': isEditMode}"
               ng-show="!editing.biography"
               ng-bind-html="page.biography"
-              ng-click="isEditMode && editing.biography = true"
+              ng-click="editItem('biography')"
             )
             text-angular(
               id="biography-input"
@@ -207,7 +207,7 @@
               span(
                 ng-show="!editing.titleA"
                 ng-class="{'outline': isEditMode}"
-                ng-click="isEditMode && editing.titleA = true"
+                ng-click="editItem('titleA')"
               ) {{page.titleA}}
               input(
                 id="titleA-input"
@@ -220,7 +220,7 @@
             .content(
               ng-show="!editing.snippitA"
               ng-class="{'outline': isEditMode}"
-              ng-click="isEditMode && editing.snippitA = true"
+              ng-click="editItem('snippitA')"
               ng-bind-html="page.snippitA"
             )
             
@@ -272,7 +272,7 @@
             ng-class="{'outline': isEditMode}"
             ng-bind-html="page.story"
             ng-show="!editing.story"
-            ng-click="isEditMode && editing.story = true"
+            ng-click="editItem('story')"
           )
           
           text-angular(
@@ -333,7 +333,7 @@
               span(
                 ng-show="!editing.titleB"
                 ng-class="{'outline': isEditMode}"
-                ng-click="isEditMode && editing.titleB = true"
+                ng-click="editItem('titleB')"
               ) {{page.titleB}}
               input(
                 id="titleB-input"
@@ -346,7 +346,7 @@
             .content(
               ng-show="!editing.snippitB"
               ng-class="{'outline': isEditMode}"
-              ng-click="isEditMode && editing.snippitB = true"
+              ng-click="editItem('snippitB')"
               ng-bind-html="page.snippitB"
             )
             

@@ -32,6 +32,10 @@ module.exports = [
     $scope.editing =
       name: false
 
+    $scope.editItem = (key) ->
+      return if not $scope.isEditMode
+      $scope.editing[key] = true
+
     $scope.$on 'closeEditModal', ->
       $scope.showEditModal = false
 
