@@ -426,7 +426,9 @@
     ng-click="edit()"
     ng-class="{'tour-current': currentStep === 1, 'accent': isEditMode}"
   )
-    i.fa.fa-edit
+    i.fa(
+      ng-class="{'fa-edit': isEditMode, 'fa-eye': !isEditMode}"
+    )
     | {{isEditMode ? "Preview" : "Edit"}}
     
   .tour-panel(
