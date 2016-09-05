@@ -25,6 +25,7 @@ module.exports = [
       main: 0
     $scope.currentSection = 0
     $scope.isEditMode = true
+    $scope.showModal = true
 
     $scope.editing =
       name: false

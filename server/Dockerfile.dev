@@ -9,7 +9,7 @@ RUN yum install -y nodejs
 RUN npm install -g gulp
 RUN yum install -y git
 
-ENV MONGO_HOST 192.168.1.4
+ENV MONGO_HOST 192.168.1.2
 
 EXPOSE 8081
 

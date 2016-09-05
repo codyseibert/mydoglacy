@@ -417,8 +417,28 @@
   )
     i.fa.fa-edit
     | {{isEditMode ? "Preview" : "Edit"}}
-  
-publish-modal(
-  style="z-index: 5;"
-  ng-show="showPublishModal"
+
+.damodal(
+  ng-show="showModal"
+  style="position: fixed; top: 0px; left: 0px; z-index: 20; height: 100%; width: 100%; background-color: rgba(0, 0, 0, 0.6);"
 )
+  .dacenter(
+    style="width: 50%; height: 64%; position: relative; top: 20%; background-color: white; margin: 0 auto;"
+  )
+    .top(
+      style="padding: 20px; border-bottom: 1px solid black; height: 200px; width: 100%; background-image: url('{{page.imageC}}'); background-size: 100% 100; background-position: 0px 0px;"
+    )
+    div(
+      style="padding: 20px;"
+    )
+      h2(
+        style="text-align: center;"
+      ) Welcome to {{page.pet.name}}'s Page!
+      
+      h3 We went ahead and built an example page for you. Now update it with images, videos, and a biography of {{page.pet.name}}.
+      
+    .bottom(
+      ng-click="showModal = false"
+      style="cursor: pointer; border-top: 1px solid black; height: 60px; text-align: center; line-height: 50px; font-size: 30px;"
+    )
+      span Customize my page!
