@@ -49,11 +49,13 @@ app.run [
   '$rootScope'
   '$http'
   'PageService'
+  'UserService'
   'API_PATH'
   (
     $rootScope
     $http
     PageService
+    UserService
     API_PATH
   ) ->
 
@@ -62,7 +64,7 @@ app.run [
       locale: 'auto'
       token: (token) ->
         console.log 'token', token
-        $http.post "#{API_PATH}/charge", {stripeToken: token, page: PageService}
+        $http.post "#{API_PATH}/charge", {stripeToken: token, page: PageService, email: UserService.email}
           .then (res) ->
             console.log 'res', res
           .catch (err) ->

@@ -2,6 +2,12 @@ models = require '../models/models'
 Users = models.Users
 ObjectId = require('mongoose').Types.ObjectId
 lodash = require 'lodash'
+crypto = require 'crypto'
+
+SALT_ROUNDS = 10
+
+createSalt = ->
+  Math.round((new Date().valueOf() * Math.random())) + ''
 
 module.exports = do ->
 
@@ -11,7 +17,18 @@ module.exports = do ->
       res.send obj
 
   post: (req, res) ->
-    Users.create(req.body).then (obj) ->
+    user = req.body
+    salt = createSalt()
+
+    hash = crypto
+      .createHmac 'sha1', salt
+      .update user.password
+      .digest 'hex'
+
+    user.salt = salt
+    user.password = hash
+
+    Users.create(user).then (obj) ->
       res.status 200
       res.send obj
 

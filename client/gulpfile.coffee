@@ -9,6 +9,8 @@ sass = require 'gulp-sass'
 ngTemplates = require 'gulp-ng-templates'
 gulpIgnore = require 'gulp-ignore'
 connect = require 'gulp-connect'
+replace = require 'gulp-replace'
+
 
 gulp.task 'clean', ->
   del.sync [ 'tmp', 'build', 'dist' ]
@@ -61,6 +63,12 @@ gulp.task 'scripts', ['coffee'], ->
     .pipe(gulp.dest('dist'))
     .pipe connect.reload()
 
+gulp.task 'replace', ->
+  if process.env.BUILD? is 'production'
+    gulp.src(['tmp/js/app.js'])
+      .pipe(replace('http://localhost:8081', 'http://api.mydoglacy.com'))
+      .pipe(gulp.dest('tmp/js/app.js'))
+
 gulp.task 'connect', ->
   connect.server
     root: 'dist'
@@ -92,6 +100,7 @@ gulp.task 'build', [
   'jade'
   'templates'
   'coffee'
+  'replace'
   'scripts'
   'sass'
   'copy'

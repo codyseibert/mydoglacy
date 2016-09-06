@@ -5,3 +5,5 @@ ObjectId = Schema.ObjectId
 module.exports = new Schema
   email: String
   password: String
+  salt: String
+  stripeId: String

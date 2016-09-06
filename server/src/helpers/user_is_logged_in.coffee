@@ -1,35 +1,17 @@
 Base64 = require('js-base64').Base64
 Users = require('../models/models').Users
+jwt = require 'jsonwebtoken'
+
+TOKEN_PASSWORD = process.env.JWT_PASSWORD
 
 module.exports = (req, res, next) ->
   auth = req.headers.authorization
-
-  if not auth?
-    res.status 400
-    res.send 'invalid authorization header'
-    return
-
-  auth = auth.split(" ")
-  if auth.length isnt 2
-    res.status 400
-    res.send 'invalid authorization header'
-    return
-
-  creds = auth[1]
-  creds = Base64.decode creds
-  creds = creds.split ':'
-  if creds.length isnt 2
-    res.status 400
-    res.send 'invalid creditials passed'
-    return
-
-  query =
-    email: creds[0]
-    password: creds[1]
-  Users.findOne(query).then (results) ->
-    if not results?
-      res.status 403
-      res.send 'invalid login'
-    else
-      req.user = results
-      next()
+  try
+    token = auth.split(' ')[1]
+    jwt.verify token, TOKEN_PASSWORD, (err, decoded) ->
+      if err?
+        req.status 400
+        res.send 'invalid token'
+      else
+        req.user = decoded
+        next()

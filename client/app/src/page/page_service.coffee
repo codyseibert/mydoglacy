@@ -8,12 +8,10 @@ module.exports = [
 
     page = localStorageService.get 'page'
     page ?=
-      pet:
-        name: 'Lacy'
-        gender: 'Male'
-        breed: 'Golden Retriever'
-        date_of_birth: new Date()
-        date_of_rest: new Date()
+      name: 'Lacy'
+      gender: 'Male'
+      breed: 'Golden Retriever'
+      headline: '5/23/1991 - 3/2/2016'
       banner: 'assets/images/dog-main-min.png'
       memory: 'Pellentesque habitant molibero sit amet quam egestas semper sit semper sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet .'
       biography: 'Pellentesque habitant molibero sit amet quam egestas semper. Aenean ultricies mi vitae est. Aenean ultricies mi vitae est.'
@@ -61,11 +59,5 @@ module.exports = [
       ,
         image: 'assets/images/dog3.png'
       ]
-      options:
-        facebook:
-          share: false
-          comments: false
-        twitter:
-          share: false
 
 ]

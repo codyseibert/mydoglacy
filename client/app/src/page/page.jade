@@ -20,11 +20,11 @@
               ng-class="{'outline': isEditMode}"
               ng-show="!editing.name"
               ng-click="editItem('name')"
-            ) {{page.pet.name}}
+            ) {{page.name}}
             input(
               id="name-input"
               ng-show="editing.name"
-              ng-model="page.pet.name"
+              ng-model="page.name"
               click-outside="editing.name = false"
             )
             
@@ -35,11 +35,11 @@
               ng-class="{'outline': isEditMode}"
               ng-show="!editing.date"
               ng-click="editItem('date')"
-            ) {{page.pet.date_of_birth | date:'MMM d, yyyy'}} - {{page.pet.date_of_rest | date:'MMM d, yyyy'}}
+            ) {{page.headline}}
             input(
               id="date-input"
               ng-show="editing.date"
-              ng-model="page.pet.date_of_birth"
+              ng-model="page.headline"
               click-outside="editing.date = false"
             )
             
@@ -72,7 +72,7 @@
         )
           .name(
             style="color: black;"
-          ) {{page.pet.name}}
+          ) {{page.name}}
           
           div(
             style="display: inline-block; width: 555px; height: 555px; background-image: url('assets/images/circle.png'); background-size: cover"
@@ -87,7 +87,7 @@
           
           .date(
             style="color: black;"
-          ) {{page.pet.date_of_birth | date:'MMM d, yyyy'}} - {{page.pet.date_of_rest | date:'MMM d, yyyy'}}
+          ) {{page.headline}}
           
       .row.c(
         ng-if="page.layouts.main === 2"
@@ -108,11 +108,11 @@
           .card
             .name(
               style="color: black;"
-            ) {{page.pet.name}}
+            ) {{page.name}}
             
             .date(
               style="color: black;"
-            ) {{page.pet.date_of_birth | date:'MMM d, yyyy'}} - {{page.pet.date_of_rest | date:'MMM d, yyyy'}}
+            ) {{page.headline}}
           
             p(
               style="font-size: 20px;"
@@ -127,11 +127,11 @@
           .card
             .name(
               style="color: black;"
-            ) {{page.pet.name}}
+            ) {{page.name}}
             
             .date(
               style="color: black;"
-            ) {{page.pet.date_of_birth | date:'MMM d, yyyy'}} - {{page.pet.date_of_rest | date:'MMM d, yyyy'}}
+            ) {{page.headline}}
           
             p(
               style="font-size: 20px;"
@@ -419,7 +419,7 @@
     ng-click="publish()"
   )
     i.fa.fa-star
-    | Publish {{page.pet.name}}'s Page
+    | Publish {{page.name}}'s Page
     
   button.edit.btn.btn-warning(
     ui-sref="page"
@@ -447,7 +447,35 @@
   .tourbg(
     ng-show="currentStep > 0 && currentStep < 2"
   )
-
+  
+  .register-modal(
+    ng-show="showRegisterModal"
+    ng-class="{'fade-in': showRegisterModal}"
+  )
+    .inner
+      .top(
+        ng-style="{'background-image': 'url(' + page.imageD + ')'}"
+      )
+    
+      .bottom
+        h2 Before we can publish your site, 
+          br
+          | we'll need your account information
+        input(
+          ng-model="user.email"
+          placeholder="email"
+        )
+        br
+        input(
+          ng-model="user.password"
+          placeholder="password"
+          type="password"
+        )
+        br
+        button.btn-primary(
+          ng-click="register()"
+        ) Create
+  
   .welcome-modal.fade-out(
     ng-show="showModal"
   )
@@ -457,7 +485,7 @@
       )
       
       .middle
-        h2 Welcome to {{page.pet.name}}'s Page!
+        h2 Welcome to {{page.name}}'s Page!
         
         h3 We generated an example page for you. 
           br

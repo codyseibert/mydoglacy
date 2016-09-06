@@ -1,5 +1,10 @@
 mongoose = require 'mongoose'
 
-module.exports =
-  Users: mongoose.model 'Users', require './users'
-  Obituaries: mongoose.model 'Obituaries', require './obituaries'
+Users = require './users'
+Pets = require './pets'
+
+models =
+  Users: mongoose.model 'Users', Users
+  Pets: mongoose.model 'Pets', Pets
+
+module.exports = models

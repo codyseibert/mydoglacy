@@ -7,6 +7,7 @@ module.exports = [
   '$interval'
   'lodash'
   'PageService'
+  'UserService'
   'localStorageService'
   'Upload'
   'API_PATH'
@@ -16,6 +17,7 @@ module.exports = [
     $interval
     _
     PageService
+    UserService
     localStorageService
     Upload
     API_PATH
@@ -28,6 +30,7 @@ module.exports = [
     $scope.isEditMode = false
     $scope.showModal = true
     $scope.currentStep = 0
+    $scope.showRegisterModal = false
 
     $scope.editing =
       name: false
@@ -50,17 +53,35 @@ module.exports = [
       localStorageService.set 'page', PageService
     , true
 
+    $scope.publish = ->
+      if UserService.email?
+        $scope.openStripe()
+      else
+        $scope.showRegisterModal = true
+
     $scope.edit = ->
       $scope.currentSection = 0
       $scope.isEditMode = not $scope.isEditMode
       $scope.currentStep = 2
 
-    $scope.publish = ->
+    $scope.openStripe = ->
       $rootScope.STRIPE.open(
-        name: "Publish #{$scope.page.pet.name}'s Page",
-        description: "Pay to make #{$scope.page.pet.name}'s page live"
+        name: "Publish #{$scope.page.name}'s Page",
+        description: "Subscribe to publish #{$scope.page.name}'s page"
+        zipCode: true
+        email: UserService.email
         amount: 999
+        panelLabel: "{{amount}} / year"
       )
+
+    $scope.register = ->
+      UserService.email = $scope.user.email
+
+      UserService.post $scope.user
+        .then ->
+          # TODO: Post the pet
+          $scope.showRegisterModal = false
+          $scope.openStripe()
 
     $scope.cardClicked = (card) ->
       console.log card
