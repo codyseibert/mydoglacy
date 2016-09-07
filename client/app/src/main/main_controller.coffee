@@ -1,3 +1,8 @@
+$ = require 'jquery'
+gsap = require 'gsap'
+TweenLite = gsap.TweenLite
+TimelineLite = gsap.TimelineLite
+
 module.exports = [
   '$scope'
   '$window'
@@ -17,6 +22,29 @@ module.exports = [
     $scope.showLoginModal = false
 
     $scope.user = {}
+
+    cache = {}
+
+    $scope.animateFeatures = ($inviewInfo) ->
+      options =
+        scaleX: 1.0
+        scaleY: 1.0
+        ease: gsap.Bounce.easeOut
+
+      element = $inviewInfo.element[0]
+      SPEED = 0.5
+      id = $(element).attr('id')
+      if not cache[id]?
+        line = new TimelineLite()
+        images = $('.section-features img')
+        line
+          .to images.get(0), SPEED, options
+          .to images.get(2), SPEED, options
+          .to images.get(4), SPEED, options
+          .to images.get(1), SPEED, options
+          .to images.get(3), SPEED, options
+          .to images.get(5), SPEED, options
+      cache[id] = true
 
     $scope.carousel = [
       src: 'assets/images/yoga.png'

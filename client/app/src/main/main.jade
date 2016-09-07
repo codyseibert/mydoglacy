@@ -79,7 +79,11 @@
       ) 
         i.fa.fa-chevron-right
         
-.section-features
+.section-features(
+  id="features"
+  in-view="animateFeatures($inviewInfo)"
+  in-view-options="{offset: [-400, 0, 0, 0]}"
+)
   h1
     span.accent Features 
     | in My Dog Lacy..

@@ -12,6 +12,7 @@ require 'ng-file-upload'
 require 'angular-confirm'
 require 'angular-deckgrid'
 require '@iamadamjowett/angular-click-outside'
+require 'angular-inview'
 
 app = require('angular').module('mydoglacy', [
   require 'angular-ui-router'
@@ -27,6 +28,7 @@ app = require('angular').module('mydoglacy', [
   'ui.bootstrap'
   'angular-confirm'
   'akoenig.deckgrid'
+  'angular-inview'
   require 'angular-moment'
 ])
 
