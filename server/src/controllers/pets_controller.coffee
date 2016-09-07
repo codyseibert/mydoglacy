@@ -1,41 +1,38 @@
 models = require '../models/models'
-Snippits = models.Snippits
+Pets = models.Pets
 ObjectId = require('mongoose').Types.ObjectId
 lodash = require 'lodash'
 classifier = require 'language-classifier'
-log4js = require 'log4js'
-logger = log4js.getLogger 'app'
 
 module.exports = do ->
 
   index: (req, res) ->
-    query = req.query
-    if req.query['_id$in']
-      query =
-        '_id':
-          $in: req.query['_id$in'].split ','
-    Snippits.find(query).then (obj) ->
+    # query = req.query
+    # if req.query['_id$in']
+    #   query =
+    #     '_id':
+    #       $in: req.query['_id$in'].split ','
+    Pets.find(userId: req.user._id).then (collection) ->
       res.status 200
-      res.send obj
+      res.send collection
 
   show: (req, res) ->
-    Snippits.findById(req.params.id).then (obj) ->
+    Pets.findById(req.params.id).then (obj) ->
       res.status 200
       res.send obj
 
   post: (req, res) ->
-    req.body.user_id = req.user._id
-    # req.body.language = classifier req.body.code
-    Snippits.create(req.body).then (obj) ->
+    req.body.userId = req.user._id
+    Pets.create(req.body).then (obj) ->
       res.status 200
       res.send obj
 
   put: (req, res) ->
-    Snippits.update(_id: new ObjectId(req.params.id), req.body).then (obj) ->
+    Pets.update(_id: new ObjectId(req.params.id), req.body).then (obj) ->
       res.status 200
       res.send obj
 
   destroy: (req, res) ->
-    Snippits.findById(req.params.id).remove().then (obj) ->
+    Pets.findById(req.params.id).remove().then (obj) ->
       res.status 200
       res.send obj

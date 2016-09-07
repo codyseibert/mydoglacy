@@ -2,13 +2,21 @@ module.exports = [
   '$scope'
   '$window'
   'lodash'
+  'SecurityService'
+  'TokenService'
   (
     $scope
     $window
     _
+    SecurityService
+    TokenService
   ) ->
 
     $scope.scrollPosition = 0
+
+    $scope.showLoginModal = false
+
+    $scope.user = {}
 
     $scope.carousel = [
       src: 'assets/images/yoga.png'
@@ -62,6 +70,17 @@ module.exports = [
       10 - dist
 
     $scope.orderItems = (item) ->
+
+    $scope.login = ->
+      SecurityService.login $scope.user
+        .then (token) ->
+          TokenService.setToken token
+          $state.go 'pets'
+        .catch (err) ->
+          $scope.loginError = 'Invalid login information.  Please try again'
+
+    $scope.isLoggedIn = ->
+      TokenService.getToken()?
 
     return this
 ]

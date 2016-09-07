@@ -15,6 +15,13 @@
         a Contact Us
       li 
         a About
+      li(
+        ng-hide="isLoggedIn()"
+      )
+        a(
+          id="loginBtn"
+          ng-click="showLoginModal = true"
+        ) Login
       
   .logo LOGO
       
@@ -223,3 +230,35 @@
       button(
         
       ) Create My Page
+      
+.login-modal(
+  ng-show="showLoginModal"
+  ng-class="{'fade-in': showLoginModal}"
+)
+  .inner(
+    id="loginInner"
+    click-outside="showLoginModal = false"
+    outside-if-not="loginBtn"
+  )
+    .top
+    .middle
+      h2 Please log in below
+      input(
+        placeholder="email"
+        ng-model="user.email"
+      )
+      br
+      input(
+        placeholder="password"
+        type="password"
+        ng-model="user.password"
+      )
+      br
+      button.btn-primary(
+        ng-click="login()"
+      ) Login
+      br
+      h3(
+        style="color: red"
+      ) {{loginError}}
+    .bottom

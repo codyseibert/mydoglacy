@@ -29,6 +29,12 @@ app = require('angular').module('mydoglacy', [
   'akoenig.deckgrid'
   require 'angular-moment'
 ])
+
+app.factory 'AuthorizationInterceptor', require './authorization_interceptor'
+app.service 'TokenService', require './token_service'
+app.service 'PetService', require './pet_service'
+app.service 'SecurityService', require './security_service'
+
 app.config require './routes'
 app.config [
   'localStorageServiceProvider'
@@ -39,9 +45,13 @@ app.config [
     localStorageServiceProvider
       .setPrefix 'mydoglacy'
 ]
+app.config ['$httpProvider', ($httpProvider) ->
+  $httpProvider.interceptors.push 'AuthorizationInterceptor'
+]
 
 require './main'
 require './page'
+require './pets'
 
 app.constant 'API_PATH', 'http://localhost:8081'
 
@@ -59,15 +69,19 @@ app.run [
     API_PATH
   ) ->
 
+    $rootScope.$on '$stateChangeStart', (event, toState, toParams, fromState, fromParams) ->
+      $rootScope.STRIPE.close()
+
+    # TODO: Does this need to be in rootScope?
     $rootScope.STRIPE = StripeCheckout.configure(
       key: 'pk_test_VSOl2a32ywHvrzNjzQfxTFBD'
       locale: 'auto'
       token: (token) ->
-        console.log 'token', token
-        $http.post "#{API_PATH}/charge", {stripeToken: token, page: PageService, email: UserService.email}
+        $rootScope.$emit 'charge.started'
+        $http.post "#{API_PATH}/charge", {stripeToken: token, page: PageService, email: UserService.getUser().email}
           .then (res) ->
-            console.log 'res', res
+            $rootScope.$emit 'charge.success', res.data
           .catch (err) ->
-            console.log 'err', err
+            $rootScope.$emit 'charge.failure'
     )
 ]

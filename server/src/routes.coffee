@@ -12,16 +12,18 @@ multer = require 'multer'
 upload = multer dest: '/tmp'
 
 module.exports = do ->
+  app.get '/users', UsersCtrl.index
   app.get '/users/:id', userIsLoggedIn, UsersCtrl.show
   app.post '/users', UsersCtrl.post
   app.put '/users/:id', userIsLoggedIn, UsersCtrl.put
 
+  app.get '/pets', userIsLoggedIn, PetsCtrl.index
   app.get '/pets/:id', PetsCtrl.show
-  app.post '/pets', PetsCtrl.post
-  app.put '/pets/:id', userOwnsPet, PetsCtrl.put
+  app.post '/pets', userIsLoggedIn, PetsCtrl.post
+  app.put '/pets/:id', userIsLoggedIn, userOwnsPet, PetsCtrl.put
 
   app.post '/images', upload.single('file'), ImagesCtrl.post
 
-  app.post '/charge', ChargeCtrl.post
+  app.post '/charge', userIsLoggedIn, ChargeCtrl.post
 
   app.post '/login', LoginCtrl.post

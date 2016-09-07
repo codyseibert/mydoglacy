@@ -11,6 +11,16 @@ createSalt = ->
 
 module.exports = do ->
 
+  index: (req, res) ->
+    query = req.query
+    if req.query['_id$in']
+      query =
+        '_id':
+          $in: req.query['_id$in'].split ','
+    Users.find(query).then (obj) ->
+      res.status 200
+      res.send obj
+
   show: (req, res) ->
     Users.findById(req.params.id).then (obj) ->
       res.status 200

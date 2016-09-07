@@ -4,12 +4,29 @@ ObjectId = Schema.ObjectId
 
 module.exports = new Schema
   name: String
+  gender: String
   breed: String
-  date_of_birth: Date
-  date_of_death: Date
+  headline: String
+  banner: String
+  memory: String
   biography: String
-  images: Array
-  stories: Array
+  titleA: String
+  snippitA: String
+  story: String
+  titleB: String
+  snippitB: String
+  imageA: String
+  imageB: String
+  imageC: String
+  imageD: String
+  imageE: String
+  imageF: String
+  imageG: String
+  imageH: String
+  imageI: String
+  imageJ: String
+  carousel: Array
+
   subscriptionId: String
   userId: ObjectId
   activeUntil: Date

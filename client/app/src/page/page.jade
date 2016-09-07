@@ -415,13 +415,14 @@
     //- )
   
   button.publish.btn.btn-primary(
-    ng-if="!showPublishModal"
+    ng-if="!isViewMode"
     ng-click="publish()"
   )
     i.fa.fa-star
     | Publish {{page.name}}'s Page
     
   button.edit.btn.btn-warning(
+    ng-if="!isViewMode"
     ui-sref="page"
     ng-click="edit()"
     ng-class="{'tour-current': currentStep === 1, 'accent': isEditMode}"
@@ -503,3 +504,38 @@
         ng-click="hideModal()"
       )
         span customize my page!
+        
+  .charge-modal(
+    ng-show="showChargingModal"
+    ng-class="{'fade-in': showChargingModal}"
+  )
+    .inner
+      .top(
+        ng-style="{'background-image': 'url(' + page.imageB + ')'}"
+      )
+    
+      .bottom
+        h2 Please wait while we process your order
+        
+  .success-modal(
+    ng-show="showSuccessModal"
+    ng-class="{'fade-in': showSuccessModal}"
+  )
+    .inner
+      .top(
+        ng-style="{'background-image': 'url(' + page.imageB + ')'}"
+      )
+    
+      .bottom
+        h2 {{page.name}}'s page is now live!
+        
+        h3 Share this link below with your family and friends
+        
+        a(
+          ui-sref="view({id: petId})"
+        ) https://mydoglacy.com/{{petId}}
+        
+        h3 Remember, you can always access your pet's page from your dashboard
+        a(
+          ui-sref="pets"
+        ) Go to my Dashboard

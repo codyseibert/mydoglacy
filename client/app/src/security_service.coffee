@@ -1,5 +1,3 @@
-jwt = require 'jsonwebtoken'
-
 module.exports = [
   'lodash'
   'localStorageService'
@@ -16,12 +14,11 @@ module.exports = [
     API_PATH
   ) ->
 
-    getUser: ->
-      jwt.decode(TokenService.getToken())._doc
-
-    post: (user) ->
-      $http.post "#{API_PATH}/users", user
+    login: (user) ->
+      $http.post "#{API_PATH}/login", user
         .then (response) ->
-          response.data
+          token = response.data
+          TokenService.setToken token
+          token
 
 ]

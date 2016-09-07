@@ -1,0 +1,13 @@
+#pets
+  h1 select your pet below
+  
+  .pet(
+    ng-repeat="pet in pets"
+    ng-style="{'background-image': 'url(' + pet.banner + ')'}"
+    ui-sref="view({id: pet._id})"
+  )
+    .inner(
+      style="padding: 40px;"
+    )
+    h1 {{pet.name}}
+  

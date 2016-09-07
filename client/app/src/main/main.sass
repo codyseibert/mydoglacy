@@ -334,3 +334,56 @@ button:focus
 
   button:hover
     background-color: #25b9bb
+
+.login-modal
+  color: #666
+  position: fixed
+  top: 0px
+  left: 0px
+  z-index: 20
+  height: 100%
+  width: 100%
+  background-color: rgba(0, 0, 0, 0.8)
+  opacity: 0
+
+  .top
+    height: 160px
+    background-color: #666
+
+  .inner
+    text-align: center
+    width: 50%
+    height: 68%
+    position: relative
+    top: 20%
+    background-color: white
+    margin: 0 auto
+    font-family: 'Montserrat', sans-serif
+
+  .bottom
+    padding: 40px
+    padding-top: 0px
+
+  h2
+    margin-bottom: 20px
+
+  input
+    padding: 10px
+    font-size: 20px
+    width: 300px
+    margin-bottom: 10px
+
+  button
+    width: 300px
+    padding: 10px
+    margin: 0 auto
+    margin-top: 5px
+    color: white
+
+.login-modal.fade-in
+  opacity: 1
+  transition: 0.5s linear all
+    
+.login-modal.ng-hide
+  opacity: 0
+  transition: 0.5s linear all

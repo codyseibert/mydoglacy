@@ -5,32 +5,76 @@ module.exports = [
   '$scope'
   '$rootScope'
   '$interval'
+  '$timeout'
+  '$stateParams'
   'lodash'
   'PageService'
   'UserService'
+  'SecurityService'
   'localStorageService'
+  'PetService'
+  'TokenService'
   'Upload'
   'API_PATH'
+  '$http'
   (
     $scope
     $rootScope
     $interval
+    $timeout
+    $stateParams
     _
     PageService
     UserService
+    SecurityService
     localStorageService
+    PetService
+    TokenService
     Upload
     API_PATH
+    $http
   ) ->
 
-    $scope.page = PageService
-    $scope.page.layouts =
-      main: 0
+
+    $scope.petId = $stateParams.id
+    if $scope.petId?
+      $scope.isViewMode = true
+
+      PetService.get $scope.petId
+        .then (pet) ->
+          $scope.page = pet
+
+          $scope.page.layouts =
+            main: 0
+
+          $timeout ->
+            $scope.$apply()
+
+          # TODO: If the pet is no longer active, redirect user to an inactive pet page
+
+          # TODO: If the user owns the pet, also allow edit mode
+    else
+      $scope.isViewMode = false
+      $scope.showModal = true
+      $scope.showRegisterModal = false
+      $scope.isEditMode = false
+
+      $scope.$watch ->
+        PageService
+      , ->
+        $scope.page = PageService
+        localStorageService.set 'page', PageService
+      , true
+
+      $scope.page = PageService
+      delete $scope.page._id if $scope.page._id?
+
+      $scope.page.layouts =
+        main: 0
+
     $scope.currentSection = 0
     $scope.isEditMode = false
-    $scope.showModal = true
     $scope.currentStep = 0
-    $scope.showRegisterModal = false
 
     $scope.editing =
       name: false
@@ -46,16 +90,13 @@ module.exports = [
       $scope.showModal = false
       $scope.currentStep = 1
 
-    $scope.$watch ->
-      PageService
-    , ->
-      $scope.page = PageService
-      localStorageService.set 'page', PageService
-    , true
-
     $scope.publish = ->
-      if UserService.email?
-        $scope.openStripe()
+      if TokenService.getToken()?
+        # we are already logged in
+        PetService.post $scope.page
+          .then (pet) ->
+            $scope.page._id = pet._id
+            $scope.openStripe()
       else
         $scope.showRegisterModal = true
 
@@ -69,25 +110,40 @@ module.exports = [
         name: "Publish #{$scope.page.name}'s Page",
         description: "Subscribe to publish #{$scope.page.name}'s page"
         zipCode: true
-        email: UserService.email
+        email: UserService.getUser().email
         amount: 999
-        panelLabel: "{{amount}} / year"
+        panelLabel: "{{amount}} per year"
       )
 
-    $scope.register = ->
-      UserService.email = $scope.user.email
+    $rootScope.$on 'charge.started', ->
+      $scope.showChargingModal = true
 
+    $rootScope.$on 'charge.success', (evt, petId) ->
+      $scope.showChargingModal = false
+      $scope.showSuccessModal = true
+      $scope.petId = petId
+
+    $scope.register = ->
+      # Create a new account
       UserService.post $scope.user
         .then ->
-          # TODO: Post the pet
-          $scope.showRegisterModal = false
-          $scope.openStripe()
+          # Login to get the JWT
+          SecurityService.login $scope.user
+            .then ->
+              # Post the pet
+              PetService.post $scope.page
+                .then (pet) ->
+                  $scope.page._id = pet._id
+                  $scope.showRegisterModal = false
+                  $scope.openStripe()
+                .catch (err) ->
+              # There was a problem with creating the pet
+        .catch (err) ->
+          # If the account already exists, request that the user logs in
 
     $scope.cardClicked = (card) ->
-      console.log card
 
     $scope.save = ->
-      console.log 'saving'
 
     $scope.onSlideUpload = (image) ->
       $scope.page.carousel.push

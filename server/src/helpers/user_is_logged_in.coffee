@@ -13,5 +13,8 @@ module.exports = (req, res, next) ->
         req.status 400
         res.send 'invalid token'
       else
-        req.user = decoded
+        req.user = decoded._doc
         next()
+  catch err
+    res.status 401
+    res.send 'missing authorization header'
