@@ -17,7 +17,11 @@ module.exports = [
   ) ->
 
     getUser: ->
-      jwt.decode(TokenService.getToken())._doc
+      token = TokenService.getToken()
+      return null if not token?
+      decode = jwt.decode token
+      return null if not decode?._doc?
+      decode._doc
 
     get: (userId) ->
       $http.get "#{API_PATH}/users/#{userId}"

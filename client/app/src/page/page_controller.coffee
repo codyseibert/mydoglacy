@@ -38,7 +38,9 @@ module.exports = [
   ) ->
 
     userOwnsPet = (pet) ->
-      pet.userId is UserService.getUser()._id
+      user = UserService.getUser()
+      return false if not user?
+      pet.userId is user._id
 
     isLoggedIn = ->
       TokenService.getToken()?

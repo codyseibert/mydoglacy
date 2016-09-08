@@ -24,7 +24,10 @@ module.exports = do ->
       return
 
     Pets.findById(req.params.id).then (obj) ->
-      if not obj?
+      if not obj.activeUntil? or not moment().isBefore(moment(obj.activeUntil))
+        res.status 400
+        res.send 'pet is not published'
+      else if not obj?
         res.status 404
         res.send 'no pet found with the given id'
       else

@@ -6,6 +6,7 @@ TimelineLite = gsap.TimelineLite
 module.exports = [
   '$scope'
   '$window'
+  '$state'
   'lodash'
   'SecurityService'
   'TokenService'
@@ -13,6 +14,7 @@ module.exports = [
   (
     $scope
     $window
+    $state
     _
     SecurityService
     TokenService
