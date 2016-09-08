@@ -7,6 +7,7 @@ LoginCtrl = require './controllers/login_controller'
 
 userIsLoggedIn = require './helpers/user_is_logged_in'
 userOwnsPet = require './helpers/user_owns_pet'
+injectUser = require './helpers/inject_user'
 
 multer = require 'multer'
 upload = multer dest: '/tmp'
@@ -18,7 +19,7 @@ module.exports = do ->
   app.put '/users/:id', userIsLoggedIn, UsersCtrl.put
 
   app.get '/pets', userIsLoggedIn, PetsCtrl.index
-  app.get '/pets/:id', PetsCtrl.show
+  app.get '/pets/:id', injectUser, PetsCtrl.show
   app.post '/pets', userIsLoggedIn, PetsCtrl.post
   app.put '/pets/:id', userIsLoggedIn, userOwnsPet, PetsCtrl.put
 
