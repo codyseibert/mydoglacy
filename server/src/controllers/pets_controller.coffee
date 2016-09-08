@@ -3,6 +3,7 @@ Pets = models.Pets
 ObjectId = require('mongoose').Types.ObjectId
 lodash = require 'lodash'
 classifier = require 'language-classifier'
+moment = require 'moment'
 
 module.exports = do ->
 
@@ -17,18 +18,33 @@ module.exports = do ->
       res.send collection
 
   show: (req, res) ->
+    if not ObjectId.isValid req.params.id
+      res.status 404
+      res.send 'invalid object id'
+      return
+
     Pets.findById(req.params.id).then (obj) ->
-      res.status 200
-      res.send obj
+      if not obj?
+        res.status 404
+        res.send 'no pet found with the given id'
+      else
+        res.status 200
+        res.send obj
 
   post: (req, res) ->
-    req.body.userId = req.user._id
-    Pets.create(req.body).then (obj) ->
-      res.status 200
-      res.send obj
+    req.body.userId = new ObjectId(req.user._id)
+    Pets.create(req.body)
+      .then (obj) ->
+        res.status 200
+        res.send obj
+      .catch (err) ->
+        console.log 'err', err
+        res.status 400
+        res.send 'pet already exists'
 
   put: (req, res) ->
-    Pets.update(_id: new ObjectId(req.params.id), req.body).then (obj) ->
+    petId = new ObjectId req.params.id
+    Pets.update(_id: petId, req.body).then (obj) ->
       res.status 200
       res.send obj
 

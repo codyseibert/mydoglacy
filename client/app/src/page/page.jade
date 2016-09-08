@@ -9,7 +9,7 @@
       style="position: relative"
     )
       .row(
-        ng-if="page.layouts.main === 0"
+        ng-if="page.layout === '0'"
         style="padding-top: 60px; padding-bottom: 40px;"
       )
         .col-md-6
@@ -65,7 +65,7 @@
         
       
       .row(
-        ng-if="page.layouts.main === 1"
+        ng-if="page.layout === '1'"
       )
         div(
           style="text-align: center; padding-top: 10px; padding-bottom: 40px;"
@@ -90,7 +90,7 @@
           ) {{page.headline}}
           
       .row.c(
-        ng-if="page.layouts.main === 2"
+        ng-if="page.layout === '2'"
       )
         .col-md-6.center
           div(
@@ -121,7 +121,7 @@
             )
           
       .row.d(
-        ng-if="page.layouts.main === 3"
+        ng-if="page.layout === '3'"
       )
         .col-md-6
           .card
@@ -157,26 +157,26 @@
       )
         button.outline(
           style="background-image: url('assets/images/Layout1.png')"
-          ng-click="page.layouts.main = 0"
-          ng-class="{'selected': page.layouts.main === 0}"
+          ng-click="page.layout = '0'"
+          ng-class="{'selected': page.layout === '0'}"
         )
         
         button.outline(
           style="background-image: url('assets/images/Layout2.png')"
-          ng-click="page.layouts.main = 1"
-          ng-class="{'selected': page.layouts.main === 1}"
+          ng-click="page.layout = '1'"
+          ng-class="{'selected': page.layout === '1'}"
         )
         
         button.outline(
           style="background-image: url('assets/images/Layout3.png')"
-          ng-click="page.layouts.main = 2"
-          ng-class="{'selected': page.layouts.main === 2}"
+          ng-click="page.layout = '2'"
+          ng-class="{'selected': page.layout === '2'}"
         )
         
         button.outline(
           style="background-image: url('assets/images/Layout4.png')"
-          ng-click="page.layouts.main = 3"
-          ng-class="{'selected': page.layouts.main === 3}"
+          ng-click="page.layout = '3'"
+          ng-class="{'selected': page.layout === '3'}"
         ) 
           
   //- First Left / Right Section
@@ -404,33 +404,39 @@
     ng-class="{'outline': isEditMode}"
     style="position: absolute; top: 0px; left: 0px; z-index: 1; width: 100%; height: 100%; background-size: cover;"
     ng-style="{'background-image': 'url(' + page.banner + ')'}"
-    ng-if="page.layouts.main === 0"
+    ng-if="page.layout === '0'"
     ng-disabled="!isEditMode"
     ngf-select="upload($file, page, 'banner')"
   )
     //- img(
     //-   ng-src="{{page.banner}}"
     //-   style="z-index: 1;"
-    //-   ng-if="page.layouts.main === 0"
+    //-   ng-if="page.layout === '0'"
     //- )
-  
-  button.publish.btn.btn-primary(
-    ng-if="!isViewMode"
-    ng-click="publish()"
-  )
-    i.fa.fa-star
-    | Publish {{page.name}}'s Page
-    
-  button.edit.btn.btn-warning(
-    ng-if="!isViewMode"
-    ui-sref="page"
-    ng-click="edit()"
-    ng-class="{'tour-current': currentStep === 1, 'accent': isEditMode}"
-  )
-    i.fa(
-      ng-class="{'fa-edit': !isEditMode, 'fa-eye': isEditMode}"
+  .buttons-top
+    button.publish.btn.btn-primary(
+      ng-show="!isViewOnly && !isPublished()"
+      ng-click="publish()"
     )
-    | {{isEditMode ? "Preview" : "Edit"}}
+      i.fa.fa-star
+      | Publish {{page.name}}'s Page
+      
+    button.edit.btn.btn-warning(
+      ng-show="!isViewOnly"
+      ng-click="edit()"
+      ng-class="{'tour-current': currentStep === 1, 'accent': isEditMode}"
+    )
+      i.fa(
+        ng-class="{'fa-edit': !isEditMode, 'fa-eye': isEditMode}"
+      )
+      | {{isEditMode ? "Preview" : "Edit"}}
+      
+    button.account.btn.btn-primary(
+      ng-show="isLoggedIn()"
+      ui-sref="pets"
+    )
+      i.fa.fa-user
+      | My Account
     
   .tour-panel(
     ng-show="currentStep === 1"

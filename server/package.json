@@ -24,6 +24,7 @@
     "language-classifier": "0.0.1",
     "lodash": "^4.0.1",
     "log4js": "^0.6.30",
+    "moment": "^2.14.1",
     "mongoose": "^4.3.7",
     "multer": "^1.1.0",
     "mysql": "^2.10.2",

@@ -9,12 +9,14 @@ module.exports = [
   'lodash'
   'SecurityService'
   'TokenService'
+  'localStorageService'
   (
     $scope
     $window
     _
     SecurityService
     TokenService
+    localStorageService
   ) ->
 
     $scope.scrollPosition = 0
@@ -24,6 +26,7 @@ module.exports = [
     $scope.user = {}
 
     cache = {}
+    $scope.isNewUser = not localStorageService.get('page')?
 
     $scope.animateFeatures = ($inviewInfo) ->
       options =

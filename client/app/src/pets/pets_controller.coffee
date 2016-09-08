@@ -5,7 +5,6 @@ module.exports = [
   '$rootScope'
   '$interval'
   'lodash'
-  'PageService'
   'UserService'
   'SecurityService'
   'localStorageService'
@@ -13,12 +12,12 @@ module.exports = [
   'Upload'
   'API_PATH'
   '$http'
+  'moment'
   (
     $scope
     $rootScope
     $interval
     _
-    PageService
     UserService
     SecurityService
     localStorageService
@@ -26,11 +25,15 @@ module.exports = [
     Upload
     API_PATH
     $http
+    moment
   ) ->
 
     PetService.getMyPets()
       .then (pets) ->
         $scope.pets = pets
+
+    $scope.isPublished = (pet) ->
+      pet.activeUntil? and (moment().isBefore moment(pet.activeUntil))
 
     return this
 

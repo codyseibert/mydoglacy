@@ -6,6 +6,11 @@
     ng-style="{'background-image': 'url(' + pet.banner + ')'}"
     ui-sref="view({id: pet._id})"
   )
+    .banner(
+      ng-show="!isPublished(pet)"
+    )
+      .text Not Yet Published
+      
     .inner(
       style="padding: 40px;"
     )

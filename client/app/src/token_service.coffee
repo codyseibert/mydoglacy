@@ -16,5 +16,7 @@ module.exports = [
     setToken: (t) ->
       token = t
       localStorageService.set 'token', t
+      if not t?
+        localStorageService.remove 'token'
 
 ]

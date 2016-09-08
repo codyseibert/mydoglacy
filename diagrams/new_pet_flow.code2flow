@@ -1,0 +1,31 @@
+<User navigates to
+mydoglacy.com/new>;
+
+if (Local Storage is Undefined) {
+  Load Defaults;
+  (Create Pet);
+  cache "_id";
+  if (User is Logged In) {
+    (Associate Pet with User);
+  }
+} else {
+  Load Pet
+  from Local Storage;
+}
+
+||Show Pet Page||;
+
+<User Clicks Publish>;
+if (!User is Logged In) {
+  ||Show Register Modal||;
+  <User Clicks Register>;
+  (Created User);
+  Log User In;
+  (Associate Pet with User);
+}
+
+||Show Stripe Modal||;
+<Enters Payment Info>;
+||Show Processing Modal||;
+||Show Success Modal||;
+Clear Local Storage;

@@ -22,6 +22,12 @@
           id="loginBtn"
           ng-click="showLoginModal = true"
         ) Login
+      li(
+        ng-show="isLoggedIn()"
+      )
+        a(
+          ui-sref="pets"
+        ) Dashboard
       
   .logo LOGO
       
@@ -43,13 +49,22 @@
     | in remembrance of your 
     span.best best friend.
   
-  .signup
+  .signup(
+    ng-show="isNewUser"
+  )
     input(
       placeholder="Enter your pet's name"
     )
     button(
       ui-sref='page'
     ) Create Your Page
+    
+  .finish(
+    ng-show="!isNewUser"
+  )
+    button(
+      ui-sref='page'
+    ) Continue Building Your Page
     
 .section-preview
   .tophalf

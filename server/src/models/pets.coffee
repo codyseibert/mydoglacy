@@ -7,6 +7,7 @@ module.exports = new Schema
   gender: String
   breed: String
   headline: String
+  layout: String
   banner: String
   memory: String
   biography: String

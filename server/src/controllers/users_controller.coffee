@@ -22,9 +22,13 @@ module.exports = do ->
       res.send obj
 
   show: (req, res) ->
-    Users.findById(req.params.id).then (obj) ->
-      res.status 200
-      res.send obj
+    Users.findById(req.params.id).then (user) ->
+      if not user?
+        res.status 404
+        res.send 'user not found'
+      else
+        res.status 200
+        res.send user
 
   post: (req, res) ->
     user = req.body
@@ -38,9 +42,14 @@ module.exports = do ->
     user.salt = salt
     user.password = hash
 
-    Users.create(user).then (obj) ->
-      res.status 200
-      res.send obj
+    Users.findOne(email: user.email).then (u) ->
+      if u?
+        res.status 400
+        res.send 'user already exists with this email'
+      else
+        Users.create(user).then (obj) ->
+          res.status 200
+          res.send obj
 
   put: (req, res) ->
     Users.update(_id: new ObjectId(req.params.id), req.body).then (obj) ->

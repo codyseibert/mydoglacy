@@ -60,30 +60,31 @@ app.constant 'API_PATH', 'http://localhost:8081'
 app.run [
   '$rootScope'
   '$http'
-  'PageService'
+  '$state'
   'UserService'
+  'TokenService'
   'API_PATH'
+  'localStorageService'
   (
     $rootScope
     $http
-    PageService
+    $state
     UserService
+    TokenService
     API_PATH
+    localStorageService
   ) ->
 
-    $rootScope.$on '$stateChangeStart', (event, toState, toParams, fromState, fromParams) ->
-      $rootScope.STRIPE.close()
+    page = localStorageService.get 'page'
+    if page? and page._id? and page.activeUntil?
+      localStorageService.remove 'page'
 
-    # TODO: Does this need to be in rootScope?
-    $rootScope.STRIPE = StripeCheckout.configure(
-      key: 'pk_test_VSOl2a32ywHvrzNjzQfxTFBD'
-      locale: 'auto'
-      token: (token) ->
-        $rootScope.$emit 'charge.started'
-        $http.post "#{API_PATH}/charge", {stripeToken: token, page: PageService, email: UserService.getUser().email}
-          .then (res) ->
-            $rootScope.$emit 'charge.success', res.data
+    if TokenService.getToken()?
+      user = UserService.getUser()
+      if user?
+        UserService.get user._id
           .catch (err) ->
-            $rootScope.$emit 'charge.failure'
-    )
+            TokenService.setToken null
+            $state.go 'main'
+
 ]
