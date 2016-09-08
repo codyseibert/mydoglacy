@@ -27,7 +27,7 @@ module.exports = do ->
       if not obj?
         res.status 404
         res.send 'no pet found with the given id'
-      else if "#{obj.userId}" is "#{req.user._id}"
+      else if req.user?._id? and "#{obj.userId}" is "#{req.user._id}"
         res.status 200
         res.send obj
       else if not obj.activeUntil? or not moment().isBefore(moment(obj.activeUntil))

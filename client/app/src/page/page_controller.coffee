@@ -79,7 +79,7 @@ module.exports = [
         .catch (err) ->
           # we must have an invalid pet id
           # TODO: Redirect to a PET NOT FOUND page
-          $state.go 'pets'
+          $state.go 'main'
     else
       $scope.isViewOnly = false
       # We reached this controller via /#/new
