@@ -53,13 +53,13 @@ gulp.task 'sass', ->
     .pipe(gulp.dest('dist'))
     .pipe connect.reload()
 
-gulp.task 'coffee', ->
+gulp.task 'coffee', ['templates'], ->
   gulp.src('app/src/**/*.coffee')
     .pipe(coffee({bare: true})
     .on('error', gutil.log))
     .pipe(gulp.dest('tmp/js'))
 
-gulp.task 'scripts', ['coffee'], ->
+gulp.task 'scripts', ['replace'], ->
   gulp.src('tmp/js/app.js')
     .pipe(browserify({}))
     .pipe(gulp.dest('dist'))
