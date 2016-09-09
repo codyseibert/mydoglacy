@@ -69,6 +69,7 @@
     "gulp-sass": "^2.1.1",
     "gulp-util": "^3.0.7",
     "load-grunt-tasks": "~3.4.0",
-    "semver": "^5.1.0"
+    "semver": "^5.1.0",
+    "yargs": "^5.0.0"
   }
 }
