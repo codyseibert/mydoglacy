@@ -10,7 +10,9 @@ ngTemplates = require 'gulp-ng-templates'
 gulpIgnore = require 'gulp-ignore'
 connect = require 'gulp-connect'
 replace = require 'gulp-replace'
+args = require('yargs').argv
 
+isProduction = args.env is 'production'
 
 gulp.task 'clean', ->
   del.sync [ 'tmp', 'build', 'dist' ]
@@ -63,11 +65,11 @@ gulp.task 'scripts', ['coffee'], ->
     .pipe(gulp.dest('dist'))
     .pipe connect.reload()
 
-gulp.task 'replace', ->
-  if process.env.BUILD? is 'production'
+gulp.task 'replace', ['coffee'], ->
+  if isProduction
     gulp.src(['tmp/js/app.js'])
       .pipe(replace('http://localhost:8081', 'http://api.mydoglacy.com'))
-      .pipe(gulp.dest('tmp/js/app.js'))
+      .pipe(gulp.dest('tmp/js'))
 
 gulp.task 'connect', ->
   connect.server
