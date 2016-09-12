@@ -2,7 +2,8 @@ Base64 = require('js-base64').Base64
 Users = require('../models/models').Users
 jwt = require 'jsonwebtoken'
 
-TOKEN_PASSWORD = process.env.JWT_PASSWORD
+config = require '../config/config'
+TOKEN_PASSWORD = config.JWT_PASSWORD
 
 module.exports = (req, res, next) ->
   auth = req.headers.authorization

@@ -1,8 +1,12 @@
 module.exports = (
-  $stateProvider,
+  $stateProvider
   $urlRouterProvider
+  $locationProvider
 ) ->
   $urlRouterProvider.otherwise '/'
+
+  $locationProvider.html5Mode enabled: true, requireBase: false
+  $locationProvider.hashPrefix '!'
 
   $stateProvider
     .state 'main',

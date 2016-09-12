@@ -11,6 +11,7 @@ gulpIgnore = require 'gulp-ignore'
 connect = require 'gulp-connect'
 replace = require 'gulp-replace'
 args = require('yargs').argv
+modRewrite = require 'connect-modrewrite'
 
 isProduction = args.env is 'production'
 
@@ -75,6 +76,14 @@ gulp.task 'connect', ->
   connect.server
     root: 'dist'
     livereload: true
+    middleware: (connect, options) ->
+      [
+        modRewrite ['!\\.html|\\.jpg|\\.js|\\.svg|\\.ico|\\.ttf|\\.woff|\\.css|\\.png$ /index.html [L]']
+        # (req, res, next) ->
+        #   res.setHeader 'Access-Control-Allow-Origin', '*'
+        #   res.setHeader 'Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE'
+        #   next()
+      ]
 
 gulp.task 'watch', ->
   gulp.watch 'app/src/index.jade', [
