@@ -2,6 +2,7 @@ $ = require 'jquery'
 
 module.exports = [
   '$scope'
+  '$state'
   '$rootScope'
   '$interval'
   'lodash'
@@ -13,8 +14,10 @@ module.exports = [
   'API_PATH'
   '$http'
   'moment'
+  'TokenService'
   (
     $scope
+    $state
     $rootScope
     $interval
     _
@@ -26,6 +29,7 @@ module.exports = [
     API_PATH
     $http
     moment
+    TokenService
   ) ->
 
     PetService.getMyPets()
@@ -34,6 +38,10 @@ module.exports = [
 
     $scope.isPublished = (pet) ->
       pet.activeUntil? and (moment().isBefore moment(pet.activeUntil))
+
+    $scope.logout = ->
+      TokenService.setToken null
+      $state.go 'main'
 
     return this
 

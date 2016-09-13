@@ -7,3 +7,5 @@ module.exports = new Schema
   password: String
   salt: String
   stripeId: String
+  verify: String
+  verified: Boolean

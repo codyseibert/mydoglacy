@@ -1,6 +1,10 @@
 #pets
   h1 select your pet below
   
+  a(
+    ng-click="logout()"
+  ) Logout
+  
   .pet(
     ng-repeat="pet in pets"
     ng-style="{'background-image': 'url(' + pet.banner + ')'}"

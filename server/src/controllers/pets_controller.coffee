@@ -2,7 +2,6 @@ models = require '../models/models'
 Pets = models.Pets
 ObjectId = require('mongoose').Types.ObjectId
 lodash = require 'lodash'
-classifier = require 'language-classifier'
 moment = require 'moment'
 
 module.exports = do ->

@@ -18,6 +18,8 @@ module.exports = do ->
   app.post '/users', UsersCtrl.post
   app.put '/users/:id', userIsLoggedIn, UsersCtrl.put
 
+  app.post '/verify', UsersCtrl.verify
+
   app.get '/pets', userIsLoggedIn, PetsCtrl.index
   app.get '/pets/:id', injectUser, PetsCtrl.show
   app.post '/pets', userIsLoggedIn, PetsCtrl.post

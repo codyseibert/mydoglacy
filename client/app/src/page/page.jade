@@ -414,7 +414,7 @@
     //-   ng-if="page.layout === '0'"
     //- )
   .buttons-top
-    button.publish.btn.btn-primary(
+    button.publish.btn.btn-primary#publish(
       ng-show="!isViewOnly && !isPublished()"
       ng-click="publish()"
     )
@@ -459,7 +459,10 @@
     ng-show="showRegisterModal"
     ng-class="{'fade-in': showRegisterModal}"
   )
-    .inner
+    .inner#register-modal-inner(
+      click-outside="closeRegisterModal()"
+      outside-if-not="publish"
+    )
       .top(
         ng-style="{'background-image': 'url(' + page.imageD + ')'}"
       )

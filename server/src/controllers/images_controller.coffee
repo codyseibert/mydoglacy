@@ -6,14 +6,13 @@ uuid = require 'node-uuid'
 fs = require 'fs'
 AWS = require 'aws-sdk'
 
+config = require '../config/config'
+
 AWS.config.region = 'us-west-2'
 s3bucket = new AWS.S3(
   params:
     Bucket: 'mydoglacy'
 )
-
-process.env.AWS_ACCESS_KEY_ID = "AKIAIAW2DXZYXGKLOVTQ"
-process.env.AWS_SECRET_ACCESS_KEY = "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"
 
 module.exports = do ->
 

@@ -203,6 +203,10 @@ module.exports = [
         panelLabel: "{{amount}} per year"
       )
 
+    $scope.closeRegisterModal = ->
+      return if $scope.showRegisterModal is false
+      $scope.showRegisterModal = false
+
     $scope.register = ->
       UserService.post $scope.user
         .then ->
