@@ -22,6 +22,9 @@ gulp.task 'fonts', ->
   gulp.src('node_modules/bootstrap/fonts/*')
     .pipe gulp.dest('dist/fonts')
 
+  gulp.src('node_modules/font-awesome/fonts/*')
+    .pipe gulp.dest('dist/fonts')
+
 gulp.task 'copy', ['jade'], ->
   gulp.src('tmp/templates/index.html')
     .pipe gulp.dest('dist')
@@ -78,11 +81,7 @@ gulp.task 'connect', ->
     livereload: true
     middleware: (connect, options) ->
       [
-        modRewrite ['!\\.html|\\.jpg|\\.js|\\.svg|\\.ico|\\.ttf|\\.woff|\\.css|\\.png$ /index.html [L]']
-        # (req, res, next) ->
-        #   res.setHeader 'Access-Control-Allow-Origin', '*'
-        #   res.setHeader 'Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE'
-        #   next()
+        modRewrite ['!\\.html|\\.otf|\\.jpg|\\.js|\\.svg|\\.ico|\\.ttf|\\.woff|\\.css|\\.png$ /index.html [L]']
       ]
 
 gulp.task 'watch', ->

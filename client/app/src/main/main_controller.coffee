@@ -52,21 +52,21 @@ module.exports = [
       cache[id] = true
 
     $scope.carousel = [
-      src: 'assets/images/yoga.png'
+      src: 'assets/images/lacy-3.png'
     ,
-      src: 'assets/images/cat.png'
+      src: 'assets/images/lacy-1.png'
     ,
-      src: 'assets/images/yoga.png'
+      src: 'assets/images/lacy-2.png'
     ,
-      src: 'assets/images/cat.png'
+      src: 'assets/images/lacy-1.png'
     ,
-      src: 'assets/images/yoga.png'
+      src: 'assets/images/lacy-2.png'
     ,
-      src: 'assets/images/cat.png'
+      src: 'assets/images/lacy-3.png'
     ,
-      src: 'assets/images/yoga.png'
+      src: 'assets/images/lacy-1.png'
     ,
-      src: 'assets/images/cat.png'
+      src: 'assets/images/lacy-2.png'
     ]
 
     _.each $scope.carousel, (item, index) ->
@@ -88,8 +88,9 @@ module.exports = [
 
     $scope.getOpacity = (item) ->
       dist = Math.abs(item.order - $scope.carousel.length / 2 + 1)
-      if dist >= 2
-        Math.max 0, 0.8 - (dist - 2) * .8
+      if dist > 2
+        0
+        # Math.max 0, 0.8 - (dist - 2) * .8
       else
         1.0
 

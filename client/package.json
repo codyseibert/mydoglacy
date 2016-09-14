@@ -39,6 +39,7 @@
     "backbone": "^1.2.3",
     "bootstrap": "^3.3.6",
     "del": "^2.2.0",
+    "font-awesome": "^4.6.3",
     "gsap": "^1.19.0",
     "guid": "0.0.12",
     "jquery": "^2.2.0",
