@@ -379,6 +379,16 @@
             source="page.carousel" 
             cardTemplateString='<div class="dcard"><div ng-disabled="!mother.isEditMode" ngf-select="mother.upload($file, card, \'image\')" ng-class="{outline: mother.isEditMode}" class="a-card"><img src="" data-ng-src="{{card.image}}"></div><div class="delete" ng-click="mother.deleteCard(card)" ng-show="mother.isEditMode"><i class="fa fa-trash-o"></i></div></div>'
           )
+      .row
+        .col-md-12
+          .add-card(
+            ng-show="isEditMode"
+          )
+            button(
+              ngf-select="upload($file, newCard, \'image\')"
+            )
+              i.fa.fa-picture-o
+              | Add Image
           
   //- section(
   //- )

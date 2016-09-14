@@ -68,6 +68,7 @@ module.exports = [
     $scope.currentSection = 0
     $scope.currentStep = 0
     $scope.editing = {}
+    $scope.newCard = {}
 
     if $stateParams.id?
       PetService.get $stateParams.id
@@ -248,7 +249,11 @@ module.exports = [
           file: file
       )
         .then (resp) ->
-          obj[key] = resp.data
+          if obj is $scope.newCard
+            $scope.page.carousel.push
+              image: resp.data
+          else
+            obj[key] = resp.data
         , (resp) ->
           console.log 'Error', resp
         , (evt) ->
