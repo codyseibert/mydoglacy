@@ -64,7 +64,7 @@ module.exports = [
     ,
       src: 'assets/images/lacy-3.png'
     ,
-      src: 'assets/images/lacy-1.png'
+      src: 'assets/images/lacy-4.png'
     ,
       src: 'assets/images/lacy-2.png'
     ]

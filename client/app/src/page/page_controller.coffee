@@ -235,6 +235,11 @@ module.exports = [
     #   $scope.page.carousel.splice $scope.page.carousel.indexOf(slide), 1
     #   gotoNextSlide()
 
+    $scope.deleteCard = (card) ->
+      index = _.findIndex $scope.page.carousel, (entry) ->
+        entry.image is card.image
+      $scope.page.carousel.splice index, 1
+
     $scope.upload = (file, obj, key) ->
       obj[key] = 'assets/images/uploading.gif'
       Upload.upload(
