@@ -33,14 +33,14 @@
           )
             span(
               ng-class="{'outline': isEditMode}"
-              ng-show="!editing.date"
-              ng-click="editItem('date')"
+              ng-show="!editing.headline"
+              ng-click="editItem('headline')"
             ) {{page.headline}}
             input(
-              id="date-input"
-              ng-show="editing.date"
+              id="headline-input"
+              ng-show="editing.headline"
               ng-model="page.headline"
-              click-outside="editing.date = false"
+              click-outside="editing.headline = false"
             )
             
           .biography(
@@ -130,16 +130,43 @@
           .card
             .name(
               style="color: black;"
+              ng-click="editItem('name')"
+              ng-show="!editing.name"
+              ng-class="{'outline': isEditMode}"
             ) {{page.name}}
+            input(
+              id="name3-input"
+              ng-show="editing.name"
+              ng-model="page.name"
+              click-outside="editing.name = false"
+            )
             
             .date(
+              ng-class="{'outline': isEditMode}"
+              ng-show="!editing.headline"
+              ng-click="editItem('headline')"
               style="color: black;"
             ) {{page.headline}}
-          
+            input(
+              id="date3-input"
+              ng-show="editing.headline"
+              ng-model="page.headline"
+              click-outside="editing.headline = false"
+            )
+            
             p(
               style="font-size: 20px;"
               ng-show="!editing.biography"
               ng-bind-html="page.biography"
+              ng-click="editItem('biography')"
+              ng-class="{'outline': isEditMode}"
+            )
+            text-angular(
+              id="biography-input"
+              ng-show="editing.biography"
+              ng-model="page.biography"
+              ta-toolbar="[['bold', 'italics', 'underline', 'strikeThrough', 'ul', 'ol', 'redo', 'undo']]"
+              click-outside="editing.biography = false"
             )
           
       .row.d(
@@ -149,16 +176,43 @@
           .card
             .name(
               style="color: black;"
+              ng-click="editItem('name')"
+              ng-show="!editing.name"
+              ng-class="{'outline': isEditMode}"
             ) {{page.name}}
+            input(
+              id="name4-input"
+              ng-show="editing.name"
+              ng-model="page.name"
+              click-outside="editing.name = false"
+            )
             
             .date(
+              ng-class="{'outline': isEditMode}"
+              ng-show="!editing.headline"
+              ng-click="editItem('headline')"
               style="color: black;"
             ) {{page.headline}}
-          
+            input(
+              id="headline4-input"
+              ng-show="editing.headline"
+              ng-model="page.headline"
+              click-outside="editing.headline = false"
+            )
+            
             p(
               style="font-size: 20px;"
               ng-show="!editing.biography"
               ng-bind-html="page.biography"
+              ng-click="editItem('biography')"
+              ng-class="{'outline': isEditMode}"
+            )
+            text-angular(
+              id="biography4-input"
+              ng-show="editing.biography"
+              ng-model="page.biography"
+              ta-toolbar="[['bold', 'italics', 'underline', 'strikeThrough', 'ul', 'ol', 'redo', 'undo']]"
+              click-outside="editing.biography = false"
             )
             
         .col-md-6.center
