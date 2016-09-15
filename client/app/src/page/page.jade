@@ -10,7 +10,7 @@
     )
       .row(
         ng-if="page.layout === '0'"
-        style="padding-top: 60px; padding-bottom: 40px;"
+        style="padding-top: 130px; padding-bottom: 40px;"
       )
         .col-md-6
           .name(
@@ -64,15 +64,26 @@
         
         
       
-      .row(
+      .row.layout-1(
         ng-if="page.layout === '1'"
       )
         div(
           style="text-align: center; padding-top: 10px; padding-bottom: 40px;"
         )
-          .name(
-            style="color: black;"
-          ) {{page.name}}
+          div
+            div.top(
+              style="z-index: 3"
+              ng-class="{'outline': isEditMode}"
+              ng-click="editItem('name')"
+              ng-show="!editing.name"
+            ) {{page.name}}
+            input(
+              style="z-index: 3; position: relative;"
+              id="name2-input"
+              ng-show="editing.name"
+              ng-model="page.name"
+              click-outside="editing.name = false"
+            )
           
           div(
             style="display: inline-block; width: 555px; height: 555px; background-image: url('assets/images/circle.png'); background-size: cover"
@@ -85,9 +96,20 @@
               ngf-select="upload($file, page, 'banner')"
             )
           
-          .date(
-            style="color: black;"
-          ) {{page.headline}}
+          div
+            .bottom.date(
+              style="z-index: 3; color: black;"
+              ng-class="{'outline': isEditMode}"
+              ng-click="editItem('headline')"
+              ng-show="!editing.headline"
+            ) {{page.headline}}
+            input(
+              style="z-index: 3; position: relative;"
+              id="headline2-input"
+              ng-show="editing.headline"
+              ng-model="page.headline"
+              click-outside="editing.headline = false"
+            )
           
       .row.c(
         ng-if="page.layout === '2'"
