@@ -52,21 +52,25 @@ module.exports = do ->
         res.send 'user already exists with this email'
       else
         Users.create(user).then (obj) ->
-          verify = uuid.v4()
-          user.verify = verify
-          user.save ->
-            try
-              emailHelper.send user.email, """
-                Welcome to MyDogLacy!
-              """, """
-                Your account has been created!
+          if not obj?
+            res.status 400
+            res.send 'there was an error creating the user'
+          else
+            verify = uuid.v4()
+            obj.verify = verify
+            obj.save ->
+              try
+                emailHelper.send obj.email, """
+                  Welcome to MyDogLacy!
+                """, """
+                  Your account has been created!
 
-                Please click the link below to verify your account.
+                  Please click the link below to verify your account.
 
-                #{config.BASE_URL}/verify/#{verify}
-              """
-            res.status 200
-            res.send obj
+                  #{config.BASE_URL}/verify/#{verify}
+                """
+              res.status 200
+              res.send obj
 
   put: (req, res) ->
     Users.update(_id: new ObjectId(req.params.id), req.body).then (obj) ->

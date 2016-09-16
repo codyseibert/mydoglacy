@@ -10,6 +10,23 @@ TOKEN_PASSWORD = config.JWT_PASSWORD
 
 module.exports = do ->
 
+  validate: (req, res) ->
+    try
+      jwt.verify req.body.token, TOKEN_PASSWORD, (err, decoded) ->
+        if err?
+          res.status 403
+          res.send 'the token was invalid'
+        else
+          if not decoded?._doc?._id?
+            res.status 400
+            res.send 'token was valid, but contained no user id'
+          else
+            res.status 200
+            res.send userId: decoded._doc._id
+    catch err
+      res.send 404
+      res.send 'issue decrypting the token'
+
   post: (req, res) ->
     email = req.body.email
     password = req.body.password

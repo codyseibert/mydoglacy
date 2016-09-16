@@ -30,3 +30,5 @@ module.exports = do ->
   app.post '/charge', userIsLoggedIn, ChargeCtrl.post
 
   app.post '/login', LoginCtrl.post
+
+  app.post '/validate', LoginCtrl.validate
