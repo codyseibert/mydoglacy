@@ -1,4 +1,4 @@
-AWS = require 'AWS-sdk'
+AWS = require 'aws-sdk'
 config = require '../config/config'
 
 AWS.config.region = 'us-west-2'
