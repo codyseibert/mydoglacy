@@ -46,6 +46,7 @@ app.factory 'AuthorizationInterceptor', require './authorization_interceptor'
 app.service 'TokenService', require './token_service'
 app.service 'PetService', require './pet_service'
 app.service 'SecurityService', require './security_service'
+app.controller 'HollaBackCtrl', require './holla_back_controller'
 
 app.config require './routes'
 app.config [
@@ -66,6 +67,8 @@ require './page'
 require './pets'
 
 app.constant 'API_PATH', 'http://localhost:8081'
+app.constant 'HOLLA_BACK_PATH', 'http://localhost:8083'
+app.constant 'HOLLA_BACK_APP_ID', '57dd3757e7228a0001ac1e31'
 
 app.run [
   '$rootScope'
