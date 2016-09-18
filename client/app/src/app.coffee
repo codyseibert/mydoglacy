@@ -67,7 +67,7 @@ require './page'
 require './pets'
 
 app.constant 'API_PATH', 'http://localhost:8081'
-app.constant 'HOLLA_BACK_PATH', 'http://localhost:8083'
+app.constant 'HOLLA_BACK_PATH', 'http://localhost:8082'
 app.constant 'HOLLA_BACK_APP_ID', '57dd3757e7228a0001ac1e31'
 
 app.run [
