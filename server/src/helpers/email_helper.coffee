@@ -8,7 +8,7 @@ ses = new AWS.SES()
 module.exports =
   send: (to, subject, body) ->
     ses.sendEmail
-      Source: 'accounts@mydoglacy.com'
+      Source: 'MyDogLacy <accounts@mydoglacy.com>'
       Destination:
         ToAddresses: [to]
       Message:
@@ -18,4 +18,4 @@ module.exports =
           Text:
             Data: body
     , (err, data) ->
-      # TODO: Log error
+      console.log 'email helper', err

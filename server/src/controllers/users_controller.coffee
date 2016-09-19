@@ -59,16 +59,15 @@ module.exports = do ->
             verify = uuid.v4()
             obj.verify = verify
             obj.save ->
-              try
-                emailHelper.send obj.email, """
-                  Welcome to MyDogLacy!
-                """, """
-                  Your account has been created!
+              emailHelper.send obj.email, """
+                Welcome to MyDogLacy!
+              """, """
+                Your account has been created!
 
-                  Please click the link below to verify your account.
+                Please click the link below to verify your account.
 
-                  #{config.BASE_URL}/verify/#{verify}
-                """
+                #{config.BASE_URL}/verify/#{verify}
+              """
               res.status 200
               res.send obj
 
