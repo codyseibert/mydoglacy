@@ -16,14 +16,6 @@ require 'angular-inview'
 
 require 'autotrack'
 
-ga 'create', 'UA-77135326-2', 'auto'
-
-ga 'require', 'cleanUrlTracker'
-ga 'require', 'eventTracker'
-ga 'require', 'urlChangeTracker'
-
-ga 'send', 'pageview'
-
 app = require('angular').module('mydoglacy', [
   require 'angular-ui-router'
   require 'angular-resource'
