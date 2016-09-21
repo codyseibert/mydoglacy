@@ -51,6 +51,19 @@ module.exports = (
           controller: 'AccountVerifyCtrl'
           templateUrl: 'account_verify/account_verify.html'
 
+    .state 'tos',
+      url: '/termsofservice'
+      views:
+        'main':
+          controller: 'TermsOfServiceCtrl'
+          templateUrl: 'terms_of_service/terms_of_service.html'
+
+    .state 'privacy',
+      url: '/privacypolicy'
+      views:
+        'main':
+          controller: 'PrivacyPolicyCtrl'
+          templateUrl: 'privacy_policy/privacy_policy.html'
     .state 'view',
       url: '/:id'
       views:

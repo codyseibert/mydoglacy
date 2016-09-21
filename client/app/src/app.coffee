@@ -60,6 +60,8 @@ require './pets'
 require './password_reset'
 require './password_forgot'
 require './account_verify'
+require './privacy_policy'
+require './terms_of_service'
 require './services'
 
 app.constant 'API_PATH', 'http://localhost:8081'
