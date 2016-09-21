@@ -6,7 +6,6 @@ module.exports = new Schema
   email: String
   password: String
   salt: String
-  stripeId: String
   verify: String
   verified: Boolean
   resetUuid: String

@@ -8,7 +8,7 @@
   .pet(
     ng-repeat="pet in pets"
     ng-style="{'background-image': 'url(' + pet.banner + ')'}"
-    ui-sref="view({id: pet._id})"
+    ng-click="gotoView(pet)"
   )
     .banner(
       ng-show="!isPublished(pet)"
@@ -19,4 +19,12 @@
       style="padding: 40px;"
     )
     h1 {{pet.name}}
+    .cancel(
+      ng-show="canCancel(pet)"
+    )
+      button.btn.btn-primary(
+        ng-click="cancel($event, pet)"
+      ) 
+        i.fa.fa-ban
+        | Cancel Subscription
   

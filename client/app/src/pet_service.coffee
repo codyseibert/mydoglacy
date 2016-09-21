@@ -36,4 +36,8 @@ module.exports = [
         .then (response) ->
           response.data
 
+    cancel: (pet) ->
+      $http.delete "#{API_PATH}/pets/#{pet._id}/subscription", cleanup pet
+        .then (response) ->
+          response.data
 ]

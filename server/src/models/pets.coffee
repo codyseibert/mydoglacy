@@ -27,7 +27,8 @@ module.exports = new Schema
   imageI: String
   imageJ: String
   carousel: Array
-
+  customerId: String
+  isSubscriptionCanceled: Boolean
   subscriptionId: String
   userId: ObjectId
   activeUntil: Date

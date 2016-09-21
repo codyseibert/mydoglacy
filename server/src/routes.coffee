@@ -28,10 +28,12 @@ module.exports = do ->
   app.get '/pets/:id', injectUser, PetsCtrl.show
   app.post '/pets', userIsLoggedIn, PetsCtrl.post
   app.put '/pets/:id', userIsLoggedIn, userOwnsPet, PetsCtrl.put
+  app.delete '/pets/:id/subscription', userIsLoggedIn, userOwnsPet, ChargeCtrl.delete
 
   app.post '/images', upload.single('file'), ImagesCtrl.post
 
   app.post '/charge', userIsLoggedIn, ChargeCtrl.post
+  app.post '/stripe/webhook', ChargeCtrl.webhook
 
   app.post '/login', LoginCtrl.post
 
