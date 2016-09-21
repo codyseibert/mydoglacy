@@ -40,7 +40,7 @@ module.exports = [
       pet.activeUntil? and (moment().isBefore moment(pet.activeUntil))
 
     $scope.canCancel = (pet) ->
-      not pet.isSubscriptionCanceled
+      pet.isSubscriptionCanceled isnt true and pet.activeUntil?
 
     $scope.logout = ->
       TokenService.setToken null
