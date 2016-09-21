@@ -11,11 +11,12 @@ module.exports = do ->
 
   webhook: (req, res) ->
     event = req.body
-    console.log 'event received on webhook endpoint', event
+    console.log 'event received on webhook endpoint', JSON.stringify event
     stripe.events.retrieve event.id, (err, e) ->
       if err?
+        console.log JSON.stringify err
         res.status 400
-        res.send 'failed to verify with stripe'
+        res.send 'failed to verify with stripe ' + err
       else
         if e.type is 'invoice.payment_succeeded'
           customerId = e.data.object.customer
