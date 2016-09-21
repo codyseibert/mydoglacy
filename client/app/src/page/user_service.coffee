@@ -33,4 +33,9 @@ module.exports = [
         .then (response) ->
           response.data
 
+    verify: (body) ->
+      $http.post "#{API_PATH}/accounts/verify", body
+        .then (response) ->
+          response.data
+
 ]

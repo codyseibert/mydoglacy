@@ -5,6 +5,7 @@ lodash = require 'lodash'
 crypto = require 'crypto'
 uuid = require 'node-uuid'
 config = require '../config/config'
+Joi = require 'joi'
 
 emailHelper = require '../helpers/email_helper'
 
@@ -66,10 +67,14 @@ module.exports = do ->
 
                 Please click the link below to verify your account.
 
-                #{config.BASE_URL}/verify/#{verify}
-              """
-              res.status 200
-              res.send obj
+                #{config.BASE_URL}/verify?code=#{verify}
+              """, (err) ->
+                if err?
+                  res.status 500
+                  res.send 'the email was not sent ' + err
+                else
+                  res.status 200
+                  res.send 'an email should have been sent to the user'
 
   put: (req, res) ->
     Users.update(_id: new ObjectId(req.params.id), req.body).then (obj) ->
@@ -77,12 +82,21 @@ module.exports = do ->
       res.send obj
 
   verify: (req, res) ->
-    Users.findOne(verify: req.body.verify).then (user) ->
-      if not user?
+    schema = Joi.object().keys
+      verify: Joi.string().required()
+
+    Joi.validate req.body, schema, (err, value) ->
+      if err?
         res.status 400
-        res.send 'invalid verification code'
+        res.send err
       else
-        user.verified = true
-        user.save ->
-          res.status 200
-          res.send 'success'
+        Users.findOne(verify: value.verify).then (user) ->
+          if not user?
+            res.status 400
+            res.send 'invalid verification code'
+          else
+            user.verified = true
+            user.verify = null
+            user.save ->
+              res.status 200
+              res.send 'success'

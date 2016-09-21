@@ -30,11 +30,33 @@ module.exports = (
           controller: 'PetsCtrl'
           templateUrl: 'pets/pets.html'
 
+    .state 'reset',
+      url: '/reset'
+      views:
+        'main':
+          controller: 'PasswordResetCtrl'
+          templateUrl: 'password_reset/password_reset.html'
+
+    .state 'forgot',
+      url: '/forgot'
+      views:
+        'main':
+          controller: 'PasswordForgotCtrl'
+          templateUrl: 'password_forgot/password_forgot.html'
+
+    .state 'verify',
+      url: '/verify'
+      views:
+        'main':
+          controller: 'AccountVerifyCtrl'
+          templateUrl: 'account_verify/account_verify.html'
+
     .state 'view',
       url: '/:id'
       views:
         'main':
           controller: 'PageCtrl'
           templateUrl: 'page/page.html'
+
 
   return this

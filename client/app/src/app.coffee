@@ -57,6 +57,10 @@ app.config ['$httpProvider', ($httpProvider) ->
 require './main'
 require './page'
 require './pets'
+require './password_reset'
+require './password_forgot'
+require './account_verify'
+require './services'
 
 app.constant 'API_PATH', 'http://localhost:8081'
 app.constant 'HOLLA_BACK_PATH', 'http://localhost:8082'
@@ -90,6 +94,7 @@ app.run [
         UserService.get user._id
           .catch (err) ->
             TokenService.setToken null
+            console.log 'we are forcing the user to main..'
             $state.go 'main'
 
 ]

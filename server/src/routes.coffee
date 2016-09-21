@@ -4,9 +4,11 @@ PetsCtrl = require './controllers/pets_controller'
 ImagesCtrl = require './controllers/images_controller'
 ChargeCtrl = require './controllers/charge_controller'
 LoginCtrl = require './controllers/login_controller'
+PasswordCtrl = require './controllers/password_controller'
 
 userIsLoggedIn = require './helpers/user_is_logged_in'
 userOwnsPet = require './helpers/user_owns_pet'
+userOwnsUser = require './helpers/user_owns_user'
 injectUser = require './helpers/inject_user'
 
 multer = require 'multer'
@@ -16,9 +18,11 @@ module.exports = do ->
   app.get '/users', UsersCtrl.index
   app.get '/users/:id', userIsLoggedIn, UsersCtrl.show
   app.post '/users', UsersCtrl.post
-  app.put '/users/:id', userIsLoggedIn, UsersCtrl.put
 
-  app.post '/verify', UsersCtrl.verify
+  app.post '/password/forgot', PasswordCtrl.forgot
+  app.post '/password/reset', PasswordCtrl.reset
+
+  app.post '/accounts/verify', UsersCtrl.verify
 
   app.get '/pets', userIsLoggedIn, PetsCtrl.index
   app.get '/pets/:id', injectUser, PetsCtrl.show

@@ -6,7 +6,8 @@ AWS.config.region = 'us-west-2'
 ses = new AWS.SES()
 
 module.exports =
-  send: (to, subject, body) ->
+  send: (to, subject, body, cb) ->
+    cb ?= ->
     ses.sendEmail
       Source: 'MyDogLacy <accounts@mydoglacy.com>'
       Destination:
@@ -17,5 +18,4 @@ module.exports =
         Body:
           Text:
             Data: body
-    , (err, data) ->
-      console.log 'email helper', err
+    , cb

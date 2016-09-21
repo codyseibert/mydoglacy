@@ -9,3 +9,5 @@ module.exports = new Schema
   stripeId: String
   verify: String
   verified: Boolean
+  resetUuid: String
+  resetTTL: Date
