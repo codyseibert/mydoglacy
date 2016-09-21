@@ -11,6 +11,7 @@ module.exports = do ->
 
   webhook: (req, res) ->
     event = req.body
+    console.log 'event received on webhook endpoint', event
     stripe.events.retrieve event.id, (err, e) ->
       if err?
         res.status 400
