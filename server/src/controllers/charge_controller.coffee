@@ -7,44 +7,54 @@ Joi = require 'joi'
 
 stripe = require('stripe') 'sk_test_pWy8lKC1ZXDI29NCbATR3fs9'
 
+log4js = require 'log4js'
+logger = log4js.getLogger 'app'
+
 module.exports = do ->
 
   webhook: (req, res) ->
     event = req.body
-    console.log 'event received on webhook endpoint', JSON.stringify event
+    logger.info "we received a #{event.type} webhook of id #{event.id}: #{JSON.stringify event}"
     stripe.events.retrieve event.id, (err, e) ->
       if err?
-        console.log JSON.stringify err
+        logger.error "we could not verify the event passed in from stripe #{JSON.stringify err}"
         res.status 400
         res.send 'failed to verify with stripe ' + err
       else
         if e.type is 'invoice.payment_succeeded'
           customerId = e.data.object.customer
           Pets.find(customerId: customerId).then (pet) ->
-            pet.isSubscriptionCanceled = false
-            activeUntil = new Date()
-            activeUntil.setFullYear(activeUntil.getFullYear() + 1)
-            pet.activeUntil = activeUntil
-            p.save().then ->
-              res.status 200
-              res.send 'success'
+            if not pet?
+              logger.error "a invoice.payment_succeeded was processed, but no associated pet was found: customerId=#{customerId}"
+            else
+              pet.isSubscriptionCanceled = false
+              activeUntil = new Date()
+              activeUntil.setFullYear(activeUntil.getFullYear() + 1)
+              pet.activeUntil = activeUntil
+              p.save().then ->
+                res.status 200
+                res.send 'success'
         else
           res.status 200
           res.send 'success'
 
   delete: (req, res) ->
     petId = req.params.id
+    logger.info "the petId=#{petId} from userId=#{req.user._id} has requested to delete their subscription"
     Pets.findById(petId).then (pet) ->
       if not pet?
+        logger.error "the petId=#{petId} subscription requested for deletion was not found"
         res.status 400
         res.send 'pet not found'
       else if not pet.subscriptionId?
+        logger.error "the petId=#{petId} subscription requested for deletion did not have a subscriptionId"
         res.status 400
         res.send 'this pet did not have a subscriptionId'
       else
         subscriptionId = pet.subscriptionId
         stripe.subscriptions.del subscriptionId, (err, confirmation) ->
           if err?
+            logger.error "we were not able to delete the subcription given for petId=#{petId} from userId=#{req.user._id}"
             res.status 400
             res.send 'error ending subscription' + err
           else
@@ -69,6 +79,7 @@ module.exports = do ->
         email: email
       , (err, customer) ->
         if err?
+          logger.error "a customers card was declined for email=#{email} petId=#{pet._id}"
           res.status 400
           res.send 'card was declined' + err
         else
@@ -79,6 +90,7 @@ module.exports = do ->
               petId: pet._id
           , (subErr, subscription) ->
             if subErr?
+              logger.error "the subscrition failed for customers customerId=#{customer.id} petId=#{pet._id}"
               res.status 400
               res.send 'subscription failed ' + subErr
             else
@@ -91,6 +103,7 @@ module.exports = do ->
                   activeUntil = new Date()
                   activeUntil.setFullYear(activeUntil.getFullYear() + 1)
                   p.activeUntil = activeUntil
+                  logger.info "the subscrition successed for customers customerId=#{customer.id} petId=#{pet._id}"
                   p.save().then ->
                     res.status 200
                     res.send p

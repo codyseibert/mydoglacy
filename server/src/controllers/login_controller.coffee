@@ -10,6 +10,7 @@ TOKEN_PASSWORD = config.JWT_PASSWORD
 
 module.exports = do ->
 
+  # used by HollaBack
   validate: (req, res) ->
     try
       jwt.verify req.body.token, TOKEN_PASSWORD, (err, decoded) ->
@@ -33,21 +34,19 @@ module.exports = do ->
 
     Users.findOne(email: email)
       .then (user) ->
-
         if not user?
           res.status 404
           res.send 'user not found'
-          return
-
-        hash = crypto
-          .createHmac 'sha1', user.salt
-          .update password
-          .digest 'hex'
-
-        if hash is user.password
-          jwt.sign user, TOKEN_PASSWORD, algorithm: 'HS256', (err, token) ->
-            res.status 200
-            res.send token
         else
-          res.status 401
-          res.send 'invalid password'
+          hash = crypto
+            .createHmac 'sha1', user.salt
+            .update password
+            .digest 'hex'
+
+          if hash is user.password
+            jwt.sign user, TOKEN_PASSWORD, algorithm: 'HS256', (err, token) ->
+              res.status 200
+              res.send token
+          else
+            res.status 401
+            res.send 'invalid password'

@@ -38,10 +38,12 @@ module.exports = do ->
           resetUuid: value.resetUuid
         .then (user) ->
           if not user?
+            logger.error "a user requested to reset their password userId=#{value.userId}, but the user was not found"
             res.status 400
             res.send 'user was not found using the provided userId and resetUuid'
           else if moment(user.resetTTL).isBefore moment()
-            res.status 500
+            logger.info "a user requested to reset their password, but the link was expired userId=#{value.userId} resetUuid=#{resetUuid}"
+            res.status 400
             res.send 'the password reset link you are trying to access has expired, please request another reset from the "forgot password" page'
           else
             user.salt = salt
@@ -57,6 +59,7 @@ module.exports = do ->
   forgot: (req, res) ->
     Users.findOne(email: req.body.email).then (user) ->
       if not user?
+        logger.error "a user has forgotten their password, but the user was not found email=#{req.body.email}"
         res.status 400
         res.send 'no user with the email was found'
       else
@@ -73,6 +76,7 @@ module.exports = do ->
             #{config.BASE_URL}/reset?userId=#{user._id}&resetUuid=#{user.resetUuid}
           """, (err) ->
             if err?
+              logger.error "the password reset email failed to send to user email=#{user.email} userId=#{user._id} resetUuid=#{user.resetUuid}"
               res.status 500
               res.send 'the email was not sent ' + err
             else

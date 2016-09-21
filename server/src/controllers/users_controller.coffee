@@ -7,6 +7,9 @@ uuid = require 'node-uuid'
 config = require '../config/config'
 Joi = require 'joi'
 
+log4js = require 'log4js'
+logger = log4js.getLogger 'app'
+
 emailHelper = require '../helpers/email_helper'
 
 SALT_ROUNDS = 10
@@ -49,11 +52,13 @@ module.exports = do ->
 
     Users.findOne(email: user.email).then (u) ->
       if u?
+        logger.info "a user tried to create a user with an email that already existed email=#{user.email}"
         res.status 400
         res.send 'user already exists with this email'
       else
         Users.create(user).then (obj) ->
           if not obj?
+            logger.error "there was an error creating a new user email=#{email}"
             res.status 400
             res.send 'there was an error creating the user'
           else
@@ -70,6 +75,7 @@ module.exports = do ->
                 #{config.BASE_URL}/verify?code=#{verify}
               """, (err) ->
                 if err?
+                  logger.error "a verification email could not be sent to user. email=#{obj.email} verify=#{verify}"
                   res.status 500
                   res.send 'the email was not sent ' + err
                 else
@@ -92,6 +98,7 @@ module.exports = do ->
       else
         Users.findOne(verify: value.verify).then (user) ->
           if not user?
+            logger.error "a user was not found with the verify code. verify=#{verify}"
             res.status 400
             res.send 'invalid verification code'
           else
