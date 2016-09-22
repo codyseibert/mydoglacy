@@ -253,14 +253,14 @@ module.exports = [
       , (response) ->
 
     $scope.twitterShare = ->
-      $window.open "https://twitter.com/intent/tweet?url=#{$location.absUrl()}&hashtags=MyDogLacy&text=Check out #{$scope.page.name}'s MyDogLacy site!", '_blank'
+      $window.open "https://twitter.com/intent/tweet?url=#{$location.absUrl()}&hashtags=MyDogLacy&text=Check out #{$scope.page.name}'s MyDogLacy.com site!", '_blank'
       return true
 
     $scope.pinShare = ->
       PinUtils.pinOne
         url: $window.location.href
         media: $scope.page.banner
-        description: "Check out #{$scope.page.name}'s MyDogLacy site containing pictures, videos, and stories of my best friend."
+        description: "Check out #{$scope.page.name}'s MyDogLacy.com site containing pictures, videos, and stories of my best friend."
 
     $scope.deleteCard = (card) ->
       index = _.findIndex $scope.page.carousel, (entry) ->
