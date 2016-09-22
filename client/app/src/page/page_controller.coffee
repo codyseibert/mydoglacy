@@ -6,6 +6,7 @@ module.exports = [
   '$rootScope'
   '$interval'
   '$timeout'
+  '$window'
   '$state'
   '$stateParams'
   'lodash'
@@ -18,11 +19,13 @@ module.exports = [
   'API_PATH'
   '$http'
   'moment'
+  '$location'
   (
     $scope
     $rootScope
     $interval
     $timeout
+    $window
     $state
     $stateParams
     _
@@ -35,6 +38,7 @@ module.exports = [
     API_PATH
     $http
     moment
+    $location
   ) ->
 
     userOwnsPet = (pet) ->
@@ -156,7 +160,8 @@ module.exports = [
       TokenService.getToken()?
 
     $scope.isPublished = ->
-      $scope.page.activeUntil? and (moment().isBefore moment($scope.page.activeUntil))
+      return false if not $scope.page?.activeUntil?
+      return moment().isBefore moment($scope.page.activeUntil)
 
     $scope.editItem = (key) ->
       return if not $scope.isEditMode
@@ -235,6 +240,28 @@ module.exports = [
     #   return if not confirm 'Are you sure you want to delete this image?'
     #   $scope.page.carousel.splice $scope.page.carousel.indexOf(slide), 1
     #   gotoNextSlide()
+
+    $scope.fbShare = ->
+      FB.ui
+        method: 'share'
+        display: 'popup'
+        name: "#{$scope.page.name}'s Page"
+        href: $window.location.href
+        picture: $scope.page.banner
+        caption: "My beautiful #{$scope.page.name}"
+        description: "A custom made page containing images, stories, and videos of #{$scope.page.name}."
+        message: ''
+      , (response) ->
+
+    $scope.twitterShare = ->
+      $window.open "https://twitter.com/intent/tweet?url=#{$location.absUrl()}&hashtags=MyDogLacy&text=Check out #{$scope.page.name}'s MyDogLacy site!", '_blank'
+      return true
+
+    $scope.pinShare = ->
+      PinUtils.pinOne
+        url: $window.location.href
+        media: $scope.page.banner
+        description: "Check out #{$scope.page.name}'s MyDogLacy site containing pictures, videos, and stories of my best friend."
 
     $scope.deleteCard = (card) ->
       index = _.findIndex $scope.page.carousel, (entry) ->
