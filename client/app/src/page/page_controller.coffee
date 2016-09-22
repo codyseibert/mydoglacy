@@ -245,12 +245,11 @@ module.exports = [
       FB.ui
         method: 'share'
         display: 'popup'
-        name: "#{$scope.page.name}'s Page"
         href: $window.location.href
+        title: "#{$scope.page.name}'s Personalized Page"
         picture: $scope.page.banner
-        caption: "My beautiful #{$scope.page.name}"
+        caption: "MyDogLacy.com"
         description: "A custom made page containing images, stories, and videos of #{$scope.page.name}."
-        message: ''
       , (response) ->
 
     $scope.twitterShare = ->
