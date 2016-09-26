@@ -31,7 +31,7 @@ module.exports = do ->
               activeUntil = new Date()
               activeUntil.setFullYear(activeUntil.getFullYear() + 1)
               pet.activeUntil = activeUntil
-              p.save().then ->
+              pet.save().then ->
                 res.status 200
                 res.send 'success'
         else
