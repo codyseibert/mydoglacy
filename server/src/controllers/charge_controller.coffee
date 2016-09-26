@@ -23,9 +23,9 @@ module.exports = do ->
       else
         if e.type is 'invoice.payment_succeeded'
           subscription = e.data.object.subscription
-          Pets.findOne(subscription: subscription).then (pet) ->
+          Pets.findOne(subscriptionId: subscription).then (pet) ->
             if not pet?
-              logger.error "a invoice.payment_succeeded was processed, but no associated pet was found: customerId=#{customerId}"
+              logger.error "a invoice.payment_succeeded was processed, but no associated pet was found: subscription=#{subscription}"
             else
               pet.isSubscriptionCanceled = false
               activeUntil = new Date()
