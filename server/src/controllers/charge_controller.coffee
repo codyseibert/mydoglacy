@@ -22,8 +22,8 @@ module.exports = do ->
         res.send 'failed to verify with stripe ' + err
       else
         if e.type is 'invoice.payment_succeeded'
-          customerId = e.data.object.customer
-          Pets.find(customerId: customerId).then (pet) ->
+          subscription = e.data.object.subscription
+          Pets.findOne(subscription: subscription).then (pet) ->
             if not pet?
               logger.error "a invoice.payment_succeeded was processed, but no associated pet was found: customerId=#{customerId}"
             else
