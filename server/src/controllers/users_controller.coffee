@@ -1,11 +1,13 @@
 models = require '../models/models'
 Users = models.Users
+Pets = models.Pets
 ObjectId = require('mongoose').Types.ObjectId
-lodash = require 'lodash'
 crypto = require 'crypto'
 uuid = require 'node-uuid'
 config = require '../config/config'
 Joi = require 'joi'
+
+_ = require 'lodash'
 
 log4js = require 'log4js'
 logger = log4js.getLogger 'app'
@@ -107,3 +109,26 @@ module.exports = do ->
             user.save ->
               res.status 200
               res.send 'success'
+
+
+  getHolla: (req, res) ->
+    Users.find
+      '_id':
+        $in: _.filter req.query['_id'].split(','), (id) -> id isnt ''
+    .then (users) ->
+      promises = _.map users, (user) ->
+        new Promise (resolve, reject) ->
+          Pets.findOne(userId: new ObjectId(user._id)).then (p) ->
+            if not p?
+              resolve null
+            else
+              resolve
+                userId: p.userId
+                image: p.header or 'https://www.gstatic.com/images/branding/googlelogo/2x/googlelogo_color_284x96dp.png'
+                name: p.name
+      Promise.all promises
+        .then (usersView) ->
+          userView = _.filter usersView, (u) -> u?
+          console.log userView
+          res.status 200
+          res.send userView

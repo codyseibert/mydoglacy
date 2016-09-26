@@ -38,3 +38,5 @@ module.exports = do ->
   app.post '/login', LoginCtrl.post
 
   app.post '/validate', LoginCtrl.validate
+
+  app.get '/holla/users', UsersCtrl.getHolla
