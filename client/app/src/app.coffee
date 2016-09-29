@@ -66,7 +66,7 @@ require './services'
 
 app.constant 'API_PATH', 'http://localhost:8081'
 app.constant 'HOLLA_BACK_PATH', 'http://localhost:8082'
-app.constant 'HOLLA_BACK_APP_ID', '57e94f3efaf1ad3068bdbb36'
+app.constant 'HOLLA_BACK_APP_ID', '57ec0ece6c7e735d4a584e49'
 
 app.run [
   '$rootScope'

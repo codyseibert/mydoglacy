@@ -18,12 +18,12 @@ module.exports = do ->
           res.status 403
           res.send 'the token was invalid'
         else
-          if not decoded?._doc?._id?
+          if not decoded?._id?
             res.status 400
             res.send 'token was valid, but contained no user id'
           else
             res.status 200
-            res.send userId: decoded._doc._id
+            res.send userId: decoded._id
     catch err
       res.send 404
       res.send 'issue decrypting the token'
@@ -34,6 +34,7 @@ module.exports = do ->
 
     Users.findOne(email: email)
       .then (user) ->
+        user = user.toObject()
         if not user?
           res.status 404
           res.send 'user not found'
